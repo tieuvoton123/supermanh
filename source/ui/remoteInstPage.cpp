@@ -4277,7 +4277,13 @@ namespace inst::ui {
         }
         if (this->remoteSections.empty()) {
             RemoteDlcTrace("FetchRemoteSections returned empty sections");
-            mainApp->CreateShowDialog("inst.remote.empty"_lang, "", {"common.ok"_lang}, true);
+            // SUPER MANH: a device that is not activated yet gets an empty list plus a
+            // message carrying its activation code. Show that message, not just "empty".
+            const std::string motd = remoteInstStuff::FetchRemoteMotd(this->activeRemoteUrl, inst::config::remoteUser, inst::config::remotePass);
+            if (!motd.empty())
+                mainApp->CreateShowDialog("inst.remote.motd_title"_lang, motd, {"common.ok"_lang}, true);
+            else
+                mainApp->CreateShowDialog("inst.remote.empty"_lang, "", {"common.ok"_lang}, true);
             mainApp->LoadLayout(mainApp->mainPage);
             return;
         }
