@@ -17,8 +17,13 @@ Lần chạy đầu, tool tự tạo bên cạnh nó:
 | `links.txt` | Mỗi dòng một link: `link \| Tên file [TitleID][v0].nsp \| dung lượng (không bắt buộc)` |
 | `config.json` | `port` (8000), `activation` (true/false), `public_url`, `link_key`, `title`, `contact` |
 | `devices.json` | Danh sách máy Switch đã kết nối, tool tự ghi |
+| `links_cho_plugin.txt` | Tool tự ghi lại mỗi khi thư mục `files` đổi: link sẵn để dán vào plugin |
+| `shop.json` | Danh sách dạng Tinfoil, tool tự ghi (dùng được làm file kho tĩnh) |
 
 Sửa file xong không cần chạy lại tool; riêng `port` thì phải chạy lại.
+
+- **Tự chạy cùng Windows:** nhấp đúp `TU_CHAY_CUNG_WINDOWS.bat` (chạy lại lần nữa để tắt).
+- **Chặn dò link:** một IP từ Internet gõ sai link quá `max_bad_requests` lần (mặc định 20) sẽ bị chặn tới khi tắt tool. Máy trong nhà không bị chặn.
 
 ## 2. Cho app SUPER MẠNH Việt Hóa nối vào máy test
 1. Tạo file **`test_host.txt`** trong thư mục **`switch/SuperManhShop/`** trên thẻ nhớ. Nội dung là một dòng địa chỉ kho, ví dụ:

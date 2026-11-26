@@ -186,7 +186,7 @@ jobs:
           cp -r dist_nsp/* "$B/3_Dong_goi_NSP/"
           cp nsp/HUONG_DAN_CAI_DAT.md "$B/"
           mkdir -p "$B/4_Test_Host"
-          cp th_exe/SuperManh_TestHost.exe tools/test_host/SuperManh_TestHost.py tools/test_host/CHAY_TEST_HOST.bat tools/test_host/HUONG_DAN_TEST_HOST.md "$B/4_Test_Host/"
+          cp th_exe/SuperManh_TestHost.exe tools/test_host/SuperManh_TestHost.py tools/test_host/CHAY_TEST_HOST.bat tools/test_host/TU_CHAY_CUNG_WINDOWS.bat tools/test_host/HUONG_DAN_TEST_HOST.md "$B/4_Test_Host/"
           python3 - <<'PY'
           import os, zipfile
           with zipfile.ZipFile("SuperManh_TronBo.zip","w",zipfile.ZIP_DEFLATED) as z:

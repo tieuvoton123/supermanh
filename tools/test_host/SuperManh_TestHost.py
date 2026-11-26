@@ -42,6 +42,8 @@ DEFAULT_CONFIG = {
     'public_url': '',
     # Secret part of every download link: /f/<link_key>/<file>. Generated on first run.
     'link_key': '',
+    # Wrong download keys from one IP before it is blocked (TinfoilWebServer-style blacklist). 0 = off.
+    'max_bad_requests': 20,
 }
 
 LINKS_SAMPLE = """# Moi dong mot link tai truc tiep. Dong bat dau bang # la ghi chu.
@@ -52,6 +54,8 @@ LINKS_SAMPLE = """# Moi dong mot link tai truc tiep. Dong bat dau bang # la ghi 
 """
 
 lock = threading.Lock()
+bad_hits = {}      # ip -> count of wrong download keys
+blocked = set()
 
 
 def load_json(path, default):
@@ -120,8 +124,32 @@ def human(n):
         n /= 1024.0
 
 
+_scan = {'key': None, 'at': 0.0, 'files': []}
+
+
+def _tree_stamp(root):
+    stamp = []
+    for dirpath, dirs, _ in os.walk(root):
+        try:
+            stamp.append((dirpath, os.stat(dirpath).st_mtime_ns))
+        except OSError:
+            pass
+    return tuple(stamp)
+
+
 def local_files(cfg):
+    """File list, rescanned only when a folder changed or after 60 s (big libraries stay fast)."""
     root = os.path.join(BASE, cfg['files_dir'])
+    with lock:
+        stamp = (root, _tree_stamp(root))
+        if _scan['key'] == stamp and time.time() - _scan['at'] < 60:
+            return _scan['files']
+        files = _scan_files(root)
+        _scan.update(key=stamp, at=time.time(), files=files)
+        return files
+
+
+def _scan_files(root):
     out = []
     for dirpath, _, names in os.walk(root):
         for name in sorted(names):
@@ -164,8 +192,27 @@ def is_private(ip):
 class Handler(BaseHTTPRequestHandler):
     server_version = 'SuperManhTestHost/1.0'
 
+    def client_ip(self):
+        # Behind Cloudflare Tunnel / a proxy the real address is in these headers.
+        for h in ('CF-Connecting-IP', 'X-Forwarded-For'):
+            v = self.headers.get(h) if hasattr(self, 'headers') and self.headers else None
+            if v:
+                return v.split(',')[0].strip()
+        return self.client_address[0]
+
     def log_message(self, fmt, *args):
-        sys.stdout.write('%s  %s  %s\n' % (time.strftime('%H:%M:%S'), self.client_address[0], fmt % args))
+        sys.stdout.write('%s  %s  %s\n' % (time.strftime('%H:%M:%S'), self.client_ip(), fmt % args))
+
+    def note_bad(self, cfg):
+        limit = int(cfg.get('max_bad_requests') or 0)
+        if limit <= 0 or self.is_local():
+            return
+        ip = self.client_ip()
+        with lock:
+            bad_hits[ip] = bad_hits.get(ip, 0) + 1
+            if bad_hits[ip] >= limit and ip not in blocked:
+                blocked.add(ip)
+                print('>>> CHAN IP %s (do sai link %d lan)' % (ip, bad_hits[ip]))
 
     # ---- helpers -------------------------------------------------------
     def send_json(self, code, obj):
@@ -214,11 +261,16 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         cfg = config()
+        if self.client_ip() in blocked:
+            return self.send_json(403, {'error': 'Bi chan.'})
         path = urllib.parse.urlparse(self.path).path
         clean = urllib.parse.unquote(path).strip('/')
         prefix = 'f/' + cfg['link_key'] + '/'
         if clean.startswith(prefix):
             return self.serve_file(cfg, clean[len(prefix):])
+        if clean.startswith('f/'):
+            self.note_bad(cfg)
+            return self.send_json(404, {'error': 'Khong tim thay.'})
         if clean in ('quanly', 'links', 'links.txt', '') and not self.is_local():
             return self.send_json(404, {'error': 'Khong tim thay.'})
         if clean == 'quanly':
@@ -327,17 +379,24 @@ class Handler(BaseHTTPRequestHandler):
         if self.command == 'HEAD':
             return
         with open(full, 'rb') as f:
-            f.seek(start)
-            left = end - start + 1
             try:
-                while left > 0:
-                    chunk = f.read(min(1024 * 1024, left))
-                    if not chunk:
-                        break
-                    self.wfile.write(chunk)
-                    left -= len(chunk)
-            except (ConnectionResetError, BrokenPipeError):
+                self.wfile.flush()
+                # Kernel copy where the OS supports it (Linux/macOS); Windows falls back to 4 MB reads.
+                self.connection.sendfile(f, offset=start, count=end - start + 1)
+            except (ConnectionResetError, BrokenPipeError, ConnectionAbortedError):
                 pass
+            except Exception:
+                f.seek(start)
+                left = end - start + 1
+                try:
+                    while left > 0:
+                        chunk = f.read(min(4 * 1024 * 1024, left))
+                        if not chunk:
+                            break
+                        self.wfile.write(chunk)
+                        left -= len(chunk)
+                except (ConnectionResetError, BrokenPipeError, ConnectionAbortedError):
+                    pass
 
     # ---- pages ---------------------------------------------------------
     CSS = ('<meta name="viewport" content="width=device-width,initial-scale=1"><style>'
@@ -390,6 +449,28 @@ class Handler(BaseHTTPRequestHandler):
                 '<b>Link trong links.txt:</b> ' + str(len(links)) + '<br><a style="color:#ff8a00" href="/links">Lay link tai truc tiep cho plugin &rarr;</a></div>')
 
 
+def export_loop():
+    """Like bitfoil: keep shop.json + links_cho_plugin.txt next to the tool up to date."""
+    last = None
+    while True:
+        try:
+            cfg = config()
+            base = str(cfg.get('public_url') or '').strip().rstrip('/') or 'http://%s:%d' % (lan_ips()[0], int(cfg['port']))
+            files = local_files(cfg)
+            if (files, base, cfg['link_key']) != last:
+                url = lambda rel, name: base + '/f/' + cfg['link_key'] + '/' + urllib.parse.quote(rel) + '#' + urllib.parse.quote(name)
+                with open(os.path.join(BASE, 'links_cho_plugin.txt'), 'w', encoding='utf-8') as f:
+                    f.write(''.join('%s | %s | %d\n' % (url(rel, name), name, size) for rel, name, size in files))
+                save_json(os.path.join(BASE, 'shop.json'), {'files': [{'url': url(rel, name), 'size': size} for rel, name, size in files] + link_entries(),
+                                                            'success': cfg['title']})
+                if last is not None:
+                    print('>>> Danh sach file thay doi: %d file, da ghi lai links_cho_plugin.txt' % len(files))
+                last = (files, base, cfg['link_key'])
+        except Exception as e:
+            print('Loi ghi danh sach:', e)
+        time.sleep(15)
+
+
 def main():
     first_run()
     cfg = config()
@@ -401,6 +482,7 @@ def main():
         input('Nhan Enter de thoat...')
         return
     httpd.daemon_threads = True
+    threading.Thread(target=export_loop, daemon=True).start()
     ips = lan_ips()
     print('=' * 64)
     print(' SUPER MANH Test Host dang chay')
@@ -410,6 +492,7 @@ def main():
     print(' Trang quan ly / kich hoat:      http://localhost:%d/quanly' % port)
     print(' Link tai truc tiep cho plugin:  http://localhost:%d/links' % port)
     print(' Dia chi cong khai (public_url): %s' % (cfg.get('public_url') or '(chua dat - chi tai trong mang nha)'))
+    print(' Tu ghi links_cho_plugin.txt + shop.json canh tool moi khi thu muc doi.')
     print(' File de tai:  thu muc "%s"  (%d file)' % (cfg['files_dir'], len(local_files(cfg))))
     print(' Link truc tiep: links.txt     (%d link)' % len(link_entries()))
     print(' Kich hoat theo may: %s' % ('BAT' if cfg.get('activation') else 'TAT'))
