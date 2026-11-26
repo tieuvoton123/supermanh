@@ -21,3 +21,7 @@ __pycache__/
 *.sh
 *.bat
 *.a
+
+# SUPER MANH: keep the NSP pack scripts
+!nsp/*.bat
+!nsp/*.ps1
