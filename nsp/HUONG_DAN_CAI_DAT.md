@@ -5,10 +5,10 @@ SuperManh_TronBo/
 ├─ 1_Plugin_WordPress/supermanh-switch-shop.zip   ← cài lên supermanh.com
 ├─ 2_App_Switch_NRO/switch/SuperManhShop/          ← chép vào gốc thẻ nhớ (chạy qua Homebrew Menu)
 ├─ 3_Dong_goi_NSP/                                 ← tạo file NSP có icon ngoài HOME
-├─ 4_Test_Host/                                   ← kho thử chạy trên PC (xem HUONG_DAN_TEST_HOST.md)
 │   ├─ DONG_GOI_NSP.bat
 │   ├─ dong_goi_nsp.ps1
 │   └─ kit/ (exefs, romfs, control)
+├─ 4_Test_Host/                                    ← kho thử chạy trên PC (xem HUONG_DAN_TEST_HOST.md)
 └─ HUONG_DAN_CAI_DAT.md
 ```
 
