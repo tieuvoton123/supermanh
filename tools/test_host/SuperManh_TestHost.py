@@ -337,7 +337,7 @@ class Handler(BaseHTTPRequestHandler):
                 save_json(DEVICES_PATH, devices)
             if not dev['active']:
                 return self.send_json(200, {'files': [], 'success': motd + '\nMa kich hoat: ' + dev['code'] +
-                                            '\nGui ma nay cho ' + cfg['contact'] + ' de kich hoat, roi tat han app va mo lai.'})
+                                            '\nGui ma nay cho ' + cfg['contact'] + ' de kich hoat.\nKich hoat xong bam "Kiem tra lai" (Tinfoil: tat han va mo lai).'})
             motd += '\nMay ' + dev['code'] + ' da kich hoat.'
         if not files:
             motd += '\nChua co file nao. Chep nsp/nsz/xci vao thu muc "' + cfg['files_dir'] + '" hoac ghi link vao links.txt.'

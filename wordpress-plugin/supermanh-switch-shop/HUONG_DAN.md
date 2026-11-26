@@ -1,4 +1,4 @@
-# SuperManh Switch Việt Hóa — plugin WordPress (v1.6.2)
+# SuperManh Switch Việt Hóa — plugin WordPress (v1.6.3)
 
 Biến supermanh.com thành kho bản Việt hóa cho Tinfoil. Máy Switch **tải thẳng từ Google Drive** (hoặc link bạn tự điền), web chỉ phát danh sách game, không tốn băng thông web, không cần PC bật.
 

@@ -47,7 +47,7 @@ VI = {
                         '2. Ngày giờ của máy phải đúng (Cài đặt hệ thống > Ngày giờ).\n'
                         '3. Chọn ô "Kho Việt hóa". Lần đầu sẽ hiện\n   MÃ KÍCH HOẠT dạng XXXX XXXX.\n'
                         '4. Gửi mã kích hoạt cho SUPER MẠNH ({host}) để được kích hoạt.\n'
-                        '5. Khi được báo đã kích hoạt: thoát hẳn ứng dụng rồi mở lại,\n   vào Kho Việt hóa và tải bản cần dùng.\n'
+                        '5. Khi được báo đã kích hoạt: bấm "Kiểm tra lại" là thấy danh sách,\n   chọn bản cần dùng rồi tải.\n'
                         '6. Mở thêm bản bằng điểm tại {host}/sm-khach\n   (mã kích hoạt + PIN web hiện trong thông báo của kho).\n\n'
                         'Địa chỉ kho: {shop}'),
     'main.info.sd': 'Cài file NSP/NSZ/XCI/XCZ có trong thẻ nhớ SD.',
@@ -98,6 +98,8 @@ VI = {
     'inst.remote.update_prompt_desc': 'Cài kèm bản cập nhật cho các mục đã chọn? Số bản cập nhật tìm thấy: ',
     'inst.remote.dlc_prompt_title': 'Cài kèm DLC?',
     'inst.remote.dlc_prompt_desc': 'Cài kèm DLC cho các mục đã chọn? Số DLC tìm thấy: ',
+    'inst.remote.recheck': 'Kiểm tra lại',
+    'inst.remote.back_home': 'Về màn hình chính',
     'inst.remote.motd_title': 'Thông báo từ kho',
     'inst.remote.buttons_installed': f'{A} Chi tiết{S}{X} Tải lại{S}{L}/{R} Mục{S}{B} Huỷ',
     'inst.remote.detail_type': 'Loại: ',

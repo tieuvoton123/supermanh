@@ -4280,9 +4280,16 @@ namespace inst::ui {
             // SUPER MANH: a device that is not activated yet gets an empty list plus a
             // message carrying its activation code. Show that message, not just "empty".
             const std::string motd = remoteInstStuff::FetchRemoteMotd(this->activeRemoteUrl, inst::config::remoteUser, inst::config::remotePass);
-            if (!motd.empty())
-                mainApp->CreateShowDialog("inst.remote.motd_title"_lang, motd, {"common.ok"_lang}, true);
-            else
+            if (!motd.empty()) {
+                // Waiting for activation: the admin enables the code, the member presses
+                // "Check again" and the list loads, without leaving the app.
+                const int choice = mainApp->CreateShowDialog("inst.remote.motd_title"_lang, motd,
+                    {"inst.remote.recheck"_lang, "inst.remote.back_home"_lang}, true);
+                if (choice == 0) {
+                    this->startRemote(true);
+                    return;
+                }
+            } else
                 mainApp->CreateShowDialog("inst.remote.empty"_lang, "", {"common.ok"_lang}, true);
             mainApp->LoadLayout(mainApp->mainPage);
             return;

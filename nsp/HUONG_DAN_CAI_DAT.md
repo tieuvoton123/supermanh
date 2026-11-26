@@ -27,7 +27,7 @@ SuperManh_TronBo/
 
 ### Cách A: NSP (khuyên dùng — có icon ngoài màn hình HOME)
 1. Trên **PC Windows**: chép `prod.keys` của máy Switch **bạn** vào thư mục `3_Dong_goi_NSP\`.
-2. Nhấp đúp `DONG_GOI_NSP.bat` (dùng `tools\hacbrewpack.exe` có sẵn, mã nguồn mở GPL-2.0, không cần mạng) → ra file `3_Dong_goi_NSP\NSP\SuperManhVietHoa_v1.5.4.nsp`.
+2. Nhấp đúp `DONG_GOI_NSP.bat` (dùng `tools\hacbrewpack.exe` có sẵn, mã nguồn mở GPL-2.0, không cần mạng) → ra file `3_Dong_goi_NSP\NSP\SuperManhVietHoa_v1.5.5.nsp`.
 3. Cài file NSP bằng Tinfoil / DBI / CyberFoil như cài game. Mã ứng dụng: `05004D414E480000`.
 4. Nếu Tinfoil báo lỗi chữ ký: Tinfoil → Options → **Install Unsigned Code = YES**.
 5. Đưa file NSP lên chỗ bạn muốn (Drive, web…) rồi dán link vào **Link tải app Switch** ở Bước 1.
@@ -44,7 +44,7 @@ App chỉ kết nối tới Kho Việt hóa SUPER MẠNH, giao diện tiếng Vi
 2. Mở app → chọn ô **Kho Việt hóa** (không cần điền địa chỉ).
 3. App hiện **Mã kích hoạt: XXXX XXXX** → thành viên gửi mã cho bạn.
 4. Bạn mở app quản lý trên điện thoại → **Kích hoạt mã máy** → nhập mã → Cộng điểm / Tặng bản / Gói thời hạn.
-5. Thành viên thoát hẳn app rồi mở lại → thấy bản của mình, tải thẳng từ Google Drive.
+5. Thành viên bấm **Kiểm tra lại** ngay trên hộp thông báo → danh sách hiện ra, chọn bản rồi tải thẳng từ Google Drive.
 6. Mở thêm bản bằng điểm tại `supermanh.com/sm-khach` (mã kích hoạt + PIN web hiện trong app).
 
 ## Khi có lỗi

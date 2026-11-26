@@ -125,7 +125,7 @@
 			'2. Bật Wi-Fi có Internet, chỉnh đúng ngày giờ máy.<br>' +
 			'3. Mở app, chọn <b>Kho Việt hóa</b>. Không cần điền địa chỉ.<br>' +
 			'4. Lần đầu app hiện <b>mã kích hoạt</b> và <b>PIN web</b>. Gửi mã cho <b>' + esc(me.contact) + '</b>.<br>' +
-			'5. Khi được kích hoạt: thoát hẳn app, mở lại là thấy bản của bạn.<br>' +
+			'5. Khi được kích hoạt: bấm <b>Kiểm tra lại</b> trong app là thấy danh sách, chọn bản rồi tải.<br>' +
 			'Quên bước nào thì mở ô <b>Hướng dẫn kết nối</b> trong app.</p></div>' +
 			'<div class="card"><h2>Hoặc dùng Tinfoil</h2>' +
 			'<p>Trên Switch mở <b>Tinfoil → File Browser</b>, nhấn nút <b>(-)</b> rồi điền:</p><dl class="kv">' +

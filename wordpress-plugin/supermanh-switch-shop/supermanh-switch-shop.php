@@ -3,7 +3,7 @@
  * Plugin Name:       SuperManh Switch Việt Hóa
  * Plugin URI:        https://supermanh.com
  * Description:       Kho bản Việt hóa Nintendo Switch cho Tinfoil: link tự điền hoặc thư mục Google Drive, tài khoản thành viên, cộng điểm và mở khoá từng bản, app quản lý trên điện thoại.
- * Version:           1.6.2
+ * Version:           1.6.3
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            SUPER MẠNH
@@ -14,7 +14,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SMSS_VERSION', '1.6.2' );
+define( 'SMSS_VERSION', '1.6.3' );
 define( 'SMSS_DB_VERSION', '7' );
 define( 'SMSS_FILE', __FILE__ );
 define( 'SMSS_DIR', plugin_dir_path( __FILE__ ) );

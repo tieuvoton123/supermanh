@@ -38,7 +38,7 @@ Dùng Tinfoil thì thêm kho như thường: File Browser → (-) → Protocol `
 ## 3. Test bước kích hoạt
 1. Mở Kho Việt hóa trên Switch → app hiện **Mã kích hoạt: XXXX XXXX**. Cửa sổ tool cũng in ra `MAY MOI: ma kich hoat ...`.
 2. Trên PC (hoặc điện thoại cùng Wi-Fi) mở **`http://localhost:8000/quanly`** → bấm **Kich hoat** ở dòng mã đó.
-3. Tắt hẳn app, mở lại → thấy danh sách file và tải được.
+3. Trên Switch bấm **Kiểm tra lại** → thấy danh sách file và tải được.
 
 Chỉ muốn test tải: mở `config.json`, đặt `"activation": false`.
 

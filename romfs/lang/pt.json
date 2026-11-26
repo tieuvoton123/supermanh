@@ -52,7 +52,7 @@
         },
         "guide": {
             "title": "How to connect to the SUPER MANH library",
-            "desc": "1. Connect to Wi-Fi with Internet access (Wi-Fi that needs a web login\n   in a cafe or hotel will not work).\n2. Make sure the console date and time are correct.\n3. Open \"Viet hoa library\". The first time it shows your\n   ACTIVATION CODE (XXXX XXXX).\n4. Send that code to SUPER MANH ({host}) to get it activated.\n5. Once activated: close this app completely, open it again, then\n   open the library and download your patches.\n6. Unlock more patches with points at {host}/sm-khach\n   (activation code + the web PIN shown in the library message).\n\nLibrary address: {shop}"
+            "desc": "1. Connect to Wi-Fi with Internet access (Wi-Fi that needs a web login\n   in a cafe or hotel will not work).\n2. Make sure the console date and time are correct.\n3. Open \"Viet hoa library\". The first time it shows your\n   ACTIVATION CODE (XXXX XXXX).\n4. Send that code to SUPER MANH ({host}) to get it activated.\n5. Once activated: press \"Check again\" to see the list,\n   then pick a patch and download it.\n6. Unlock more patches with points at {host}/sm-khach\n   (activation code + the web PIN shown in the library message).\n\nLibrary address: {shop}"
         }
     },
     "inst": {
@@ -142,7 +142,9 @@
                     "downloaded_success": "Save baixado com sucesso.",
                     "deleted_success": "Backup do save excluido com sucesso."
                 }
-            }
+            },
+            "recheck": "Check again",
+            "back_home": "Back to home"
         },
         "sd": {
             "help": {

@@ -230,7 +230,7 @@ class SMSS_Endpoint {
 				}
 				$index['success'] = $s['motd'] . "\n" . $line . "\nMo khoa them: " . $portal . $pinline;
 			} else {
-				$index['success'] = $s['motd'] . "\n" . $code . "\nGui ma nay cho " . $s['contact'] . ' de kich hoat, roi tat han app va mo lai.';
+				$index['success'] = $s['motd'] . "\n" . $code . "\nGui ma nay cho " . $s['contact'] . ' de kich hoat.\nKich hoat xong bam "Kiem tra lai" (Tinfoil: tat han va mo lai).';
 			}
 		}
 		self::send( 200, $index );
