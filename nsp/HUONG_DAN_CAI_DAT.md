@@ -25,7 +25,7 @@ SuperManh_TronBo/
 
 ### Cách A: NSP (khuyên dùng — có icon ngoài màn hình HOME)
 1. Trên **PC Windows**: chép `prod.keys` của máy Switch **bạn** vào thư mục `3_Dong_goi_NSP\`.
-2. Nhấp đúp `DONG_GOI_NSP.bat` → lần đầu tự tải hacBrewPack (công cụ đóng gói NSP mã nguồn mở) → ra file `3_Dong_goi_NSP\NSP\SuperManhShop_v1.5.1.nsp`.
+2. Nhấp đúp `DONG_GOI_NSP.bat` (dùng `tools\hacbrewpack.exe` có sẵn, mã nguồn mở GPL-2.0, không cần mạng) → ra file `3_Dong_goi_NSP\NSP\SuperManhShop_v1.5.1.nsp`.
 3. Cài file NSP bằng Tinfoil / DBI / CyberFoil như cài game. Mã ứng dụng: `05004D414E480000`.
 4. Nếu Tinfoil báo lỗi chữ ký: Tinfoil → Options → **Install Unsigned Code = YES**.
 

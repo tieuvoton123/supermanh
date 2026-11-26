@@ -18,7 +18,40 @@ permissions:
   contents: write
 
 jobs:
+  hacbrewpack:
+    # hacBrewPack (GPL-2.0, The-4n; maintained fork rlaphoenix/hacBrewPack) packs the NSP.
+    # Built from source here: Linux binary for the CI check, Windows .exe for the bundle.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build hacBrewPack (Linux + Windows)
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq gcc-mingw-w64-x86-64 make >/dev/null
+          git clone --depth 1 https://github.com/rlaphoenix/hacBrewPack.git src
+          cp -r src linux && cp -r src win
+          cp linux/config.mk.template linux/config.mk
+          make -C linux -s || test -f linux/hacbrewpack
+          cp win/config.mk.template win/config.mk
+          sed -i 's/^CC = .*/CC = x86_64-w64-mingw32-gcc/; s/^CFLAGS = \(.*\)-fPIC/CFLAGS = \1/; s/^LDFLAGS = \(.*\)/LDFLAGS = \1 -static/' win/config.mk
+          make -C win/mbedtls lib CC=x86_64-w64-mingw32-gcc AR=x86_64-w64-mingw32-ar WINDOWS=1 -s
+          make -C win hacbrewpack -s || true
+          mkdir -p out
+          cp linux/hacbrewpack out/hacbrewpack-linux
+          cp win/hacbrewpack out/hacbrewpack.exe 2>/dev/null || cp win/hacbrewpack.exe out/hacbrewpack.exe
+          cp src/LICENSE out/hacbrewpack-LICENSE.txt
+          file out/* || true
+          ls -l out
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hacbrewpack
+          path: out/
+          if-no-files-found: error
+
   build:
+    needs: hacbrewpack
     runs-on: ubuntu-latest
     container:
       image: devkitpro/devkita64:latest
@@ -91,25 +124,29 @@ jobs:
           cp nsp/DONG_GOI_NSP.bat nsp/dong_goi_nsp.ps1 dist_nsp/
           ls -lR dist_nsp | head -40
 
+      - uses: actions/download-artifact@v4
+        with:
+          name: hacbrewpack
+          path: hbp
+
       - name: Check the kit with hacBrewPack (fake keys, structure only)
         shell: bash
-        continue-on-error: true
         run: |
           set -euo pipefail
-          apt-get update -qq && apt-get install -y -qq build-essential >/dev/null || true
-          git clone --depth 1 https://github.com/The-4n/hacBrewPack.git /tmp/hbp
-          cp /tmp/hbp/config.mk.template /tmp/hbp/config.mk 2>/dev/null || true
-          make -C /tmp/hbp >/dev/null
+          chmod +x hbp/hacbrewpack-linux
           python3 - <<'PY'
           import os
-          r=lambda: os.urandom(16).hex()
-          lines=["header_key = "+os.urandom(32).hex()]+[f"key_area_key_application_{i:02x} = {r()}" for i in range(0x20)]
+          lines=["header_key = "+os.urandom(32).hex()]+[f"key_area_key_application_{i:02x} = {os.urandom(16).hex()}" for i in range(0x20)]
           open("/tmp/fake.keys","w").write("\n".join(lines)+"\n")
           PY
           cd dist_nsp
-          /tmp/hbp/hacbrewpack -k /tmp/fake.keys --titleid 05004d414e480000 --exefsdir kit/exefs --romfsdir kit/romfs --controldir kit/control --nspdir /tmp/nsp_test || true
-          ls -l /tmp/nsp_test || true
-          rm -rf hacbrewpack_temp hacbrewpack_nca hacbrewpack_backup
+          ../hbp/hacbrewpack-linux -k /tmp/fake.keys --titleid 05004d414e480000 --nologo \
+            --exefsdir kit/exefs --romfsdir kit/romfs --controldir kit/control \
+            --nspdir /tmp/nsp_test --tempdir /tmp/hbp_temp --ncadir /tmp/hbp_nca --backupdir /tmp/hbp_backup
+          ls -l /tmp/nsp_test
+          test -n "$(ls /tmp/nsp_test/*.nsp)"
+          mkdir -p tools
+          cp ../hbp/hacbrewpack.exe ../hbp/hacbrewpack-LICENSE.txt tools/
 
       - name: Bundle everything (plugin + app + NSP kit + guide)
         shell: bash
