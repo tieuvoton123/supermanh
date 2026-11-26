@@ -26,16 +26,17 @@ namespace inst::ui {
     bool appletFinished = false;
     bool updateFinished = false;
     bool offlineDbUpdateCheckFinished = false;
-    constexpr int kMainGridCols = 3;
-    constexpr int kMainGridRows = 3;
-    constexpr int kMainGridTileWidth = 360;
-    constexpr int kMainGridTileHeight = 170;
+    // SUPER MANH: store-only app, four large tiles (Shop, Guide, Settings, Exit).
+    constexpr int kMainGridCols = 2;
+    constexpr int kMainGridRows = 2;
+    constexpr int kMainGridTileWidth = 540;
+    constexpr int kMainGridTileHeight = 236;
     constexpr int kMainGridGapX = 20;
     constexpr int kMainGridGapY = 18;
     constexpr int kMainGridStartX = (1280 - ((kMainGridCols * kMainGridTileWidth) + ((kMainGridCols - 1) * kMainGridGapX))) / 2;
-    constexpr int kMainGridStartY = 100;
+    constexpr int kMainGridStartY = 116;
     constexpr int kMainLabelPaddingX = 18;
-    constexpr int kMainLabelY = 116;
+    constexpr int kMainLabelY = 160;
     constexpr int kMainLabelWidth = kMainGridTileWidth - (kMainLabelPaddingX * 2);
     constexpr int kMainLabelHeight = 28;
 
@@ -352,23 +353,13 @@ namespace inst::ui {
         const auto highlightColor = inst::theme::Color("highlight", inst::config::oledMode ? COLOR("#FF4D4D66") : COLOR("#FF4D4D88"));
         const std::vector<std::string> gridLabels = {
             "main.menu.remote"_lang,
-            "main.menu.sd"_lang,
-            "main.menu.hdd"_lang,
-            "main.menu.mtp"_lang,
-            "main.menu.usb"_lang,
-            "main.menu.net"_lang,
-            "main.menu.backup"_lang,
+            "main.menu.guide"_lang,
             "main.menu.set"_lang,
             "main.menu.exit"_lang
         };
         const std::vector<std::string> gridIcons = {
-            inst::theme::Asset("romfs:/images/icons/remote.png"),
-            inst::theme::Asset("romfs:/images/icons/micro-sd.png"),
-            inst::theme::Asset("romfs:/images/icons/usb-install.png"),
-            inst::theme::Asset("romfs:/images/icons/usb-port.png"),
-            inst::theme::Asset("romfs:/images/icons/usb-port.png"),
             inst::theme::Asset("romfs:/images/icons/cloud-download.png"),
-            inst::theme::Asset("romfs:/images/icons/save-data-cloud.png"),
+            inst::theme::Asset("romfs:/images/icons/lan-connection-waiting.png"),
             inst::theme::Asset("romfs:/images/icons/settings.png"),
             inst::theme::Asset("romfs:/images/icons/exit-run.png")
         };
@@ -382,7 +373,7 @@ namespace inst::ui {
             const int y = kMainGridStartY + (row * (kMainGridTileHeight + kMainGridGapY));
             auto tile = Rectangle::New(x, y, kMainGridTileWidth, kMainGridTileHeight, tileColor, 18);
             constexpr int kMainIconSize = 96;
-            auto icon = Image::New(x + ((kMainGridTileWidth - kMainIconSize) / 2), y + 22, gridIcons[i]);
+            auto icon = Image::New(x + ((kMainGridTileWidth - kMainIconSize) / 2), y + 40, gridIcons[i]);
             icon->SetWidth(kMainIconSize);
             icon->SetHeight(kMainIconSize);
             auto label = OverflowText::New(22, COLOR("#FFFFFFFF"));
@@ -790,32 +781,31 @@ namespace inst::ui {
                 this->remoteInstallMenuItem_Click();
                 break;
             case 1:
-                this->installMenuItem_Click();
+                this->showConnectGuide();
                 break;
             case 2:
-                this->hddInstallMenuItem_Click();
-                break;
-            case 3:
-                this->mtpInstallMenuItem_Click();
-                break;
-            case 4:
-                this->usbInstallMenuItem_Click();
-                break;
-            case 5:
-                this->netInstallMenuItem_Click();
-                break;
-            case 6:
-                this->backupSaveDataMenuItem_Click();
-                break;
-            case 7:
                 this->settingsMenuItem_Click();
                 break;
-            case 8:
+            case 3:
                 this->exitMenuItem_Click();
                 break;
             default:
                 break;
         }
+    }
+
+    void MainPage::showConnectGuide() {
+        std::string shop = SMSS_SHOP_URL;
+        const auto scheme = shop.find("://");
+        if (scheme != std::string::npos)
+            shop = shop.substr(scheme + 3);
+        const std::string host = shop.substr(0, shop.find('/'));
+        std::string desc = "main.guide.desc"_lang;
+        const std::pair<std::string, std::string> tokens[] = {{"{shop}", shop}, {"{host}", host}};
+        for (const auto& t : tokens)
+            for (auto pos = desc.find(t.first); pos != std::string::npos; pos = desc.find(t.first))
+                desc.replace(pos, t.first.size(), t.second);
+        mainApp->CreateShowDialog("main.guide.title"_lang, desc, {"common.ok"_lang}, true);
     }
 
     void MainPage::showSelectedMainInfo() {
@@ -827,34 +817,13 @@ namespace inst::ui {
                 desc = "main.info.remote"_lang;
                 break;
             case 1:
-                title = "main.menu.sd"_lang;
-                desc = "main.info.sd"_lang;
-                break;
+                this->showConnectGuide();
+                return;
             case 2:
-                title = "main.menu.hdd"_lang;
-                desc = "main.info.hdd"_lang;
-                break;
-            case 3:
-                title = "main.menu.mtp"_lang;
-                desc = "main.info.mtp"_lang;
-                break;
-            case 4:
-                title = "main.menu.usb"_lang;
-                desc = "main.info.usb"_lang;
-                break;
-            case 5:
-                title = "main.menu.net"_lang;
-                desc = "main.info.net"_lang;
-                break;
-            case 6:
-                title = "main.menu.backup"_lang;
-                desc = "main.info.backup"_lang;
-                break;
-            case 7:
                 title = "main.menu.set"_lang;
                 desc = "main.info.set"_lang;
                 break;
-            case 8:
+            case 3:
                 title = "main.menu.exit"_lang;
                 desc = "main.info.exit"_lang;
                 break;

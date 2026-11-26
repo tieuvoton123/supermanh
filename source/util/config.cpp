@@ -900,9 +900,10 @@ namespace inst::config {
 
         // Already saved (also after the customer edited the title): just make sure
         // something is selected.
+        // Store-only app: the SUPER MANH shop is (re)selected on every start.
         for (const auto& saved : LoadRemotes()) {
             if (RemoteMatchesUrl(saved, shopUrl)) {
-                if (remoteProfileFile.empty() && remoteUrl.empty())
+                if (!RemoteMatchesUrl(saved, remoteUrl) || !remoteLegacyMode)
                     SetActiveRemote(saved, true);
                 return;
             }
@@ -923,8 +924,7 @@ namespace inst::config {
             return;
         for (const auto& saved : LoadRemotes()) {
             if (saved.fileName == brand.fileName) {
-                if (remoteProfileFile.empty() && remoteUrl.empty())
-                    SetActiveRemote(saved, true);
+                SetActiveRemote(saved, true);
                 break;
             }
         }

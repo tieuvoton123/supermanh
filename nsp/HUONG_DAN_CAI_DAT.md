@@ -35,11 +35,14 @@ SuperManh_TronBo/
 Chép thư mục `2_App_Switch_NRO/switch` vào **gốc thẻ nhớ** → mở **SUPER MANH Shop** trong Homebrew Menu (nên mở qua một game, giữ R khi bấm game).
 
 ## Bước 3 — Khách dùng như thế nào
-1. Mở app SUPER MANH Shop → vào mục shop **SUPER MANH Shop** (đã có sẵn).
-2. App hiện **Mã kích hoạt: XXXX XXXX** → khách gửi mã + chuyển khoản cho bạn.
-3. Bạn mở app quản lý trên điện thoại → **Kích hoạt mã máy** → nhập mã → Nạp điểm / Tặng bản / Gói thời hạn.
-4. Khách tắt hẳn app rồi mở lại → thấy các bản Việt hóa, tải thẳng từ Google Drive.
-5. Khách tự mở khoá thêm bản bằng điểm ở `supermanh.com/sm-khach` (mã kích hoạt + PIN web hiện trong app).
+App chỉ dùng cho shop SUPER MẠNH, giao diện tiếng Việt. Màn hình chính có 4 ô: **SUPER MẠNH Shop**, **Hướng dẫn kết nối**, **Cài đặt**, **Thoát**. Ô *Hướng dẫn kết nối* có sẵn các bước dưới đây ngay trên máy.
+
+1. Kết nối Wi-Fi có Internet (Wi-Fi phải đăng nhập trên web như quán cà phê thì không dùng được) và chỉnh đúng ngày giờ máy.
+2. Mở app → chọn ô **SUPER MẠNH Shop** (app luôn trỏ sẵn tới shop của bạn, khách không phải nhập địa chỉ).
+3. App hiện **Mã kích hoạt: XXXX XXXX** → khách gửi mã + chuyển khoản cho bạn.
+4. Bạn mở app quản lý trên điện thoại → **Kích hoạt mã máy** → nhập mã → Nạp điểm / Tặng bản / Gói thời hạn.
+5. Khách tắt hẳn app rồi mở lại → thấy các bản Việt hóa, tải thẳng từ Google Drive.
+6. Khách tự mở khoá thêm bản bằng điểm ở `supermanh.com/sm-khach` (mã kích hoạt + PIN web hiện trong app).
 
 ## Khi có lỗi
 | Hiện tượng | Cách xử lý |

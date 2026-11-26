@@ -4,7 +4,8 @@
             "sd": "Cài từ thẻ nhớ SD",
             "hdd": "Cài từ ổ USB SSD/HDD",
             "net": "Cài qua mạng LAN / Internet",
-            "remote": "Cài từ Shop (Remote)",
+            "remote": "SUPER MẠNH Shop",
+            "guide": "Hướng dẫn kết nối",
             "usb": "Cài từ NS-USBloader",
             "mtp": "Cài qua MTP (cắm máy tính)",
             "backup": "Sao lưu dữ liệu save",
@@ -38,7 +39,7 @@
         "buttons": " Chọn     Thoát",
         "info": {
             "button": "Thông tin",
-            "remote": "Duyệt shop và chọn bản cần cài từ shop của bạn.",
+            "remote": "Mở SUPER MẠNH Shop: xem mã kích hoạt và cài các bản Việt hóa của bạn.",
             "sd": "Cài file NSP/NSZ/XCI/XCZ có trong thẻ nhớ SD.",
             "hdd": "Cài file trực tiếp từ ổ USB SSD hoặc ổ cứng đang cắm.",
             "mtp": "Cắm máy tính qua USB và cài bằng cách chép file vào thư mục MTP Install.",
@@ -48,6 +49,10 @@
             "set": "Thay đổi cài đặt SUPER MẠNH Shop và shop.",
             "backup": "Tải toàn bộ save trên máy của người dùng đã chọn lên shop chỉ với một thao tác.\n\nCách hoạt động:\n1. Nếu máy có nhiều người dùng, chọn tài khoản cần sao lưu.\n2. Nếu chưa cài shop, SUPER MẠNH Shop thử các shop đã lưu trước, rồi hỏi địa chỉ shop.\n3. Nhập ghi chú cho bản sao lưu (bắt buộc).\n4. SUPER MẠNH Shop quét save trên máy của người dùng đó và tải từng cái lên máy chủ.\n5. Tiến trình hiện trong lúc quét và tải lên.\n6. Cuối cùng hiện tổng kết số save tải lên thành công và thất bại.",
             "exit": "Đóng SUPER MẠNH Shop và về màn hình HOME."
+        },
+        "guide": {
+            "title": "Cách kết nối SUPER MẠNH Shop",
+            "desc": "1. Kết nối Wi-Fi có Internet (Wi-Fi quán cà phê, khách sạn phải\n   đăng nhập trên web thì không dùng được).\n2. Ngày giờ của máy phải đúng (Cài đặt hệ thống > Ngày giờ).\n3. Chọn ô \"SUPER MẠNH Shop\". Lần đầu sẽ hiện\n   MÃ KÍCH HOẠT dạng XXXX XXXX.\n4. Gửi mã kích hoạt cho SUPER MẠNH ({host}) và chuyển khoản.\n5. Khi được báo đã kích hoạt: thoát hẳn ứng dụng rồi mở lại,\n   vào shop và tải bản Việt hóa.\n6. Mở khoá thêm bản bằng điểm tại {host}/sm-khach\n   (mã kích hoạt + PIN web hiện trong thông báo của shop).\n\nĐịa chỉ shop: {shop}"
         }
     },
     "inst": {

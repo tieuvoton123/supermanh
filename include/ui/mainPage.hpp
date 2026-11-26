@@ -77,5 +77,6 @@ namespace inst::ui {
             void setBackupUserPickerVisible(bool visible);
             void activateSelectedMainItem();
             void showSelectedMainInfo();
+            void showConnectGuide();
     };
 }
