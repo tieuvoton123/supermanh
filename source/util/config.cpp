@@ -892,42 +892,70 @@ namespace inst::config {
         return true;
     }
 
+    namespace {
+        // Saves (once) and selects a Tinfoil-style remote for the given address.
+        void SelectFixedRemote(const std::string& url, const std::string& title, const std::string& fileName)
+        {
+            for (const auto& saved : LoadRemotes()) {
+                if (RemoteMatchesUrl(saved, url)) {
+                    if (!RemoteMatchesUrl(saved, remoteUrl) || !remoteLegacyMode)
+                        SetActiveRemote(saved, true);
+                    return;
+                }
+            }
+
+            RemoteProfile profile;
+            if (!ParseRemoteUrl(url, profile.protocol, profile.host, profile.port, profile.path))
+                return;
+            profile.title = title;
+            profile.fileName = fileName;
+            profile.favourite = true;
+            // supermanh.com and the test host serve a Tinfoil-style index (files / success).
+            profile.legacyMode = true;
+            profile.updatedAt = static_cast<std::int64_t>(time(nullptr));
+
+            std::string error;
+            if (!SaveRemote(profile, &error))
+                return;
+            for (const auto& saved : LoadRemotes()) {
+                if (saved.fileName == profile.fileName) {
+                    SetActiveRemote(saved, true);
+                    break;
+                }
+            }
+        }
+
+        // sdmc:/switch/SuperManhShop/test_host.txt with one line such as
+        // http://192.168.1.10:8000/tinfoil points the app at a local test host.
+        std::string ReadTestHostUrl()
+        {
+            std::ifstream in(appDir + "/test_host.txt");
+            std::string line;
+            while (in && std::getline(in, line)) {
+                const auto first = line.find_first_not_of(" \t\r\n\xEF\xBB\xBF");
+                if (first == std::string::npos || line[first] == '#')
+                    continue;
+                const auto last = line.find_last_not_of(" \t\r\n");
+                line = line.substr(first, last - first + 1);
+                if (line.rfind("http://", 0) == 0 || line.rfind("https://", 0) == 0)
+                    return line;
+            }
+            return "";
+        }
+    }
+
     void EnsureBrandRemote()
     {
+        // Store-only app: the SUPER MANH shop (or the test host, while test_host.txt
+        // exists) is (re)selected on every start.
+        const std::string testUrl = ReadTestHostUrl();
+        if (!testUrl.empty()) {
+            SelectFixedRemote(testUrl, "SUPER MANH TEST HOST", "supermanh_test.json");
+            return;
+        }
         const std::string shopUrl = SMSS_SHOP_URL;
-        if (shopUrl.empty())
-            return;
-
-        // Already saved (also after the customer edited the title): just make sure
-        // something is selected.
-        // Store-only app: the SUPER MANH shop is (re)selected on every start.
-        for (const auto& saved : LoadRemotes()) {
-            if (RemoteMatchesUrl(saved, shopUrl)) {
-                if (!RemoteMatchesUrl(saved, remoteUrl) || !remoteLegacyMode)
-                    SetActiveRemote(saved, true);
-                return;
-            }
-        }
-
-        RemoteProfile brand;
-        if (!ParseRemoteUrl(shopUrl, brand.protocol, brand.host, brand.port, brand.path))
-            return;
-        brand.title = SMSS_SHOP_TITLE;
-        brand.fileName = "supermanh.json";
-        brand.favourite = true;
-        // supermanh.com serves a Tinfoil-style index (files / titledb / success).
-        brand.legacyMode = true;
-        brand.updatedAt = static_cast<std::int64_t>(time(nullptr));
-
-        std::string error;
-        if (!SaveRemote(brand, &error))
-            return;
-        for (const auto& saved : LoadRemotes()) {
-            if (saved.fileName == brand.fileName) {
-                SetActiveRemote(saved, true);
-                break;
-            }
-        }
+        if (!shopUrl.empty())
+            SelectFixedRemote(shopUrl, SMSS_SHOP_TITLE, "supermanh.json");
     }
 
     void setConfig() {

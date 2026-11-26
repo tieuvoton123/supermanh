@@ -26,3 +26,5 @@ __pycache__/
 !nsp/*.bat
 !nsp/*.ps1
 !tools/make_vi.py
+!tools/test_host/*.py
+!tools/test_host/*.bat

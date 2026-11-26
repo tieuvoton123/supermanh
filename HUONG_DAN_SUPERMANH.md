@@ -22,7 +22,7 @@ Không có `HAUTH/UAUTH` (thuật toán nằm trong thư viện đóng của tá
    - Hoặc kéo-thả toàn bộ file lên trang GitHub (workflow tự tải lại thư viện giao diện Plutonium nếu bị thiếu).
 3. (Tuỳ chọn) Đổi địa chỉ kho: repo → **Settings → Secrets and variables → Actions → Variables** → thêm `SMSS_SHOP_URL` = `https://shop.supermanh.com/tinfoil` (đúng đường dẫn shop trong plugin).
 4. Vào tab **Actions** → chờ "Build SUPER MANH Viet Hoa" chạy xong (~5–10 phút) → mở lần chạy → tải **SuperManhShop** ở mục Artifacts.
-5. Mỗi lần đẩy code lên nhánh `main`, Actions tự tạo/cập nhật **Release** tên theo `APP_VERSION` trong `Makefile` (hiện `1.5.3`) kèm `SuperManhShop.zip`. Ra bản mới cho thành viên tự cập nhật: tăng `APP_VERSION` (vd `1.5.2`) rồi đẩy lên.
+5. Mỗi lần đẩy code lên nhánh `main`, Actions tự tạo/cập nhật **Release** tên theo `APP_VERSION` trong `Makefile` (hiện `1.5.4`) kèm `SuperManhShop.zip`. Ra bản mới cho thành viên tự cập nhật: tăng `APP_VERSION` (vd `1.5.2`) rồi đẩy lên.
 
 ## Cài lên Switch
 Giải nén `SuperManhShop.zip` vào **gốc thẻ nhớ** → có `switch/SuperManhShop/supermanhshop.nro`.

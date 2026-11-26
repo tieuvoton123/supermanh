@@ -50,8 +50,30 @@ jobs:
           path: out/
           if-no-files-found: error
 
+  testhost:
+    # SuperManh_TestHost.exe: local test server (tools/test_host), built with PyInstaller.
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build SuperManh_TestHost.exe
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install -q pyinstaller
+          python tools/test_host/SuperManh_TestHost.py --selftest
+          pyinstaller --onefile --console --name SuperManh_TestHost --icon NONE --distpath out tools/test_host/SuperManh_TestHost.py
+          ls -l out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: testhost
+          path: out/SuperManh_TestHost.exe
+          if-no-files-found: error
+
   build:
-    needs: hacbrewpack
+    needs: [hacbrewpack, testhost]
     runs-on: ubuntu-latest
     container:
       image: devkitpro/devkita64:latest
@@ -148,6 +170,11 @@ jobs:
           mkdir -p tools
           cp ../hbp/hacbrewpack.exe ../hbp/hacbrewpack-LICENSE.txt tools/
 
+      - uses: actions/download-artifact@v4
+        with:
+          name: testhost
+          path: th_exe
+
       - name: Bundle everything (plugin + app + NSP kit + guide)
         shell: bash
         run: |
@@ -158,6 +185,8 @@ jobs:
           cp -r dist/switch "$B/2_App_Switch_NRO/"
           cp -r dist_nsp/* "$B/3_Dong_goi_NSP/"
           cp nsp/HUONG_DAN_CAI_DAT.md "$B/"
+          mkdir -p "$B/4_Test_Host"
+          cp th_exe/SuperManh_TestHost.exe tools/test_host/SuperManh_TestHost.py tools/test_host/CHAY_TEST_HOST.bat tools/test_host/HUONG_DAN_TEST_HOST.md "$B/4_Test_Host/"
           python3 - <<'PY'
           import os, zipfile
           with zipfile.ZipFile("SuperManh_TronBo.zip","w",zipfile.ZIP_DEFLATED) as z:
@@ -197,6 +226,6 @@ jobs:
             SuperManhShop.zip
           make_latest: true
           body: |
-            SuperManh_TronBo.zip: plugin WordPress + app Switch (NRO) + bộ đóng gói NSP + hướng dẫn. Đọc HUONG_DAN_CAI_DAT.md trong đó.
+            SuperManh_TronBo.zip: plugin WordPress + app Switch (NRO) + bộ đóng gói NSP + tool test host + hướng dẫn. Đọc HUONG_DAN_CAI_DAT.md trong đó.
             SuperManhShop.zip: chỉ app NRO, giải nén vào gốc thẻ nhớ.
             Dựa trên CyberFoil (GPL-3.0) của luketanti.

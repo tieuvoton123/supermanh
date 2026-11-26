@@ -48,7 +48,7 @@ if ($LASTEXITCODE -ne 0) { throw "hacBrewPack bao loi (ma $LASTEXITCODE). Kiem t
 
 $nsp = Get-ChildItem -Path $out -Filter '*.nsp' | Select-Object -First 1
 if (-not $nsp) { throw 'Khong thay file NSP dau ra.' }
-$final = Join-Path $out 'SuperManhVietHoa_v1.5.3.nsp'
+$final = Join-Path $out 'SuperManhVietHoa_v1.5.4.nsp'
 Move-Item -Force $nsp.FullName $final
 foreach ($d in @('hacbrewpack_temp', 'hacbrewpack_nca', 'hacbrewpack_backup')) {
     if (Test-Path $d) { Remove-Item -Recurse -Force $d }

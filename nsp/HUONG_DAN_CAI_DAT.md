@@ -5,6 +5,7 @@ SuperManh_TronBo/
 ├─ 1_Plugin_WordPress/supermanh-switch-shop.zip   ← cài lên supermanh.com
 ├─ 2_App_Switch_NRO/switch/SuperManhShop/          ← chép vào gốc thẻ nhớ (chạy qua Homebrew Menu)
 ├─ 3_Dong_goi_NSP/                                 ← tạo file NSP có icon ngoài HOME
+├─ 4_Test_Host/                                   ← kho thử chạy trên PC (xem HUONG_DAN_TEST_HOST.md)
 │   ├─ DONG_GOI_NSP.bat
 │   ├─ dong_goi_nsp.ps1
 │   └─ kit/ (exefs, romfs, control)
@@ -26,7 +27,7 @@ SuperManh_TronBo/
 
 ### Cách A: NSP (khuyên dùng — có icon ngoài màn hình HOME)
 1. Trên **PC Windows**: chép `prod.keys` của máy Switch **bạn** vào thư mục `3_Dong_goi_NSP\`.
-2. Nhấp đúp `DONG_GOI_NSP.bat` (dùng `tools\hacbrewpack.exe` có sẵn, mã nguồn mở GPL-2.0, không cần mạng) → ra file `3_Dong_goi_NSP\NSP\SuperManhVietHoa_v1.5.3.nsp`.
+2. Nhấp đúp `DONG_GOI_NSP.bat` (dùng `tools\hacbrewpack.exe` có sẵn, mã nguồn mở GPL-2.0, không cần mạng) → ra file `3_Dong_goi_NSP\NSP\SuperManhVietHoa_v1.5.4.nsp`.
 3. Cài file NSP bằng Tinfoil / DBI / CyberFoil như cài game. Mã ứng dụng: `05004D414E480000`.
 4. Nếu Tinfoil báo lỗi chữ ký: Tinfoil → Options → **Install Unsigned Code = YES**.
 5. Đưa file NSP lên chỗ bạn muốn (Drive, web…) rồi dán link vào **Link tải app Switch** ở Bước 1.
@@ -57,3 +58,6 @@ App chỉ kết nối tới Kho Việt hóa SUPER MẠNH, giao diện tiếng Vi
 
 ---
 App dựa trên CyberFoil (GPL-3.0) của luketanti. Mã nguồn: https://github.com/tieuvoton123/supermanh
+
+## Test trên PC trước khi đưa lên web
+Mở `4_Test_Host`, đọc `HUONG_DAN_TEST_HOST.md`: chạy `CHAY_TEST_HOST.bat`, chép file `test_host.txt` (chứa địa chỉ PC) vào `switch/SuperManhShop/` trên thẻ nhớ là app nối sang PC. Xoá file đó là app về lại supermanh.com.
