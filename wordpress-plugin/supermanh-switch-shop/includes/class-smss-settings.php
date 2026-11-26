@@ -48,7 +48,7 @@ class SMSS_Settings {
 			'contact'      => 'supermanh.com',
 			'point_name'   => 'điểm',
 			// Download page of the SUPER MANH Viet Hoa Switch app (NSP/NRO), shown to members.
-			'app_url'      => 'https://github.com/tieuvoton123/supermanh/releases/latest',
+			'app_url'      => '',
 			'app_name'     => 'SUPER MẠNH Việt Hóa',
 		);
 	}

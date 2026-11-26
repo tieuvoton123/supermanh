@@ -118,13 +118,15 @@
 		var t = me.tinfoil;
 		var kv = function (k, v) { return '<dt>' + esc(k) + '</dt><dd>' + esc(v) + '</dd><button class="copy" data-copy="' + esc(v) + '">Chép</button>'; };
 		document.getElementById('pane').innerHTML =
-			'<div class="card"><h2>App ' + esc(t.app) + ' (khuyên dùng)</h2>' +
-			'<p class="note" style="color:var(--text);margin:0">1. Tải app: <a href="' + esc(t.app_url) + '" target="_blank" rel="noopener">' + esc(t.app_url.replace(/^https?:\/\//, '')) + '</a><br>' +
-			'2. Cài file NSP bằng trình cài bạn đang dùng (hoặc chép bản NRO vào thẻ nhớ).<br>' +
-			'3. Kết nối Wi-Fi có Internet, ngày giờ máy phải đúng.<br>' +
-			'4. Mở app → chọn ô <b>Kho Việt hóa</b>. App đã trỏ sẵn tới kho, không phải điền gì.<br>' +
-			'5. Lần đầu app hiện <b>mã kích hoạt</b> và <b>PIN web</b>: gửi mã cho ' + esc(me.contact) + ', rồi đăng nhập trang này bằng mã + PIN.<br>' +
-			'6. Trong app có ô <b>Hướng dẫn kết nối</b> nhắc lại các bước này.</p></div>' +
+			'<div class="card"><h2>Dùng app ' + esc(t.app) + '</h2>' +
+			'<p class="note" style="color:var(--text);margin:0">1. ' + (t.app_url
+				? 'Tải app tại <a href="' + esc(t.app_url) + '" target="_blank" rel="noopener">đây</a>, cài file NSP (hoặc chép bản NRO vào thẻ nhớ).'
+				: 'Liên hệ <b>' + esc(me.contact) + '</b> để nhận app, cài file NSP (hoặc chép bản NRO vào thẻ nhớ).') + '<br>' +
+			'2. Bật Wi-Fi có Internet, chỉnh đúng ngày giờ máy.<br>' +
+			'3. Mở app, chọn <b>Kho Việt hóa</b>. Không cần điền địa chỉ.<br>' +
+			'4. Lần đầu app hiện <b>mã kích hoạt</b> và <b>PIN web</b>. Gửi mã cho <b>' + esc(me.contact) + '</b>.<br>' +
+			'5. Khi được kích hoạt: thoát hẳn app, mở lại là thấy bản của bạn.<br>' +
+			'Quên bước nào thì mở ô <b>Hướng dẫn kết nối</b> trong app.</p></div>' +
 			'<div class="card"><h2>Hoặc dùng Tinfoil</h2>' +
 			'<p>Trên Switch mở <b>Tinfoil → File Browser</b>, nhấn nút <b>(-)</b> rồi điền:</p><dl class="kv">' +
 				kv('Protocol', t.protocol) + kv('Host', t.host) + kv('Port', String(t.port)) + kv('Path', t.path) +

@@ -16,6 +16,7 @@ SuperManh_TronBo/
 2. **Switch Việt Hóa → Tổng quan & cài đặt**:
    - Dán **Google API key** (Google Cloud Console → bật *Google Drive API* → tạo API key → giới hạn key chỉ cho Drive API).
    - **Liên hệ hỗ trợ**: Zalo / Facebook của bạn.
+   - **Link tải app Switch**: nơi bạn để file NSP/NRO (điền sau Bước 2). Để trống thì trang thành viên ghi "liên hệ để nhận app".
    - Giữ tick **Kích hoạt theo máy** và **Ẩn kho**. **Không** bật *Khoá tên miền* (app SUPER MẠNH không tạo mã HAUTH).
    - Đường dẫn kho để nguyên `tinfoil` (app đã cài sẵn `https://supermanh.com/tinfoil`).
 3. **Thư mục Drive**: dán link thư mục chứa các bản Việt hóa (chia sẻ "Bất kỳ ai có đường liên kết").
@@ -28,6 +29,7 @@ SuperManh_TronBo/
 2. Nhấp đúp `DONG_GOI_NSP.bat` (dùng `tools\hacbrewpack.exe` có sẵn, mã nguồn mở GPL-2.0, không cần mạng) → ra file `3_Dong_goi_NSP\NSP\SuperManhShop_v1.5.1.nsp`.
 3. Cài file NSP bằng Tinfoil / DBI / CyberFoil như cài game. Mã ứng dụng: `05004D414E480000`.
 4. Nếu Tinfoil báo lỗi chữ ký: Tinfoil → Options → **Install Unsigned Code = YES**.
+5. Đưa file NSP lên chỗ bạn muốn (Drive, web…) rồi dán link vào **Link tải app Switch** ở Bước 1.
 
 > `prod.keys` chỉ được đọc trên PC của bạn, không gửi đi đâu. **Đừng** đưa file này lên GitHub, nhóm chat hay gửi cho người khác. Mỗi thành viên tự cài NSP bạn đã đóng gói — không cần khoá của họ.
 
@@ -35,14 +37,14 @@ SuperManh_TronBo/
 Chép thư mục `2_App_Switch_NRO/switch` vào **gốc thẻ nhớ** → mở **SUPER MANH Viet Hoa** trong Homebrew Menu (nên mở qua một game, giữ R khi bấm game).
 
 ## Bước 3 — Thành viên dùng như thế nào
-App chỉ kết nối tới kho Việt hóa SUPER MẠNH, giao diện tiếng Việt. Màn hình chính có 4 ô: **Kho Việt hóa**, **Hướng dẫn kết nối**, **Cài đặt**, **Thoát**. Ô *Hướng dẫn kết nối* có sẵn các bước dưới đây ngay trên máy.
+App chỉ kết nối tới Kho Việt hóa SUPER MẠNH, giao diện tiếng Việt, 4 ô: **Kho Việt hóa**, **Hướng dẫn kết nối**, **Cài đặt**, **Thoát**. Ô *Hướng dẫn kết nối* nhắc lại các bước dưới đây ngay trên máy.
 
-1. Kết nối Wi-Fi có Internet (Wi-Fi phải đăng nhập trên web như quán cà phê thì không dùng được) và chỉnh đúng ngày giờ máy.
-2. Mở app → chọn ô **Kho Việt hóa** (app luôn trỏ sẵn tới kho của bạn, thành viên không phải nhập địa chỉ).
+1. Kết nối Wi-Fi có Internet (Wi-Fi phải đăng nhập trên web thì không dùng được), chỉnh đúng ngày giờ máy.
+2. Mở app → chọn ô **Kho Việt hóa** (không cần điền địa chỉ).
 3. App hiện **Mã kích hoạt: XXXX XXXX** → thành viên gửi mã cho bạn.
 4. Bạn mở app quản lý trên điện thoại → **Kích hoạt mã máy** → nhập mã → Cộng điểm / Tặng bản / Gói thời hạn.
-5. Thành viên tắt hẳn app rồi mở lại → thấy các bản Việt hóa, tải thẳng từ Google Drive.
-6. Thành viên tự mở khoá thêm bản bằng điểm ở `supermanh.com/sm-khach` (mã kích hoạt + PIN web hiện trong app).
+5. Thành viên thoát hẳn app rồi mở lại → thấy bản của mình, tải thẳng từ Google Drive.
+6. Mở thêm bản bằng điểm tại `supermanh.com/sm-khach` (mã kích hoạt + PIN web hiện trong app).
 
 ## Khi có lỗi
 | Hiện tượng | Cách xử lý |

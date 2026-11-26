@@ -24,7 +24,7 @@ Thành viên thêm kho vào Tinfoil (KHÔNG cần tài khoản, Username/Passwor
 
 ## Đồng bộ với app Switch SUPER MẠNH Việt Hóa (NSP)
 - Tên kho, lời chào, đường dẫn `/tinfoil` và trang `/sm-khach` khớp với app: app luôn trỏ sẵn tới kho, ô **Hướng dẫn kết nối** trong app nhắc đúng các bước như trang thành viên.
-- **Cài đặt → Link tải app Switch**: trang tải app (mặc định bản mới nhất trên GitHub). Link này hiện ở tab **Cài app** của trang thành viên và trong tin nhắn gửi thành viên.
+- **Cài đặt → Link tải app Switch**: bạn tự điền nơi để file app. Link hiện ở tab **Cài app** và trong tin nhắn gửi thành viên; để trống thì chỉ ghi "liên hệ để nhận app".
 - Bản cũ đang dùng tên mặc định "SUPER MẠNH Shop" sẽ tự đổi sang "SUPER MẠNH Việt Hóa" khi cập nhật plugin.
 
 ## Mở bản Việt hóa bằng điểm
