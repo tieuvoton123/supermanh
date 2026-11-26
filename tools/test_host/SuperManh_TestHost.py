@@ -9,6 +9,7 @@ Phat danh sach (dinh dang Tinfoil) cho app SUPER MANH Viet Hoa / Tinfoil / Cyber
 Chi dung thu vien chuan Python 3.8+. Chay: python SuperManh_TestHost.py
 """
 import base64
+import secrets
 import hashlib
 import html
 import ipaddress
@@ -36,6 +37,11 @@ DEFAULT_CONFIG = {
     'title': 'SUPER MANH TEST',
     'activation': True,
     'contact': 'SUPER MANH',
+    # Public address in front of this PC (Cloudflare Tunnel / domain / port forward),
+    # e.g. https://files.supermanh.com . Empty = LAN address of this PC.
+    'public_url': '',
+    # Secret part of every download link: /f/<link_key>/<file>. Generated on first run.
+    'link_key': '',
 }
 
 LINKS_SAMPLE = """# Moi dong mot link tai truc tiep. Dong bat dau bang # la ghi chu.
@@ -71,8 +77,12 @@ def config():
 
 
 def first_run():
-    if not os.path.exists(CONFIG_PATH):
-        save_json(CONFIG_PATH, DEFAULT_CONFIG)
+    cfg = dict(DEFAULT_CONFIG)
+    cfg.update(load_json(CONFIG_PATH, {}))
+    if not cfg.get('link_key'):
+        cfg['link_key'] = secrets.token_urlsafe(12).replace('-', 'x').replace('_', 'y')
+    if cfg != load_json(CONFIG_PATH, None):
+        save_json(CONFIG_PATH, cfg)
     os.makedirs(os.path.join(BASE, DEFAULT_CONFIG['files_dir']), exist_ok=True)
     if not os.path.exists(LINKS_PATH):
         with open(LINKS_PATH, 'w', encoding='utf-8') as f:
@@ -177,6 +187,23 @@ class Handler(BaseHTTPRequestHandler):
         if self.command != 'HEAD':
             self.wfile.write(data)
 
+    def is_local(self):
+        # Requests through Cloudflare Tunnel arrive from 127.0.0.1 but carry CF headers.
+        if self.headers.get('CF-Connecting-IP') or self.headers.get('X-Forwarded-For'):
+            return False
+        return is_private(self.client_address[0])
+
+    def download_base(self, cfg):
+        pub = str(cfg.get('public_url') or '').strip().rstrip('/')
+        return pub if pub else self.base_url()
+
+    def file_url(self, cfg, rel, name):
+        return (self.download_base(cfg) + '/f/' + cfg['link_key'] + '/' + urllib.parse.quote(rel) +
+                '#' + urllib.parse.quote(name))
+
+    def plugin_lines(self, cfg):
+        return ''.join('%s | %s | %d\n' % (self.file_url(cfg, rel, name), name, size) for rel, name, size in local_files(cfg))
+
     def base_url(self):
         host = self.headers.get('Host') or '%s:%d' % (lan_ips()[0], self.server.server_port)
         return 'http://' + host
@@ -189,10 +216,25 @@ class Handler(BaseHTTPRequestHandler):
         cfg = config()
         path = urllib.parse.urlparse(self.path).path
         clean = urllib.parse.unquote(path).strip('/')
+        prefix = 'f/' + cfg['link_key'] + '/'
+        if clean.startswith(prefix):
+            return self.serve_file(cfg, clean[len(prefix):])
+        if clean in ('quanly', 'links', 'links.txt', '') and not self.is_local():
+            return self.send_json(404, {'error': 'Khong tim thay.'})
         if clean == 'quanly':
             return self.page_admin(cfg)
-        if clean.startswith('files/'):
-            return self.serve_file(cfg, clean[len('files/'):])
+        if clean == 'links':
+            return self.send_html(self.page_links(cfg))
+        if clean == 'links.txt':
+            body = self.plugin_lines(cfg).encode('utf-8')
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/plain; charset=utf-8')
+            self.send_header('Content-Disposition', 'attachment; filename="links_cho_plugin.txt"')
+            self.send_header('Content-Length', str(len(body)))
+            self.end_headers()
+            if self.command != 'HEAD':
+                self.wfile.write(body)
+            return
         if clean == cfg['path'] or (clean == '' and cfg['path'] == ''):
             return self.index(cfg)
         if clean == '':
@@ -202,7 +244,7 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         if urllib.parse.urlparse(self.path).path.strip('/') != 'quanly':
             return self.send_json(404, {'error': 'Khong tim thay.'})
-        if not is_private(self.client_address[0]):
+        if not self.is_local():
             return self.send_json(403, {'error': 'Chi dung trong mang LAN.'})
         length = int(self.headers.get('Content-Length') or 0)
         form = urllib.parse.parse_qs(self.rfile.read(length).decode('utf-8'))
@@ -223,7 +265,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def index(self, cfg):
         uid = (self.headers.get('UID') or '').strip()
-        files = [{'url': self.base_url() + '/files/' + urllib.parse.quote(rel) + '#' + urllib.parse.quote(name), 'size': size}
+        files = [{'url': self.file_url(cfg, rel, name), 'size': size}
                  for rel, name, size in local_files(cfg)] + link_entries()
         motd = cfg['title']
         if cfg.get('activation'):
@@ -308,7 +350,21 @@ class Handler(BaseHTTPRequestHandler):
     def home(self, cfg):
         return ('<!doctype html><meta charset="utf-8"><title>SUPER MANH Test Host</title>' + self.CSS +
                 '<h1>SUPER MANH Test Host</h1><div class="card">Dia chi kho: <code>' + html.escape(self.base_url() + '/' + cfg['path']) +
-                '</code><br><a style="color:#ff8a00" href="/quanly">Quan ly may / kich hoat</a></div>')
+                '</code><br><a style="color:#ff8a00" href="/quanly">Quan ly may / kich hoat</a> &middot; <a style="color:#ff8a00" href="/links">Link cho plugin</a></div>')
+
+    def page_links(self, cfg):
+        lines = self.plugin_lines(cfg)
+        pub = str(cfg.get('public_url') or '').strip()
+        warn = ('' if pub else '<p class="no">Chua dat "public_url" trong config.json: link duoi day chi tai duoc trong mang nha. '
+                'Switch o xa can dia chi cong khai (Cloudflare Tunnel / ten mien / mo cong).</p>')
+        return ('<!doctype html><meta charset="utf-8"><title>Link cho plugin</title>' + self.CSS +
+                '<h1>Link tai truc tiep cho plugin</h1><div class="card">' + warn +
+                '<p>Chep het o duoi, dan vao plugin: <b>Ban Viet hoa &rarr; Them link</b> (moi dong: link | ten file | dung luong).</p>'
+                '<textarea id="t" readonly style="width:100%;height:50vh;background:#0d0d12;color:#ddd;border:1px solid #333;border-radius:8px;padding:8px;font:13px Consolas,monospace">' +
+                html.escape(lines or '# Chua co file trong thu muc "' + cfg['files_dir'] + '"') + '</textarea>'
+                '<p><button class="on" onclick="var t=document.getElementById(\'t\');t.select();navigator.clipboard&&navigator.clipboard.writeText(t.value);this.textContent=\'Da chep\'">Chep tat ca</button> '
+                '<a href="/links.txt"><button class="off">Tai file links_cho_plugin.txt</button></a></p>'
+                '<p><small>Doi "link_key" trong config.json se lam moi tat ca link (link cu het dung).</small></p></div>')
 
     def page_admin(self, cfg):
         devices = load_json(DEVICES_PATH, {})
@@ -331,7 +387,7 @@ class Handler(BaseHTTPRequestHandler):
                 '<div class="card"><b>May da ket noi</b> (trang tu tai lai moi 10 giay)<table><tr><th>Ma</th><th>Trang thai</th><th>Lan cuoi</th><th></th></tr>' +
                 (rows or '<tr><td colspan="4">Chua co may nao. Mo kho tren Switch la may hien o day.</td></tr>') + '</table></div>'
                 '<div class="card"><b>File trong thu muc "' + html.escape(cfg['files_dir']) + '"</b><ul>' + flist + '</ul>'
-                '<b>Link trong links.txt:</b> ' + str(len(links)) + '</div>')
+                '<b>Link trong links.txt:</b> ' + str(len(links)) + '<br><a style="color:#ff8a00" href="/links">Lay link tai truc tiep cho plugin &rarr;</a></div>')
 
 
 def main():
@@ -352,6 +408,8 @@ def main():
     for ip in ips:
         print(' Dia chi kho (nhap vao Switch):  http://%s:%d/%s' % (ip, port, cfg['path']))
     print(' Trang quan ly / kich hoat:      http://localhost:%d/quanly' % port)
+    print(' Link tai truc tiep cho plugin:  http://localhost:%d/links' % port)
+    print(' Dia chi cong khai (public_url): %s' % (cfg.get('public_url') or '(chua dat - chi tai trong mang nha)'))
     print(' File de tai:  thu muc "%s"  (%d file)' % (cfg['files_dir'], len(local_files(cfg))))
     print(' Link truc tiep: links.txt     (%d link)' % len(link_entries()))
     print(' Kich hoat theo may: %s' % ('BAT' if cfg.get('activation') else 'TAT'))
