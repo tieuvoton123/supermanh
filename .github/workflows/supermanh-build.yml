@@ -1,0 +1,91 @@
+name: Build SUPER MANH Shop
+
+# Builds switch/SuperManhShop/supermanhshop.nro.
+#   - Every push: zip available under Actions > the run > Artifacts.
+#   - Push a tag equal to APP_VERSION in the Makefile (e.g. 1.5.1, no "v"):
+#     also published as a GitHub Release. The app's update check compares the
+#     latest release tag with its own version, so they must match exactly.
+# Shop address baked into the app: repository variable SMSS_SHOP_URL
+# (Settings > Secrets and variables > Actions > Variables), default below.
+
+on:
+  push:
+    branches: [ main, master, supermanh ]
+    tags: [ '*' ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: devkitpro/devkita64:latest
+
+    steps:
+      - name: Checkout (with submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Make sure Plutonium (UI library) is present
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Uploading the source through the GitHub web page drops the submodule link.
+          if [ ! -f include/Plutonium/Plutonium/Makefile ]; then
+            rm -rf include/Plutonium
+            git clone https://github.com/luketanti/Plutonium.git include/Plutonium
+            git -C include/Plutonium checkout f42b88857aeb4f3080bea18016366cbda6546300
+          fi
+
+      - name: Build
+        shell: bash
+        env:
+          SMSS_SHOP_URL: ${{ vars.SMSS_SHOP_URL || 'https://supermanh.com/tinfoil' }}
+          SMSS_SHOP_TITLE: ${{ vars.SMSS_SHOP_TITLE || 'SUPER MANH Shop' }}
+        run: |
+          set -euo pipefail
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          dkp-pacman -S --noconfirm --needed switch-ntfs-3g switch-lwext4
+          # No closed HAUTH/UAUTH blob in this build: the shop identifies consoles by UID.
+          make -j"$(nproc)" RELEASE=1 \
+            SMSS_SHOP_URL="$SMSS_SHOP_URL" \
+            SMSS_SHOP_TITLE="$SMSS_SHOP_TITLE" \
+            SMSS_UPDATE_REPO="${GITHUB_REPOSITORY}"
+          test -f ./supermanhshop.nro
+          ls -l ./supermanhshop.nro
+
+      - name: Package SuperManhShop.zip (extract to SD root)
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf dist SuperManhShop.zip
+          mkdir -p dist/switch/SuperManhShop/theme
+          cp -v ./supermanhshop.nro dist/switch/SuperManhShop/supermanhshop.nro
+          cp -v ./examples/theme/supermanh.json dist/switch/SuperManhShop/theme/theme.json
+          python3 - <<'PY'
+          import os, zipfile
+          with zipfile.ZipFile("SuperManhShop.zip", "w", compression=zipfile.ZIP_DEFLATED) as z:
+              for root, _, files in os.walk("dist/switch"):
+                  for f in files:
+                      full = os.path.join(root, f)
+                      z.write(full, full[len("dist/"):])
+          print("\n".join(zipfile.ZipFile("SuperManhShop.zip").namelist()))
+          PY
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SuperManhShop
+          path: SuperManhShop.zip
+          if-no-files-found: error
+
+      - name: Publish GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: SuperManhShop.zip
+          generate_release_notes: true

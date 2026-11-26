@@ -1,0 +1,104 @@
+#pragma once
+
+#ifndef SMSS_SHOP_URL
+#define SMSS_SHOP_URL ""
+#endif
+#ifndef SMSS_SHOP_TITLE
+#define SMSS_SHOP_TITLE "SUPER MANH Shop"
+#endif
+#ifndef SMSS_UPDATE_REPO
+#define SMSS_UPDATE_REPO ""
+#endif
+
+#include <cstdint>
+#include <string>
+#include <vector>
+
+namespace inst::config {
+    static const std::string appDir = "sdmc:/switch/SuperManhShop";
+    static const std::string configPath = appDir + "/config.json";
+    static const std::string remotesDir = appDir + "/remotes";
+    static const std::string legacyShopsDir = appDir + "/shops";
+    static const std::string remoteIconsDir = appDir + "/remote_icons";
+    static const std::string legacyShopIconsDir = appDir + "/shop_icons";
+    static const std::string appVersion = std::string(APP_VERSION);
+#ifdef APP_GIT_META
+    static const std::string appGitMeta = std::string(APP_GIT_META);
+#else
+    static const std::string appGitMeta = std::string();
+#endif
+#ifdef APP_VERSION_FULL
+    static const std::string appVersionFull = std::string(APP_VERSION_FULL);
+#else
+    static const std::string appVersionFull = std::string(APP_VERSION);
+#endif
+
+    extern std::string gAuthKey;
+    extern std::string lastNetUrl;
+    extern std::string offlineDbManifestUrl;
+    extern std::string remoteUrl;
+    extern std::string remoteProfileFile;
+    extern std::string remoteUser;
+    extern std::string remotePass;
+    extern std::string httpUserAgentMode;
+    extern std::string httpUserAgent;
+    extern std::vector<std::string> updateInfo;
+    extern int languageSetting;
+    extern bool ignoreReqVers;
+    extern bool validateNCAs;
+    extern bool overClock;
+    extern bool deletePrompt;
+    extern bool autoUpdate;
+    extern bool gayMode;
+    extern bool soundEnabled;
+    extern bool oledMode;
+    extern bool mtpExposeAlbum;
+    extern bool usbHddShowHiddenFiles;
+    extern std::string themeFile;
+    extern bool usbAck;
+    extern bool remoteHideInstalled;
+    extern bool remoteHideInstalledSection;
+    extern bool remoteHideIncompatibleCheats;
+    extern bool remoteAllBaseOnly;
+    extern bool remoteLegacyMode;
+    extern bool remoteStartGridMode;
+    extern bool offlineDbAutoCheckOnStartup;
+    extern bool verboseInstallLogging;
+
+    struct RemoteProfile {
+        std::string lanUrl;
+        std::string wanUrl;
+        std::string connection = "auto";
+        std::string uid;
+        std::string fileName;
+        std::string protocol;
+        std::string host;
+        std::string path;
+        int port = 8465;
+        std::string username;
+        std::string password;
+        std::string title;
+        bool favourite = false;
+        bool legacyMode = false;
+        std::int64_t updatedAt = 0;
+    };
+
+    int DefaultPortForProtocol(const std::string& protocol);
+    std::string NormalizeHttpUserAgentMode(const std::string& mode);
+    std::string NormalizeRemotePath(const std::string& path);
+    bool ParseRemoteUrl(const std::string& rawUrl, std::string& protocol, std::string& host, int& port, std::string& path);
+    std::string BuildRemoteUrl(const RemoteProfile& remote);
+    bool NormalizeRemoteEndpoint(const std::string& input, std::string& output);
+    bool NormalizeRemoteAddress(const std::string& input, const std::string& protocol, std::string& output);
+    bool NormalizeRemoteProfile(RemoteProfile& remote, std::string* error = nullptr);
+    bool RemoteMatchesUrl(const RemoteProfile& remote, const std::string& url);
+    std::vector<RemoteProfile> LoadRemotes();
+    bool SaveRemote(const RemoteProfile& remote, std::string* error = nullptr);
+    bool DeleteRemote(const std::string& fileName);
+    bool SetActiveRemote(const RemoteProfile& remote, bool writeConfig = true);
+
+    void setConfig();
+    // SUPER MANH: make sure the built-in shop profile exists and is selected.
+    void EnsureBrandRemote();
+    void parseConfig();
+}

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "enabled": true,
+  "name": "SUPER MANH",
+  "colors": {
+    "background": "#0F1115",
+    "header": "#12141AFF",
+    "footer": "#12141AE6",
+    "panel": "#1F232BFF",
+    "text": "#F2F4F7FF",
+    "selected_text": "#FFFFFFFF",
+    "muted_text": "#9AA3AEFF",
+    "accent": "#FF5A1FFF",
+    "highlight": "#7A2A12FF",
+    "scrollbar": "#FF5A1F80",
+    "progress_track": "#2A2F38FF"
+  },
+  "images": {
+    "background": ""
+  }
+}
