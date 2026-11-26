@@ -249,8 +249,8 @@ namespace inst::ui {
         this->botRect = Rectangle::New(0, 660, 1280, 60, botColor);
         this->sideNavRect = Rectangle::New(0, 136, 300, 523, inst::config::oledMode ? COLOR("#FFFFFF18") : COLOR("#170909A0"));
         if (inst::config::gayMode) {
-            this->titleImage = Image::New(-113, -8, inst::theme::Asset("romfs:/images/logo.png"));
-            this->appVersionText = TextBlock::New(367, 29, "v" + inst::config::appVersion + (inst::config::appGitMeta.empty() ? "" : ("\n" + inst::config::appGitMeta)), 22);
+            this->titleImage = Image::New(0, -8, inst::theme::Asset("romfs:/images/logo.png"));
+            this->appVersionText = TextBlock::New(480, 29, "v" + inst::config::appVersion + (inst::config::appGitMeta.empty() ? "" : ("\n" + inst::config::appGitMeta)), 22);
         }
         else {
             this->titleImage = Image::New(0, -8, inst::theme::Asset("romfs:/images/logo.png"));
