@@ -175,7 +175,7 @@
 	var accountMessage = function (o) {
 		var t = o.tinfoil;
 		var lines = [
-			(t.title || 'SUPER MẠNH Shop') + ' — thông tin tài khoản',
+			(t.title || 'SUPER MẠNH Việt Hóa') + ' — thông tin tài khoản',
 			'Tài khoản: ' + t.username
 		];
 		if (o.password) lines.push('Mật khẩu: ' + o.password);

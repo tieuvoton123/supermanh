@@ -64,7 +64,7 @@ class SMSS_Points {
 		global $wpdb;
 		$item = SMSS_Library::get( $item_id );
 		if ( ! $item || ! (int) $item->enabled ) {
-			return new WP_Error( 'smss_unlock', 'Bản này không còn trong shop.' );
+			return new WP_Error( 'smss_unlock', 'Bản này không còn trong kho.' );
 		}
 		if ( (int) $item->is_free ) {
 			return new WP_Error( 'smss_unlock', 'Bản này miễn phí, đã có sẵn trong Tinfoil.' );

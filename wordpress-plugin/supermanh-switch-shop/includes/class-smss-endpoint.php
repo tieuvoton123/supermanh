@@ -112,7 +112,7 @@ class SMSS_Endpoint {
 			SMSS_Settings::update( array( 'hauth' => $known ) );
 			return '';
 		}
-		return hash_equals( (string) $known[ $host ], $hauth ) ? '' : 'Shop chi mo tu dia chi chinh thuc.';
+		return hash_equals( (string) $known[ $host ], $hauth ) ? '' : 'Kho chi mo tu dia chi chinh thuc.';
 	}
 
 	private static function header( $name ) {
@@ -168,7 +168,7 @@ class SMSS_Endpoint {
 		header( 'X-Robots-Tag: noindex, nofollow, noarchive, nosnippet' );
 		header( 'Referrer-Policy: no-referrer' );
 		if ( $auth_challenge ) {
-			header( 'WWW-Authenticate: Basic realm="SUPER MANH Shop", charset="UTF-8"' );
+			header( 'WWW-Authenticate: Basic realm="SUPER MANH Viet Hoa", charset="UTF-8"' );
 		}
 		$json = wp_json_encode( $body, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
 		if ( 200 === $status ) {
@@ -240,7 +240,7 @@ class SMSS_Endpoint {
 		$settings = SMSS_Settings::all();
 
 		if ( ! $settings['enabled'] ) {
-			self::send( 503, array( 'error' => 'Shop đang tạm đóng.' ) );
+			self::send( 503, array( 'error' => 'Kho đang tạm đóng.' ) );
 		}
 		if ( $settings['tinfoil_only'] && ! self::is_tinfoil() ) {
 			self::send( 403, array( 'error' => 'Chỉ mở cho Tinfoil.' ) );

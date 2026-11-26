@@ -12,9 +12,9 @@ class SMSS_Settings {
 		return array(
 			'enabled'      => 1,
 			'slug'         => 'tinfoil',
-			'shop_name'    => 'SUPER MẠNH Shop',
+			'shop_name'    => 'SUPER MẠNH Việt Hóa',
 			// Shown by Tinfoil when the shop loads. Plain ASCII renders everywhere.
-			'motd'         => 'SUPER MANH SHOP - supermanh.com',
+			'motd'         => 'SUPER MANH VIET HOA - supermanh.com',
 			'api_key'      => '',
 			// gdrive = Tinfoil's native Google Drive protocol (recommended),
 			// https  = direct download link, for clients without gdrive: support.

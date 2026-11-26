@@ -4,7 +4,7 @@
 #define SMSS_SHOP_URL ""
 #endif
 #ifndef SMSS_SHOP_TITLE
-#define SMSS_SHOP_TITLE "SUPER MANH Shop"
+#define SMSS_SHOP_TITLE "SUPER MANH Viet Hoa"
 #endif
 #ifndef SMSS_UPDATE_REPO
 #define SMSS_UPDATE_REPO ""

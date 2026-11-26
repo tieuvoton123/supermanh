@@ -103,7 +103,7 @@ class SMSS_App {
 		header( 'Content-Type: application/manifest+json; charset=utf-8' );
 		echo wp_json_encode( array(
 			'name'             => $admin ? 'SM Quản lý' : SMSS_Settings::get( 'shop_name' ),
-			'short_name'       => $admin ? 'SM Quản lý' : 'SM Shop',
+			'short_name'       => $admin ? 'SM Quản lý' : 'SM Việt Hóa',
 			'start_url'        => $admin ? self::admin_url() : self::portal_url(),
 			'scope'            => $admin ? self::admin_url() : self::portal_url(),
 			'display'          => 'standalone',

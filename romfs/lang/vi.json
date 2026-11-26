@@ -4,7 +4,7 @@
             "sd": "Cài từ thẻ nhớ SD",
             "hdd": "Cài từ ổ USB SSD/HDD",
             "net": "Cài qua mạng LAN / Internet",
-            "remote": "SUPER MẠNH Shop",
+            "remote": "Kho Việt hóa",
             "guide": "Hướng dẫn kết nối",
             "usb": "Cài từ NS-USBloader",
             "mtp": "Cài qua MTP (cắm máy tính)",
@@ -34,32 +34,32 @@
         },
         "applet": {
             "title": "Không hỗ trợ chế độ Applet",
-            "desc": "SUPER MẠNH Shop có thể bị lỗi khi chạy ở chế độ Applet (Album).\nHãy mở SUPER MẠNH Shop qua một game đã cài (giữ R khi bấm vào game)!"
+            "desc": "SUPER MẠNH Việt Hóa có thể bị lỗi khi chạy ở chế độ Applet (Album).\nHãy mở SUPER MẠNH Việt Hóa qua một game đã cài (giữ R khi bấm vào game)!"
         },
         "buttons": " Chọn     Thoát",
         "info": {
             "button": "Thông tin",
-            "remote": "Mở SUPER MẠNH Shop: xem mã kích hoạt và cài các bản Việt hóa của bạn.",
+            "remote": "Mở Kho Việt hóa SUPER MẠNH: xem mã kích hoạt và cài các bản Việt hóa của bạn.",
             "sd": "Cài file NSP/NSZ/XCI/XCZ có trong thẻ nhớ SD.",
             "hdd": "Cài file trực tiếp từ ổ USB SSD hoặc ổ cứng đang cắm.",
             "mtp": "Cắm máy tính qua USB và cài bằng cách chép file vào thư mục MTP Install.",
             "usb": "Cài qua USB từ công cụ như NS-USBloader.",
             "net": "Cài file từ mạng LAN hoặc Internet.",
             "sig": "Cài, cập nhật hoặc gỡ signature patches.",
-            "set": "Thay đổi cài đặt SUPER MẠNH Shop và shop.",
-            "backup": "Tải toàn bộ save trên máy của người dùng đã chọn lên shop chỉ với một thao tác.\n\nCách hoạt động:\n1. Nếu máy có nhiều người dùng, chọn tài khoản cần sao lưu.\n2. Nếu chưa cài shop, SUPER MẠNH Shop thử các shop đã lưu trước, rồi hỏi địa chỉ shop.\n3. Nhập ghi chú cho bản sao lưu (bắt buộc).\n4. SUPER MẠNH Shop quét save trên máy của người dùng đó và tải từng cái lên máy chủ.\n5. Tiến trình hiện trong lúc quét và tải lên.\n6. Cuối cùng hiện tổng kết số save tải lên thành công và thất bại.",
-            "exit": "Đóng SUPER MẠNH Shop và về màn hình HOME."
+            "set": "Thay đổi cài đặt SUPER MẠNH Việt Hóa và kho.",
+            "backup": "Tải toàn bộ save trên máy của người dùng đã chọn lên kho chỉ với một thao tác.\n\nCách hoạt động:\n1. Nếu máy có nhiều người dùng, chọn tài khoản cần sao lưu.\n2. Nếu chưa cài kho, SUPER MẠNH Việt Hóa thử các kho đã lưu trước, rồi hỏi địa chỉ kho.\n3. Nhập ghi chú cho bản sao lưu (bắt buộc).\n4. SUPER MẠNH Việt Hóa quét save trên máy của người dùng đó và tải từng cái lên máy chủ.\n5. Tiến trình hiện trong lúc quét và tải lên.\n6. Cuối cùng hiện tổng kết số save tải lên thành công và thất bại.",
+            "exit": "Đóng SUPER MẠNH Việt Hóa và về màn hình HOME."
         },
         "guide": {
-            "title": "Cách kết nối SUPER MẠNH Shop",
-            "desc": "1. Kết nối Wi-Fi có Internet (Wi-Fi quán cà phê, khách sạn phải\n   đăng nhập trên web thì không dùng được).\n2. Ngày giờ của máy phải đúng (Cài đặt hệ thống > Ngày giờ).\n3. Chọn ô \"SUPER MẠNH Shop\". Lần đầu sẽ hiện\n   MÃ KÍCH HOẠT dạng XXXX XXXX.\n4. Gửi mã kích hoạt cho SUPER MẠNH ({host}) và chuyển khoản.\n5. Khi được báo đã kích hoạt: thoát hẳn ứng dụng rồi mở lại,\n   vào shop và tải bản Việt hóa.\n6. Mở khoá thêm bản bằng điểm tại {host}/sm-khach\n   (mã kích hoạt + PIN web hiện trong thông báo của shop).\n\nĐịa chỉ shop: {shop}"
+            "title": "Cách kết nối Kho Việt hóa SUPER MẠNH",
+            "desc": "1. Kết nối Wi-Fi có Internet (Wi-Fi quán cà phê, khách sạn phải\n   đăng nhập trên web thì không dùng được).\n2. Ngày giờ của máy phải đúng (Cài đặt hệ thống > Ngày giờ).\n3. Chọn ô \"Kho Việt hóa\". Lần đầu sẽ hiện\n   MÃ KÍCH HOẠT dạng XXXX XXXX.\n4. Gửi mã kích hoạt cho SUPER MẠNH ({host}) để được kích hoạt.\n5. Khi được báo đã kích hoạt: thoát hẳn ứng dụng rồi mở lại,\n   vào Kho Việt hóa và tải bản cần dùng.\n6. Mở thêm bản bằng điểm tại {host}/sm-khach\n   (mã kích hoạt + PIN web hiện trong thông báo của kho).\n\nĐịa chỉ kho: {kho}"
         }
     },
     "inst": {
         "net": {
             "help": {
                 "title": "Hướng dẫn",
-                "desc": "Có thể cài file từ thiết bị khác qua mạng bằng công cụ như NS-USBloader\n(chế độ Tinfoil). Mở phần mềm đó trên máy tính hoặc điện thoại, nhập địa chỉ IP\ncủa Switch (hiện trên màn hình), chọn file rồi gửi sang máy! Nếu phần mềm\nkhông cho chọn loại file, thử đổi đuôi file sang loại nó chấp nhận.\nSUPER MẠNH Shop không quan tâm đuôi file khi cài qua mạng!\n\nNếu vẫn không làm được, chép file vào thẻ nhớ SD rồi chọn\n\"Cài từ thẻ nhớ SD\" ở menu chính!"
+                "desc": "Có thể cài file từ thiết bị khác qua mạng bằng công cụ như NS-USBloader\n(chế độ Tinfoil). Mở phần mềm đó trên máy tính hoặc điện thoại, nhập địa chỉ IP\ncủa Switch (hiện trên màn hình), chọn file rồi gửi sang máy! Nếu phần mềm\nkhông cho chọn loại file, thử đổi đuôi file sang loại nó chấp nhận.\nSUPER MẠNH Việt Hóa không quan tâm đuôi file khi cài qua mạng!\n\nNếu vẫn không làm được, chép file vào thẻ nhớ SD rồi chọn\n\"Cài từ thẻ nhớ SD\" ở menu chính!"
             },
             "src": {
                 "title": "Bạn muốn cài từ đâu?",
@@ -91,13 +91,13 @@
             "buttons1": " Chọn file     Chọn tất cả     Cài file     Huỷ"
         },
         "remote": {
-            "loading": "Đang tải danh sách shop...",
-            "top_info": "Chọn các bản cần cài từ shop, rồi bấm nút +! Mục:",
-            "failed": "Không tải được shop",
-            "unreachable": "Không kết nối được shop.",
-            "encrypted_unsupported": "Shop trả về dữ liệu mã hoá, bản này không đọc được. Tắt \"Encrypt\" trong cài đặt shop.",
-            "empty": "Shop chưa có bản nào cho máy này.",
-            "source_string": " từ shop",
+            "loading": "Đang tải danh sách kho...",
+            "top_info": "Chọn các bản cần cài từ kho, rồi bấm nút +! Mục:",
+            "failed": "Không tải được kho",
+            "unreachable": "Không kết nối được kho.",
+            "encrypted_unsupported": "Kho trả về dữ liệu mã hoá, bản này không đọc được. Tắt \"Encrypt\" trong cài đặt kho.",
+            "empty": "Kho chưa có bản nào cho máy này.",
+            "source_string": " từ kho",
             "buttons_loading": " Huỷ",
             "buttons": " Chọn     Chọn tất cả     Cài     Tải lại    / Mục     Kiểu xem     Huỷ",
             "buttons_all": " Chọn     Chọn tất cả     Cài     Tải lại    / Mục     Tìm     Kiểu xem     Huỷ",
@@ -106,7 +106,7 @@
             "update_prompt_desc": "Cài kèm bản cập nhật cho các mục đã chọn? Số bản cập nhật tìm thấy: ",
             "dlc_prompt_title": "Cài kèm DLC?",
             "dlc_prompt_desc": "Cài kèm DLC cho các mục đã chọn? Số DLC tìm thấy: ",
-            "motd_title": "Thông báo từ shop",
+            "motd_title": "Thông báo từ kho",
             "buttons_installed": " Chi tiết     Tải lại    / Mục     Huỷ",
             "detail_type": "Loại: ",
             "detail_titleid": "Title ID: ",
@@ -224,7 +224,7 @@
         },
         "nca_verify": {
             "title": "Phát hiện chữ ký NCA không hợp lệ!",
-            "desc": "Chỉ nên cài phần mềm ký sai từ nguồn đáng tin cậy. Các bản Việt hóa\ntích hợp, bản chuyển từ băng và DLC unlocker luôn hiện cảnh báo này.\nCó thể tắt kiểm tra trong cài đặt SUPER MẠNH Shop.\n\nBạn có chắc muốn tiếp tục cài?",
+            "desc": "Chỉ nên cài phần mềm ký sai từ nguồn đáng tin cậy. Các bản Việt hóa\ntích hợp, bản chuyển từ băng và DLC unlocker luôn hiện cảnh báo này.\nCó thể tắt kiểm tra trong cài đặt SUPER MẠNH Việt Hóa.\n\nBạn có chắc muốn tiếp tục cài?",
             "opt1": "Có, tôi hiểu rủi ro",
             "error": "NCA này không được ký đúng: "
         },
@@ -246,7 +246,7 @@
         "backup_failed": "Không sao lưu được patches.ini của Hekate! Vẫn cài?",
         "backup_failed_desc": "Nếu không dùng Hekate thì bỏ qua cảnh báo này.",
         "download_failed": "Không tải được signature patches",
-        "download_failed_desc": "Có thể nguồn tải trong cài đặt SUPER MẠNH Shop bị sai,\nhoặc máy chủ đang tạm ngưng.",
+        "download_failed_desc": "Có thể nguồn tải trong cài đặt SUPER MẠNH Việt Hóa bị sai,\nhoặc máy chủ đang tạm ngưng.",
         "version_text2": "Signature patches đã cập nhật, hỗ trợ tới phiên bản HOS ",
         "install_complete": "Cài xong!",
         "complete_desc": "Khởi động lại máy để áp dụng",
@@ -271,19 +271,19 @@
             "nca_verify": "Kiểm tra chữ ký NCA trước khi cài",
             "boost_mode": "Bật \"boost mode\" khi cài đặt",
             "ask_delete": "Hỏi xoá file gốc sau khi cài",
-            "auto_update": "Tự kiểm tra bản cập nhật SUPER MẠNH Shop",
+            "auto_update": "Tự kiểm tra bản cập nhật SUPER MẠNH Việt Hóa",
             "gay_option": "Ẩn hình anime",
             "sig_url": "Nguồn tải signature patches: ",
-            "remote_url": "Địa chỉ shop: ",
-            "remote_user": "Tên đăng nhập shop: ",
-            "remote_pass": "Mật khẩu shop: ",
-            "remote_hide_installed": "Ẩn các bản đã cài trong shop",
-            "remote_hide_installed_section": "Ẩn mục \"Đã cài\" trong shop",
+            "remote_url": "Địa chỉ kho: ",
+            "remote_user": "Tên đăng nhập kho: ",
+            "remote_pass": "Mật khẩu kho: ",
+            "remote_hide_installed": "Ẩn các bản đã cài trong kho",
+            "remote_hide_installed_section": "Ẩn mục \"Đã cài\" trong kho",
             "remote_all_base_only": "Mục Tất cả chỉ hiện bản game gốc",
-            "remote_start_grid_mode": "Mở shop ở dạng lưới",
-            "remote_reset_icons": "Xoá bộ nhớ đệm icon của shop",
+            "remote_start_grid_mode": "Mở kho ở dạng lưới",
+            "remote_reset_icons": "Xoá bộ nhớ đệm icon của kho",
             "language": "Ngôn ngữ: ",
-            "check_update": "Kiểm tra bản cập nhật SUPER MẠNH Shop",
+            "check_update": "Kiểm tra bản cập nhật SUPER MẠNH Việt Hóa",
             "credits": "Ghi công",
             "sound": "Bật âm thanh",
             "oled": "Bật chế độ OLED (nền đen)",
@@ -296,39 +296,39 @@
         },
         "sig_hint": "Nhập địa chỉ tải signature patches",
         "remote": {
-            "url_hint": "Nhập địa chỉ shop (ví dụ: https://supermanh.com/tinfoil)",
-            "user_hint": "Nhập tên đăng nhập shop (không bắt buộc)",
-            "pass_hint": "Nhập mật khẩu shop (không bắt buộc)"
+            "url_hint": "Nhập địa chỉ kho (ví dụ: https://supermanh.com/tinfoil)",
+            "user_hint": "Nhập tên đăng nhập kho (không bắt buộc)",
+            "pass_hint": "Nhập mật khẩu kho (không bắt buộc)"
         },
         "cache_reset": {
             "title": "Xoá bộ nhớ đệm icon?",
-            "desc": "Toàn bộ icon shop đã lưu sẽ bị xoá và tải lại ở lần mở shop tiếp theo.",
+            "desc": "Toàn bộ icon kho đã lưu sẽ bị xoá và tải lại ở lần mở kho tiếp theo.",
             "confirm": "Xoá"
         },
         "update": {
             "title": "Có bản cập nhật",
-            "desc0": "SUPER MẠNH Shop ",
+            "desc0": "SUPER MẠNH Việt Hóa ",
             "desc1": " đã có! Cập nhật ngay?",
             "opt0": "Cập nhật",
-            "top_info": "Đang cập nhật lên SUPER MẠNH Shop ",
-            "bot_info": "Đang tải SUPER MẠNH Shop ",
-            "bot_info2": "Đang giải nén SUPER MẠNH Shop ",
+            "top_info": "Đang cập nhật lên SUPER MẠNH Việt Hóa ",
+            "bot_info": "Đang tải SUPER MẠNH Việt Hóa ",
+            "bot_info2": "Đang giải nén SUPER MẠNH Việt Hóa ",
             "complete": "Cập nhật xong!",
             "failed": "Cập nhật thất bại!",
             "end_desc": "Ứng dụng sẽ đóng lại bây giờ.",
             "title_check_fail": "Không có bản cập nhật",
-            "desc_check_fail": "Bạn đang dùng bản SUPER MẠNH Shop mới nhất!"
+            "desc_check_fail": "Bạn đang dùng bản SUPER MẠNH Việt Hóa mới nhất!"
         },
         "credits": {
             "title": "Cảm ơn những người sau!",
-            "desc": "- luketanti với CyberFoil (ứng dụng này dựa trên CyberFoil)\n- Huntereb với Awoo Installer\n- ITotalJustice với Sphaira\n- XorTroll với Plutonium\n- Atmosphere Team với libhaze\n- DarkMatterCore với libusbhsfs\n- Cộng đồng Homebrew vì mọi công sức và tâm huyết\n- Và bạn, vì đã dùng SUPER MẠNH Shop!"
+            "desc": "- luketanti với CyberFoil (ứng dụng này dựa trên CyberFoil)\n- Huntereb với Awoo Installer\n- ITotalJustice với Sphaira\n- XorTroll với Plutonium\n- Atmosphere Team với libhaze\n- DarkMatterCore với libusbhsfs\n- Cộng đồng Homebrew vì mọi công sức và tâm huyết\n- Và bạn, vì đã dùng SUPER MẠNH Việt Hóa!"
         },
         "language": {
-            "title": "Chọn ngôn ngữ cho SUPER MẠNH Shop",
+            "title": "Chọn ngôn ngữ cho SUPER MẠNH Việt Hóa",
             "desc": "Ứng dụng sẽ đóng sau khi đổi ngôn ngữ. Bấm B để huỷ.",
             "system_language": "Theo hệ thống"
         },
-        "title": "Cài đặt SUPER MẠNH Shop",
+        "title": "Cài đặt SUPER MẠNH Việt Hóa",
         "buttons": " Chọn/Đổi     Huỷ"
     },
     "common": {

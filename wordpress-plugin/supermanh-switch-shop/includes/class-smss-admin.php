@@ -18,11 +18,11 @@ class SMSS_Admin {
 
 	public static function menu() {
 		$icon = 'data:image/svg+xml;base64,' . base64_encode( '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill="#a7aaad" d="M11.7 1 4 11.3h4.7L7.2 19 16 7.8h-4.8z"/></svg>' );
-		add_menu_page( 'SuperManh Switch Shop', 'Switch Shop', self::CAP, 'smss', array( __CLASS__, 'page_dashboard' ), $icon, 56 );
+		add_menu_page( 'SuperManh Switch Việt Hóa', 'Switch Việt Hóa', self::CAP, 'smss', array( __CLASS__, 'page_dashboard' ), $icon, 56 );
 		add_submenu_page( 'smss', 'Tổng quan & cài đặt', 'Tổng quan & cài đặt', self::CAP, 'smss', array( __CLASS__, 'page_dashboard' ) );
 		add_submenu_page( 'smss', 'Danh sách game', 'Danh sách game', self::CAP, 'smss-items', array( __CLASS__, 'page_items' ) );
 		add_submenu_page( 'smss', 'Thư mục Google Drive', 'Thư mục Drive', self::CAP, 'smss-folders', array( __CLASS__, 'page_folders' ) );
-		add_submenu_page( 'smss', 'Tài khoản shop', 'Tài khoản', self::CAP, 'smss-accounts', array( __CLASS__, 'page_accounts' ) );
+		add_submenu_page( 'smss', 'Tài khoản thành viên', 'Tài khoản', self::CAP, 'smss-accounts', array( __CLASS__, 'page_accounts' ) );
 	}
 
 	public static function assets( $hook ) {
@@ -81,7 +81,7 @@ class SMSS_Admin {
 				<svg viewBox="0 0 1024 1024"><path d="M600 104 L270 584 H488 L418 920 L756 412 H540 L600 104 Z" fill="#fff"/></svg>
 			</div>
 			<div>
-				<div class="smss-brand">SUPER MẠNH <span>Switch Shop</span></div>
+				<div class="smss-brand">SUPER MẠNH <span>Switch Việt Hóa</span></div>
 				<div class="smss-sub"><?php echo esc_html( $title ); ?></div>
 			</div>
 			<a class="smss-site" href="https://supermanh.com" target="_blank" rel="noopener">supermanh.com</a>
@@ -122,7 +122,7 @@ class SMSS_Admin {
 			<?php self::header_bar( 'Tổng quan & cài đặt' ); ?>
 
 			<div class="smss-stats">
-				<div class="smss-stat"><b><?php echo esc_html( number_format_i18n( $items ) ); ?></b><span>game đang bán</span></div>
+				<div class="smss-stat"><b><?php echo esc_html( number_format_i18n( $items ) ); ?></b><span>bản đang hiện</span></div>
 				<div class="smss-stat"><b><?php echo esc_html( SMSS_Links::human_size( SMSS_Library::total_size() ) ); ?></b><span>tổng dung lượng</span></div>
 				<div class="smss-stat"><b><?php echo esc_html( count( (array) $s['folders'] ) ); ?></b><span>thư mục Drive</span></div>
 				<div class="smss-stat"><b><?php echo esc_html( $accounts ); ?></b><span>tài khoản</span></div>
@@ -130,20 +130,20 @@ class SMSS_Admin {
 
 			<div class="smss-grid">
 				<div class="smss-card">
-					<h2>Thêm shop vào Tinfoil</h2>
+					<h2>Thêm kho vào Tinfoil</h2>
 					<p>Trên máy Switch mở <b>Tinfoil → File Browser → nhấn (-) New</b>, điền:</p>
 					<table class="smss-kv">
 						<tr><th>Protocol</th><td><code><?php echo esc_html( $protocol ); ?></code></td></tr>
 						<tr><th>Host</th><td><code><?php echo esc_html( $host ); ?></code></td></tr>
 						<tr><th>Port</th><td><code><?php echo esc_html( $port ); ?></code></td></tr>
 						<tr><th>Path</th><td><code><?php echo esc_html( $path ); ?></code></td></tr>
-						<tr><th>Username / Password</th><td><?php echo $s['require_auth'] && $s['device_mode'] ? '<i>để trống</i> (Tinfoil hiện mã kích hoạt), hoặc tài khoản tạo ở trang <a href="' . esc_url( admin_url( 'admin.php?page=smss-accounts' ) ) . '">Tài khoản</a>' : ( $s['require_auth'] ? 'tài khoản tạo ở trang <a href="' . esc_url( admin_url( 'admin.php?page=smss-accounts' ) ) . '">Tài khoản</a>' : '<i>để trống (shop công khai)</i>' ); ?></td></tr>
+						<tr><th>Username / Password</th><td><?php echo $s['require_auth'] && $s['device_mode'] ? '<i>để trống</i> (Tinfoil hiện mã kích hoạt), hoặc tài khoản tạo ở trang <a href="' . esc_url( admin_url( 'admin.php?page=smss-accounts' ) ) . '">Tài khoản</a>' : ( $s['require_auth'] ? 'tài khoản tạo ở trang <a href="' . esc_url( admin_url( 'admin.php?page=smss-accounts' ) ) . '">Tài khoản</a>' : '<i>để trống (kho công khai)</i>' ); ?></td></tr>
 						<tr><th>Title</th><td><code><?php echo esc_html( $s['shop_name'] ); ?></code></td></tr>
 					</table>
-					<p class="description">Link shop: <code><?php echo esc_html( $url ); ?></code></p>
-					<p><a class="button button-primary" href="<?php echo esc_url( SMSS_App::admin_url() ); ?>" target="_blank">Mở app quản lý (điện thoại)</a> <a class="button" href="<?php echo esc_url( SMSS_App::portal_url() ); ?>" target="_blank">Trang khách</a></p>
+					<p class="description">Link kho: <code><?php echo esc_html( $url ); ?></code></p>
+					<p><a class="button button-primary" href="<?php echo esc_url( SMSS_App::admin_url() ); ?>" target="_blank">Mở app quản lý (điện thoại)</a> <a class="button" href="<?php echo esc_url( SMSS_App::portal_url() ); ?>" target="_blank">Trang thành viên</a></p>
 					<?php if ( ! $s['enabled'] ) : ?>
-						<p class="smss-warn">Shop đang <b>tắt</b>, Tinfoil sẽ không tải được.</p>
+						<p class="smss-warn">Kho đang <b>tắt</b>, Tinfoil sẽ không tải được.</p>
 					<?php endif; ?>
 					<?php if ( ! get_option( 'permalink_structure' ) ) : ?>
 						<p class="smss-warn">Website đang dùng đường dẫn mặc định (?p=123), nên link shop có dạng ?smss_shop=1. Vào <b>Cài đặt → Đường dẫn tĩnh</b> chọn "Tên bài viết" để link gọn hơn.</p>
@@ -159,11 +159,11 @@ class SMSS_Admin {
 						<?php wp_nonce_field( 'smss_save_settings' ); ?>
 						<input type="hidden" name="action" value="smss_save_settings">
 						<table class="form-table smss-form">
-							<tr><th>Bật shop</th><td><label><input type="checkbox" name="enabled" value="1" <?php checked( $s['enabled'] ); ?>> Cho Tinfoil tải danh sách game</label></td></tr>
-							<tr><th><label for="smss-name">Tên shop</label></th><td><input id="smss-name" class="regular-text" name="shop_name" value="<?php echo esc_attr( $s['shop_name'] ); ?>"></td></tr>
-							<tr><th><label for="smss-motd">Lời chào trên Tinfoil</label></th><td><input id="smss-motd" class="regular-text" name="motd" value="<?php echo esc_attr( $s['motd'] ); ?>"><p class="description">Hiện khi Tinfoil mở shop. Nên viết không dấu.</p></td></tr>
-							<tr><th><label for="smss-host">Tên miền shop</label></th><td><input id="smss-host" class="regular-text" name="shop_host" value="<?php echo esc_attr( $s['shop_host'] ); ?>" placeholder="<?php echo esc_attr( wp_parse_url( home_url(), PHP_URL_HOST ) ); ?>"><p class="description">Để trống = dùng tên miền website. Muốn dùng tên riêng như <code>shop.supermanh.com</code> thì trỏ subdomain đó về <b>cùng hosting</b> này (thêm alias/addon domain trên hosting) và bật SSL cho nó.</p></td></tr>
-							<tr><th><label for="smss-slug">Đường dẫn shop</label></th><td><code>/</code><input id="smss-slug" name="slug" value="<?php echo esc_attr( $s['slug'] ); ?>" style="width:140px"><p class="description">Nên đổi thành chuỗi khó đoán, ví dụ <code>sm-7k2q</code>, để người lạ không đoán ra.</p></td></tr>
+							<tr><th>Bật kho</th><td><label><input type="checkbox" name="enabled" value="1" <?php checked( $s['enabled'] ); ?>> Cho Tinfoil tải danh sách game</label></td></tr>
+							<tr><th><label for="smss-name">Tên kho</label></th><td><input id="smss-name" class="regular-text" name="shop_name" value="<?php echo esc_attr( $s['shop_name'] ); ?>"></td></tr>
+							<tr><th><label for="smss-motd">Lời chào trên Tinfoil</label></th><td><input id="smss-motd" class="regular-text" name="motd" value="<?php echo esc_attr( $s['motd'] ); ?>"><p class="description">Hiện khi Tinfoil mở kho. Nên viết không dấu.</p></td></tr>
+							<tr><th><label for="smss-host">Tên miền kho</label></th><td><input id="smss-host" class="regular-text" name="shop_host" value="<?php echo esc_attr( $s['shop_host'] ); ?>" placeholder="<?php echo esc_attr( wp_parse_url( home_url(), PHP_URL_HOST ) ); ?>"><p class="description">Để trống = dùng tên miền website. Muốn dùng tên riêng như <code>shop.supermanh.com</code> thì trỏ subdomain đó về <b>cùng hosting</b> này (thêm alias/addon domain trên hosting) và bật SSL cho nó.</p></td></tr>
+							<tr><th><label for="smss-slug">Đường dẫn kho</label></th><td><code>/</code><input id="smss-slug" name="slug" value="<?php echo esc_attr( $s['slug'] ); ?>" style="width:140px"><p class="description">Nên đổi thành chuỗi khó đoán, ví dụ <code>sm-7k2q</code>, để người lạ không đoán ra.</p></td></tr>
 							<tr><th><label for="smss-key">Google API key</label></th><td><input id="smss-key" class="regular-text" name="api_key" value="<?php echo esc_attr( $s['api_key'] ); ?>" autocomplete="off"><p class="description">Dùng để đọc tên và dung lượng file, quét thư mục Drive, và cho Tinfoil tải file Drive công khai. Tạo ở Google Cloud Console → APIs & Services → Credentials, rồi giới hạn key chỉ cho <b>Google Drive API</b>.</p></td></tr>
 							<tr><th>Kiểu link Google Drive</th><td>
 								<label><input type="radio" name="drive_mode" value="gdrive" <?php checked( $s['drive_mode'], 'gdrive' ); ?>> <b>gdrive:</b> (Tinfoil tải trực tiếp qua Google Drive API, khuyên dùng)</label><br>
@@ -172,19 +172,19 @@ class SMSS_Admin {
 							<tr><th>Bảo mật</th><td>
 								<label><input type="checkbox" name="require_auth" value="1" <?php checked( $s['require_auth'] ); ?>> Bắt buộc đăng nhập (khuyên dùng)</label><br>
 								<label><input type="checkbox" name="tinfoil_only" value="1" <?php checked( $s['tinfoil_only'] ); ?>> Chỉ cho phép Tinfoil (chặn trình duyệt, công cụ khác)</label><br>
-								<label><input type="checkbox" name="device_mode" value="1" <?php checked( $s['device_mode'] ); ?>> <b>Kích hoạt theo máy</b>: khách thêm shop vào Tinfoil không cần tài khoản, Tinfoil hiện <b>mã kích hoạt</b> riêng của máy; bạn tìm mã đó trong app để nạp điểm / gia hạn</label><br>
-								<label><input type="checkbox" name="stealth" value="1" <?php checked( $s['stealth'] ); ?>> <b>Ẩn shop</b>: Google, bot, trình duyệt chỉ thấy trang "Không tìm thấy" (404) bình thường của web; chỉ Tinfoil, người có tài khoản hoặc link riêng mới vào được</label>
+								<label><input type="checkbox" name="device_mode" value="1" <?php checked( $s['device_mode'] ); ?>> <b>Kích hoạt theo máy</b>: thành viên thêm kho vào Tinfoil không cần tài khoản, Tinfoil hiện <b>mã kích hoạt</b> riêng của máy; bạn tìm mã đó trong app để cộng điểm / gia hạn</label><br>
+								<label><input type="checkbox" name="stealth" value="1" <?php checked( $s['stealth'] ); ?>> <b>Ẩn kho</b>: Google, bot, trình duyệt chỉ thấy trang "Không tìm thấy" (404) bình thường của web; chỉ Tinfoil, người có tài khoản hoặc link riêng mới vào được</label>
 							</td></tr>
 							<tr><th>Nâng cao</th><td>
-								<label><input type="checkbox" name="host_lock" value="1" <?php checked( $s['host_lock'] ); ?>> <b>Khoá tên miền</b>: Tinfoil chỉ nhận shop từ đúng địa chỉ này (cần HTTPS), người khác không gắn danh sách của bạn sang nơi khác được</label><br>
+								<label><input type="checkbox" name="host_lock" value="1" <?php checked( $s['host_lock'] ); ?>> <b>Khoá tên miền</b>: Tinfoil chỉ nhận kho từ đúng địa chỉ này (cần HTTPS), người khác không gắn danh sách của bạn sang nơi khác được</label><br>
 								<?php if ( ! empty( $s['hauth'] ) ) : ?>
-									<label><input type="checkbox" name="hauth_reset" value="1"> Xoá mã Tinfoil đã ghi nhận (<?php echo esc_html( implode( ', ', array_keys( (array) $s['hauth'] ) ) ); ?>). Tick khi đổi tên miền, hoặc khi khách thật bị báo "Shop chi mo tu dia chi chinh thuc"</label><br>
+									<label><input type="checkbox" name="hauth_reset" value="1"> Xoá mã Tinfoil đã ghi nhận (<?php echo esc_html( implode( ', ', array_keys( (array) $s['hauth'] ) ) ); ?>). Tick khi đổi tên miền, hoặc khi thành viên thật bị báo "Shop chi mo tu dia chi chinh thuc"</label><br>
 								<?php endif; ?>
-								<label><input type="checkbox" name="trust_proxy" value="1" <?php checked( $s['trust_proxy'] ); ?>> Website chạy sau <b>Cloudflare / proxy</b> (lấy IP thật của khách để chặn dò mật khẩu đúng người)</label>
+								<label><input type="checkbox" name="trust_proxy" value="1" <?php checked( $s['trust_proxy'] ); ?>> Website chạy sau <b>Cloudflare / proxy</b> (lấy IP thật của thành viên để chặn dò mật khẩu đúng người)</label>
 							</td></tr>
 							<tr><th><label for="smss-app">App quản lý</label></th><td><code>/</code><input id="smss-app" name="app_slug" value="<?php echo esc_attr( $s['app_slug'] ); ?>" style="width:140px"> <a href="<?php echo esc_url( SMSS_App::admin_url() ); ?>" target="_blank">Mở app ↗</a><p class="description">Mở trên điện thoại (đăng nhập WordPress), rồi "Thêm vào màn hình chính".</p></td></tr>
-							<tr><th><label for="smss-portal">Trang khách</label></th><td><code>/</code><input id="smss-portal" name="portal_slug" value="<?php echo esc_attr( $s['portal_slug'] ); ?>" style="width:140px"> <a href="<?php echo esc_url( SMSS_App::portal_url() ); ?>" target="_blank">Xem ↗</a><p class="description">Khách đăng nhập để xem điểm và dùng điểm mở khoá bản Việt hóa.</p></td></tr>
-							<tr><th><label for="smss-contact">Liên hệ nạp điểm</label></th><td><input id="smss-contact" class="regular-text" name="contact" value="<?php echo esc_attr( $s['contact'] ); ?>" placeholder="Zalo 09xx… / fb.com/…"></td></tr>
+							<tr><th><label for="smss-portal">Trang thành viên</label></th><td><code>/</code><input id="smss-portal" name="portal_slug" value="<?php echo esc_attr( $s['portal_slug'] ); ?>" style="width:140px"> <a href="<?php echo esc_url( SMSS_App::portal_url() ); ?>" target="_blank">Xem ↗</a><p class="description">Thành viên đăng nhập để xem điểm và dùng điểm mở khoá bản Việt hóa.</p></td></tr>
+							<tr><th><label for="smss-contact">Liên hệ hỗ trợ</label></th><td><input id="smss-contact" class="regular-text" name="contact" value="<?php echo esc_attr( $s['contact'] ); ?>" placeholder="Zalo 09xx… / fb.com/…"></td></tr>
 							<tr><th><label for="smss-point">Tên đơn vị điểm</label></th><td><input id="smss-point" name="point_name" value="<?php echo esc_attr( $s['point_name'] ); ?>" style="width:140px"></td></tr>
 							<tr><th>Loại file</th><td><label><input type="checkbox" name="only_nsw" value="1" <?php checked( $s['only_nsw'] ); ?>> Chỉ nhận nsp / nsz / xci / xcz</label></td></tr>
 						</table>
@@ -226,10 +226,10 @@ class SMSS_Admin {
 		$slugs = array( $new['slug'], $new['app_slug'], $new['portal_slug'] );
 		if ( count( array_unique( $slugs ) ) < 3 ) {
 			$new = SMSS_Settings::update( array( 'slug' => $old['slug'], 'app_slug' => $old['app_slug'], 'portal_slug' => $old['portal_slug'] ) );
-			self::notice( 'error', 'Ba đường dẫn (shop, app quản lý, trang khách) phải khác nhau. Đã giữ đường dẫn cũ.' );
+			self::notice( 'error', 'Ba đường dẫn (kho, app quản lý, trang thành viên) phải khác nhau. Đã giữ đường dẫn cũ.' );
 		}
 		if ( '' !== trim( (string) self::post( 'shop_host' ) ) && '' === $new['shop_host'] ) {
-			self::notice( 'warning', 'Tên miền shop không hợp lệ, đã bỏ trống.' );
+			self::notice( 'warning', 'Tên miền kho không hợp lệ, đã bỏ trống.' );
 		}
 		if ( $old['slug'] !== $new['slug'] || $old['app_slug'] !== $new['app_slug'] || $old['portal_slug'] !== $new['portal_slug'] ) {
 			update_option( 'smss_flush_rules', 1, false );
@@ -265,7 +265,7 @@ https://drive.google.com/drive/folders/1XyZ...          ← cả thư mục
 https://host-cua-ban.com/game.nsz | Tên game [0100ABCD12340000][v0].nsz
 gdrive:1AbC... | Tên game [0100ABCD12340000][v0].nsz | 5.2G"></textarea>
 					<p class="description">Dán link file Google Drive, link thư mục Drive (sẽ tự quét, tự cập nhật mỗi giờ) hoặc link tải trực tiếp bất kỳ. Muốn đặt tên hoặc dung lượng thì thêm <code>| Tên file | dung lượng</code>. Tên file nên có <code>[TitleID][vVersion]</code> để Tinfoil hiện ảnh và thông tin game.</p>
-					<?php submit_button( 'Thêm vào shop', 'primary', 'submit', false ); ?>
+					<?php submit_button( 'Thêm vào kho', 'primary', 'submit', false ); ?>
 				</form>
 			</div>
 
@@ -284,7 +284,7 @@ gdrive:1AbC... | Tên game [0100ABCD12340000][v0].nsz | 5.2G"></textarea>
 				<table class="widefat striped smss-table">
 					<thead><tr>
 						<td class="check-column"><input type="checkbox" onclick="document.querySelectorAll('.smss-cb').forEach(c=>c.checked=this.checked)"></td>
-						<th>Tên file</th><th>Title ID</th><th>Dung lượng</th><th>Giá</th><th>Nguồn</th><th>Trạng thái</th><th></th>
+						<th>Tên file</th><th>Title ID</th><th>Dung lượng</th><th>Điểm cần</th><th>Nguồn</th><th>Trạng thái</th><th></th>
 					</tr></thead>
 					<tbody>
 					<?php if ( ! $rows ) : ?>
@@ -307,11 +307,11 @@ gdrive:1AbC... | Tên game [0100ABCD12340000][v0].nsz | 5.2G"></textarea>
 							<td><?php echo esc_html( SMSS_Links::human_size( $row->size ) ); ?></td>
 							<td><?php echo (int) $row->is_free ? 'Miễn phí' : esc_html( number_format_i18n( (int) $row->price ) ); ?></td>
 							<td><a href="<?php echo esc_url( $src_link ); ?>" target="_blank" rel="noopener"><?php echo esc_html( $src ); ?></a></td>
-							<td><?php echo $row->enabled ? '<span class="smss-pill on">Đang bán</span>' : '<span class="smss-pill">Ẩn</span>'; ?></td>
+							<td><?php echo $row->enabled ? '<span class="smss-pill on">Đang hiện</span>' : '<span class="smss-pill">Ẩn</span>'; ?></td>
 							<td class="smss-actions">
 								<button class="button-link" name="do" value="toggle:<?php echo esc_attr( $row->id ); ?>"><?php echo $row->enabled ? 'Ẩn' : 'Hiện'; ?></button>
 								<?php if ( 'manual' === $row->source ) : ?>
-									· <button class="button-link smss-danger" name="do" value="delete:<?php echo esc_attr( $row->id ); ?>" onclick="return confirm('Xoá game này khỏi shop? (File trên Drive không bị xoá)')">Xoá</button>
+									· <button class="button-link smss-danger" name="do" value="delete:<?php echo esc_attr( $row->id ); ?>" onclick="return confirm('Xoá game này khỏi kho? (File trên Drive không bị xoá)')">Xoá</button>
 								<?php endif; ?>
 							</td>
 						</tr>
@@ -411,7 +411,7 @@ gdrive:1AbC... | Tên game [0100ABCD12340000][v0].nsz | 5.2G"></textarea>
 					<input type="url" name="folder" class="regular-text" placeholder="https://drive.google.com/drive/folders/..." required>
 					<?php submit_button( 'Thêm & quét', 'primary', 'submit', false ); ?>
 				</form>
-				<p class="description">Thư mục phải chia sẻ <b>"Bất kỳ ai có đường liên kết"</b> (quyền Người xem). Shop quét cả thư mục con, tự cập nhật mỗi giờ: thêm game mới, gỡ game đã xoá trên Drive.
+				<p class="description">Thư mục phải chia sẻ <b>"Bất kỳ ai có đường liên kết"</b> (quyền Người xem). Kho quét cả thư mục con, tự cập nhật mỗi giờ: thêm game mới, gỡ game đã xoá trên Drive.
 				<?php if ( $next ) : ?>Lần quét tự động tới: <?php echo esc_html( wp_date( 'H:i d/m', $next ) ); ?>.<?php endif; ?></p>
 			</div>
 
@@ -432,7 +432,7 @@ gdrive:1AbC... | Tên game [0100ABCD12340000][v0].nsz | 5.2G"></textarea>
 							<td><?php echo $f['error'] ? '<span class="smss-pill err">' . esc_html( $f['error'] ) . '</span>' : '<span class="smss-pill on">OK</span>'; ?></td>
 							<td class="smss-actions">
 								<button class="button" name="do" value="sync:<?php echo esc_attr( $f['id'] ); ?>">Quét lại</button>
-								<button class="button-link smss-danger" name="do" value="remove:<?php echo esc_attr( $f['id'] ); ?>" onclick="return confirm('Gỡ thư mục này và toàn bộ game của nó khỏi shop? (File trên Drive không bị xoá)')">Gỡ</button>
+								<button class="button-link smss-danger" name="do" value="remove:<?php echo esc_attr( $f['id'] ); ?>" onclick="return confirm('Gỡ thư mục này và toàn bộ game của nó khỏi kho? (File trên Drive không bị xoá)')">Gỡ</button>
 							</td>
 						</tr>
 					<?php endforeach; ?>
@@ -480,7 +480,7 @@ gdrive:1AbC... | Tên game [0100ABCD12340000][v0].nsz | 5.2G"></textarea>
 				self::notice( is_wp_error( $res ) ? 'error' : 'success', is_wp_error( $res ) ? $res->get_error_message() : 'Đã quét: ' . self::report_message( $res ) );
 			} else {
 				SMSS_Library::remove_folder( $m[2] );
-				self::notice( 'success', 'Đã gỡ thư mục khỏi shop.' );
+				self::notice( 'success', 'Đã gỡ thư mục khỏi kho.' );
 			}
 		}
 		self::back( 'smss-folders' );
@@ -494,7 +494,7 @@ gdrive:1AbC... | Tên game [0100ABCD12340000][v0].nsz | 5.2G"></textarea>
 		$accounts = SMSS_Accounts::all();
 		?>
 		<div class="wrap smss-wrap">
-			<?php self::header_bar( 'Tài khoản shop' ); ?>
+			<?php self::header_bar( 'Tài khoản thành viên' ); ?>
 			<div class="smss-card">
 				<h2>Tạo tài khoản</h2>
 				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="smss-account-form">
@@ -504,7 +504,7 @@ gdrive:1AbC... | Tên game [0100ABCD12340000][v0].nsz | 5.2G"></textarea>
 					<label>Mật khẩu<input name="password" required value="<?php echo esc_attr( wp_generate_password( 10, false ) ); ?>"></label>
 					<label>Hết hạn<input type="date" name="expires"></label>
 					<label>Số máy tối đa<input type="number" name="max_devices" min="0" value="0" style="width:90px"></label>
-					<label class="smss-grow">Ghi chú<input name="note" placeholder="Tên khách, số điện thoại..."></label>
+					<label class="smss-grow">Ghi chú<input name="note" placeholder="Tên thành viên, số điện thoại..."></label>
 					<?php submit_button( 'Tạo', 'primary', 'submit', false ); ?>
 				</form>
 				<p class="description">Để trống "Hết hạn" nghĩa là dùng vĩnh viễn. "Số máy tối đa" = 0 là không giới hạn; đặt 1 thì tài khoản chỉ dùng được trên máy Switch đầu tiên đăng nhập. Mật khẩu không được chứa <code>@ &amp; / ? # =</code>.</p>
@@ -514,7 +514,7 @@ gdrive:1AbC... | Tên game [0100ABCD12340000][v0].nsz | 5.2G"></textarea>
 				<?php wp_nonce_field( 'smss_account_action' ); ?>
 				<input type="hidden" name="action" value="smss_account_action">
 				<table class="widefat striped smss-table">
-					<thead><tr><th>Tài khoản</th><th>Điểm</th><th>Đã có</th><th>Hết hạn</th><th>Máy</th><th>Lần cuối vào shop</th><th>Link riêng</th><th></th></tr></thead>
+					<thead><tr><th>Tài khoản</th><th>Điểm</th><th>Đã có</th><th>Hết hạn</th><th>Máy</th><th>Lần cuối vào kho</th><th>Link riêng</th><th></th></tr></thead>
 					<tbody>
 					<?php if ( ! $accounts ) : ?>
 						<tr><td colspan="8" class="smss-empty">Chưa có tài khoản. Tạo ít nhất một tài khoản để đăng nhập trong Tinfoil.</td></tr>
@@ -567,7 +567,7 @@ gdrive:1AbC... | Tên game [0100ABCD12340000][v0].nsz | 5.2G"></textarea>
 		if ( is_wp_error( $res ) ) {
 			self::notice( 'error', $res->get_error_message() );
 		} else {
-			self::notice( 'success', 'Đã tạo tài khoản <b>' . esc_html( self::post( 'username' ) ) . '</b>, mật khẩu: <code>' . esc_html( self::post( 'password' ) ) . '</code> (chỉ hiện lần này, hãy gửi cho khách).' );
+			self::notice( 'success', 'Đã tạo tài khoản <b>' . esc_html( self::post( 'username' ) ) . '</b>, mật khẩu: <code>' . esc_html( self::post( 'password' ) ) . '</code> (chỉ hiện lần này, hãy gửi cho thành viên).' );
 		}
 		self::back( 'smss-accounts' );
 	}

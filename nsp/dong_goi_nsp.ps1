@@ -1,4 +1,4 @@
-﻿# SUPER MANH Shop - dong goi NSP tren PC cua ban.
+﻿# SUPER MANH Viet Hoa - dong goi NSP tren PC cua ban.
 # prod.keys chi doc tai cho, KHONG gui di dau.
 $ErrorActionPreference = 'Stop'
 $here    = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -6,7 +6,7 @@ $titleId = '05004d414e480000'
 Set-Location $here
 
 Write-Host '==================================================' -ForegroundColor DarkYellow
-Write-Host '   SUPER MANH Shop - DONG GOI NSP' -ForegroundColor Yellow
+Write-Host '   SUPER MANH Viet Hoa - DONG GOI NSP' -ForegroundColor Yellow
 Write-Host '==================================================' -ForegroundColor DarkYellow
 
 # 1) prod.keys
@@ -55,4 +55,4 @@ foreach ($d in @('hacbrewpack_temp', 'hacbrewpack_nca', 'hacbrewpack_backup')) {
 }
 Write-Host ''
 Write-Host "XONG: $final" -ForegroundColor Green
-Write-Host 'Cai file NSP nay bang Tinfoil / DBI / CyberFoil. Icon SUPER MANH Shop se hien o man hinh HOME.'
+Write-Host 'Cai file NSP nay bang Tinfoil / DBI / CyberFoil. Icon SUPER MANH Viet Hoa se hien o man hinh HOME.'

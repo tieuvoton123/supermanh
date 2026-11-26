@@ -4,7 +4,7 @@
             "sd": "Установка из SD-карты",
             "hdd": "Установка с USB SSD/HDD",
             "net": "Установка по сети",
-            "remote": "SUPER MANH Shop",
+            "remote": "Viet hoa library",
             "guide": "Connection guide",
             "usb": "Установка через NS-USBloader",
             "mtp": "Установка через MTP",
@@ -34,32 +34,32 @@
         },
         "applet": {
             "title": "Applet Mode не поддерживается",
-            "desc": "В SUPER MANH Shop могут возникнуть проблемы когда и если он запущен в режиме апплета.\nЕсли у вас есть трудности, пожалуйста запустите приложение через установленную игру\n(зажмите R при запуске)!"
+            "desc": "В SUPER MANH Viet Hoa могут возникнуть проблемы когда и если он запущен в режиме апплета.\nЕсли у вас есть трудности, пожалуйста запустите приложение через установленную игру\n(зажмите R при запуске)!"
         },
         "buttons": " Выбрать     Выход",
         "info": {
             "button": "Инфо",
-            "remote": "Open the SUPER MANH shop: see your activation code and install your Viet hoa patches.",
+            "remote": "Open the SUPER MANH Viet hoa library: see your activation code and install your patches.",
             "sd": "Устанавливайте NSP/NSZ/XCI/XCZ файлы, хранящиеся на SD-карте.",
             "hdd": "Устанавливайте файлы напрямую с подключенного USB SSD или жёсткого диска.",
             "mtp": "Подключите ПК по USB и устанавливайте, копируя файлы в папку установки MTP.",
             "usb": "Устанавливайте по USB с помощью инструментов, таких как NS-USBloader.",
             "net": "Устанавливайте файлы из LAN или интернет-источников.",
             "sig": "Устанавливайте, обновляйте или удаляйте сигнатурные патчи.",
-            "set": "Изменяйте параметры SUPER MANH Shop и настройки Remote.",
-            "backup": "Выполняет резервное копирование всех локальных сохранений выбранного пользователя на настроенный сервер Remote одним действием.\n\nКак это работает:\n1. Если пользователей несколько, сначала выберите нужную учетную запись.\n2. Если Remote не настроен, SUPER MANH Shop попробует сохраненные профили и при необходимости запросит URL Remote.\n3. Введите заметку к резервной копии (обязательно).\n4. SUPER MANH Shop просканирует локальные сохранения этого пользователя и загрузит каждое на сервер.\n5. Во время сканирования и загрузки показывается прогресс.\n6. В конце отображается сводка успешных и неудачных загрузок.",
-            "exit": "Закройте SUPER MANH Shop и вернитесь в HOME."
+            "set": "Изменяйте параметры SUPER MANH Viet Hoa и настройки Remote.",
+            "backup": "Выполняет резервное копирование всех локальных сохранений выбранного пользователя на настроенный сервер Remote одним действием.\n\nКак это работает:\n1. Если пользователей несколько, сначала выберите нужную учетную запись.\n2. Если Remote не настроен, SUPER MANH Viet Hoa попробует сохраненные профили и при необходимости запросит URL Remote.\n3. Введите заметку к резервной копии (обязательно).\n4. SUPER MANH Viet Hoa просканирует локальные сохранения этого пользователя и загрузит каждое на сервер.\n5. Во время сканирования и загрузки показывается прогресс.\n6. В конце отображается сводка успешных и неудачных загрузок.",
+            "exit": "Закройте SUPER MANH Viet Hoa и вернитесь в HOME."
         },
         "guide": {
-            "title": "How to connect to SUPER MANH Shop",
-            "desc": "1. Connect to Wi-Fi with Internet access (Wi-Fi that needs a web login\n   in a cafe or hotel will not work).\n2. Make sure the console date and time are correct.\n3. Open \"SUPER MANH Shop\". The first time it shows your\n   ACTIVATION CODE (XXXX XXXX).\n4. Send that code to SUPER MANH ({host}) and make your payment.\n5. Once activated: close this app completely, open it again, then\n   open the shop and download your patches.\n6. Unlock more patches with points at {host}/sm-khach\n   (activation code + the web PIN shown in the shop message).\n\nShop address: {shop}"
+            "title": "How to connect to the SUPER MANH library",
+            "desc": "1. Connect to Wi-Fi with Internet access (Wi-Fi that needs a web login\n   in a cafe or hotel will not work).\n2. Make sure the console date and time are correct.\n3. Open \"Viet hoa library\". The first time it shows your\n   ACTIVATION CODE (XXXX XXXX).\n4. Send that code to SUPER MANH ({host}) to get it activated.\n5. Once activated: close this app completely, open it again, then\n   open the library and download your patches.\n6. Unlock more patches with points at {host}/sm-khach\n   (activation code + the web PIN shown in the library message).\n\nLibrary address: {shop}"
         }
     },
     "inst": {
         "net": {
             "help": {
                 "title": "Помощь",
-                "desc": "Файлы могут быть установленны удалённо из другого вашего устройства используя такие утилиты как\nNS-USBloader в режиме Tinfoil. Чтобы передать файлы на Switch откройте одно из этих замечательных\nприложений на вашем ПК или мобильном устройстве, введите IP адрес вашего Switch (отображается на экране),\nвыберите файлы и затем загрузите их в вашу консоль! Если приложение которое вы используете не позволяет\nвыбрать определённый формат файла, попробуйте изменить его расширение.\nSUPER MANH Shop не чувствителен\nк расширениям файла при установке по сети!\n\nЕсли вы ничего не поняли, просто скопируйте файлы на SD-карту и выберите в главном меню опцию\n\"Установка из SD-карты\"!"
+                "desc": "Файлы могут быть установленны удалённо из другого вашего устройства используя такие утилиты как\nNS-USBloader в режиме Tinfoil. Чтобы передать файлы на Switch откройте одно из этих замечательных\nприложений на вашем ПК или мобильном устройстве, введите IP адрес вашего Switch (отображается на экране),\nвыберите файлы и затем загрузите их в вашу консоль! Если приложение которое вы используете не позволяет\nвыбрать определённый формат файла, попробуйте изменить его расширение.\nSUPER MANH Viet Hoa не чувствителен\nк расширениям файла при установке по сети!\n\nЕсли вы ничего не поняли, просто скопируйте файлы на SD-карту и выберите в главном меню опцию\n\"Установка из SD-карты\"!"
             },
             "src": {
                 "title": "Откуда будем устанавливать?",
@@ -218,18 +218,16 @@
         },
         "nca_verify": {
             "title": "Обнаружена неверная NCA подпись!",
-            "desc": "Неверно подписанное программное обеспечение должно устанавливаться исключительно из проверенных источников!\nФайлы содержащие перепакованные картриджи и разблокировщики DLC будут всегда приводить к показу этого\nпредупреждения. Вы можете отключить эту проверку в настройках SUPER MANH Shop\n Вы уверены что хотите продолжить установку?",
+            "desc": "Неверно подписанное программное обеспечение должно устанавливаться исключительно из проверенных источников!\nФайлы содержащие перепакованные картриджи и разблокировщики DLC будут всегда приводить к показу этого\nпредупреждения. Вы можете отключить эту проверку в настройках SUPER MANH Viet Hoa\n Вы уверены что хотите продолжить установку?",
             "opt1": "Да, я понимаю все риски",
             "error": "Запрашиваемый NCA неверно подписан: "
         },
         "finished": [
-            "Наслаждайтесь вашими \"легальными копиями\"!",
-            "Уверены, оценив игру вы получите массу удовольствия действительно купив её!",
-            "Семпай ведь купил игру, правда? Nintendo-сан благодарит Вас за покупку!",
-            "Обходить DRM - бесценно! Разве нет?",
-            "Возможно вы сохранили порядка шести деревьев просто не купив эту игру! И весь пластик куда-то делся!",
-            "Ниндзи из Nintendo успешно выяснили ваше текущее местоположение.",
-            "Чтобы сделать всё верно нам даже не потребовалось промывать вам мозги политическими заявлениями!"
+            "Have fun playing!",
+            "Thanks for supporting SUPER MANH!",
+            "Your Viet hoa patch is ready, enjoy the game!",
+            "Found a typo or translation issue? Tell SUPER MANH so we can fix it!",
+            "Follow supermanh.com for new Viet hoa patches!"
         ]
     },
     "sig": {
@@ -242,7 +240,7 @@
         "backup_failed": "Не удалось сделать копию Hekate patches.ini! Всё равно установить?",
         "backup_failed_desc": "Игнорируйте это предупреждение если вы не исользуете Hekate.",
         "download_failed": "Не удалось загрузить signature patches",
-        "download_failed_desc": "Возможно вы указали неправильный источник в настройках SUPER MANH Shop,\nили же сервер просто недоступен.",
+        "download_failed_desc": "Возможно вы указали неправильный источник в настройках SUPER MANH Viet Hoa,\nили же сервер просто недоступен.",
         "version_text2": "Ваши signature patches были обновлены до HOS версии ",
         "install_complete": "Установка завершена!",
         "complete_desc": "Презапустите вашу консоль чтобы изменения вступили в силу",
@@ -279,7 +277,7 @@
             "remote_start_grid_mode": "Запускать Remote в виде сетки",
             "remote_reset_icons": "Сбросить кэш иконок Remote",
             "language": "Язык: ",
-            "check_update": "Проверить наличие обновлений SUPER MANH Shop",
+            "check_update": "Проверить наличие обновлений SUPER MANH Viet Hoa",
             "credits": "Благодарности",
             "sound": "Включить звуки",
             "oled": "Включить режим OLED",
@@ -303,17 +301,17 @@
         },
         "update": {
             "title": "Доступно обновление",
-            "desc0": "SUPER MANH Shop ",
+            "desc0": "SUPER MANH Viet Hoa ",
             "desc1": " уже доступен! Готовы обновиться?",
             "opt0": "Обновление",
-            "top_info": "Обновление SUPER MANH Shop ",
-            "bot_info": "Загрузка SUPER MANH Shop ",
-            "bot_info2": "Извлечение SUPER MANH Shop ",
+            "top_info": "Обновление SUPER MANH Viet Hoa ",
+            "bot_info": "Загрузка SUPER MANH Viet Hoa ",
+            "bot_info2": "Извлечение SUPER MANH Viet Hoa ",
             "complete": "Обновление завершено!",
             "failed": "Обновление провалилось!",
             "end_desc": "Сейчас приложение будет закрыто.",
             "title_check_fail": "Обновлений нет",
-            "desc_check_fail": "Вы уже используете последнюю версию SUPER MANH Shop!"
+            "desc_check_fail": "Вы уже используете последнюю версию SUPER MANH Viet Hoa!"
         },
         "credits": {
             "title": "Выражаем благодарность следующим людям:",
@@ -324,7 +322,7 @@
             "desc": "После изменения языка приложение будет закрыто. Нажмите \"B\" для отмены.",
             "system_language": "Системный"
         },
-        "title": "Изменение настроек SUPER MANH Shop!",
+        "title": "Изменение настроек SUPER MANH Viet Hoa!",
         "buttons": " Выбрать/Изменить     Отмена"
     },
     "common": {

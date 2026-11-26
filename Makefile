@@ -51,7 +51,7 @@ DATA		:=	data
 INCLUDES	:=	include include/ui include/data include/install include/nx include/nx/ipc include/util \
 				include/libusbhsfs/include include/libusbhsfs/source \
 				$(PLUTONIUM_INCLUDE_SWITCH) $(PLUTONIUM_INCLUDE_OUTPUT) $(PLUTONIUM_INCLUDE_SOURCE) external/libhaze/include
-APP_TITLE	:=	SUPER MANH Shop
+APP_TITLE	:=	SUPER MANH Viet Hoa
 APP_AUTHOR	:=	supermanh.com (CyberFoil by luketanti)
 APP_VERSION	:=	1.5.1
 GIT_COMMIT	:=	$(shell if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then git rev-parse --short=8 HEAD 2>/dev/null; elif [ -n "$$GITHUB_SHA" ]; then printf "%s" "$$GITHUB_SHA" | cut -c1-8; else echo nogit; fi)
@@ -65,7 +65,7 @@ APP_VERSION_FULL := $(APP_VERSION)+$(GIT_COMMIT).$(GIT_STATUS)
 endif
 # --- SUPER MANH branding (override on the make command line or in CI) ---
 SMSS_SHOP_URL     ?= https://supermanh.com/tinfoil
-SMSS_SHOP_TITLE   ?= SUPER MANH Shop
+SMSS_SHOP_TITLE   ?= SUPER MANH Viet Hoa
 SMSS_UPDATE_REPO  ?=
 # Single quotes keep the spaces in the title inside one shell word.
 SMSS_DEFINES := '-DSMSS_SHOP_URL="$(SMSS_SHOP_URL)"' '-DSMSS_SHOP_TITLE="$(SMSS_SHOP_TITLE)"' '-DSMSS_UPDATE_REPO="$(SMSS_UPDATE_REPO)"'

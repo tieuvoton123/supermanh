@@ -228,7 +228,7 @@ class SMSS_API {
 		}
 		$points = (int) $req->get_param( 'points' );
 		if ( $points > 0 ) {
-			SMSS_Points::topup( $id, $points, 'Nạp lúc tạo tài khoản' );
+			SMSS_Points::topup( $id, $points, 'Cộng điểm lúc tạo tài khoản' );
 		}
 		$a = SMSS_Accounts::get( $id );
 		return array(

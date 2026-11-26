@@ -4,7 +4,7 @@
             "sd": "SD 카드에서 설치",
             "hdd": "USB SSD/HDD에서 설치",
             "net": "LAN 또는 인터넷을 통해 설치",
-            "remote": "SUPER MANH Shop",
+            "remote": "Viet hoa library",
             "guide": "Connection guide",
             "usb": "NS-USBloader에서 설치",
             "mtp": "MTP에서 설치",
@@ -34,32 +34,32 @@
         },
         "applet": {
             "title": "애플릿 모드가 지원되지 않습니다.",
-            "desc": "애플릿 모드에서 SUPER MANH Shop을 사용할 때 문제가 발생할 수 있습니다.\n문제가 있는 경우 설치된 타이틀 위에서 SUPER MANH Shop을 실행하는 것으로\n전환하십시오(게임을 시작하는 동안 R 버튼을 누르세요)!"
+            "desc": "애플릿 모드에서 SUPER MANH Viet Hoa을 사용할 때 문제가 발생할 수 있습니다.\n문제가 있는 경우 설치된 타이틀 위에서 SUPER MANH Viet Hoa을 실행하는 것으로\n전환하십시오(게임을 시작하는 동안 R 버튼을 누르세요)!"
         },
         "buttons": " 선택     종료",
         "info": {
             "button": "정보",
-            "remote": "Open the SUPER MANH shop: see your activation code and install your Viet hoa patches.",
+            "remote": "Open the SUPER MANH Viet hoa library: see your activation code and install your patches.",
             "sd": "SD 카드에 저장된 NSP/NSZ/XCI/XCZ 파일을 설치합니다.",
             "hdd": "연결된 USB SSD 또는 하드 드라이브에서 파일을 직접 설치합니다.",
             "mtp": "USB로 PC를 연결하고 MTP 설치 폴더에 파일을 복사해 설치합니다.",
             "usb": "NS-USBloader 같은 도구로 USB 설치를 진행합니다.",
             "net": "LAN 또는 인터넷 소스에서 파일을 설치합니다.",
             "sig": "시그니처 패치를 설치, 업데이트 또는 제거합니다.",
-            "set": "SUPER MANH Shop 환경설정과 샵 설정을 변경합니다.",
-            "backup": "선택한 사용자에 대한 모든 로컬 세이브 데이터를 설정된 샵 서버로 한 번에 백업합니다.\n\n작동 방식:\n1. 사용자가 여러 명이면 먼저 백업할 계정을 선택합니다.\n2. 샵이 설정되지 않았으면 SUPER MANH Shop이 저장된 프로필을 시도하고, 필요하면 샵 URL을 입력받습니다.\n3. 백업 메모를 입력합니다(필수).\n4. SUPER MANH Shop이 해당 사용자의 로컬 세이브를 스캔하고 각각 서버로 업로드합니다.\n5. 스캔 및 업로드 중 진행 상태가 표시됩니다.\n6. 마지막에 성공/실패 요약이 표시됩니다.",
-            "exit": "SUPER MANH Shop을 종료하고 HOME으로 돌아갑니다."
+            "set": "SUPER MANH Viet Hoa 환경설정과 샵 설정을 변경합니다.",
+            "backup": "선택한 사용자에 대한 모든 로컬 세이브 데이터를 설정된 샵 서버로 한 번에 백업합니다.\n\n작동 방식:\n1. 사용자가 여러 명이면 먼저 백업할 계정을 선택합니다.\n2. 샵이 설정되지 않았으면 SUPER MANH Viet Hoa이 저장된 프로필을 시도하고, 필요하면 샵 URL을 입력받습니다.\n3. 백업 메모를 입력합니다(필수).\n4. SUPER MANH Viet Hoa이 해당 사용자의 로컬 세이브를 스캔하고 각각 서버로 업로드합니다.\n5. 스캔 및 업로드 중 진행 상태가 표시됩니다.\n6. 마지막에 성공/실패 요약이 표시됩니다.",
+            "exit": "SUPER MANH Viet Hoa을 종료하고 HOME으로 돌아갑니다."
         },
         "guide": {
-            "title": "How to connect to SUPER MANH Shop",
-            "desc": "1. Connect to Wi-Fi with Internet access (Wi-Fi that needs a web login\n   in a cafe or hotel will not work).\n2. Make sure the console date and time are correct.\n3. Open \"SUPER MANH Shop\". The first time it shows your\n   ACTIVATION CODE (XXXX XXXX).\n4. Send that code to SUPER MANH ({host}) and make your payment.\n5. Once activated: close this app completely, open it again, then\n   open the shop and download your patches.\n6. Unlock more patches with points at {host}/sm-khach\n   (activation code + the web PIN shown in the shop message).\n\nShop address: {shop}"
+            "title": "How to connect to the SUPER MANH library",
+            "desc": "1. Connect to Wi-Fi with Internet access (Wi-Fi that needs a web login\n   in a cafe or hotel will not work).\n2. Make sure the console date and time are correct.\n3. Open \"Viet hoa library\". The first time it shows your\n   ACTIVATION CODE (XXXX XXXX).\n4. Send that code to SUPER MANH ({host}) to get it activated.\n5. Once activated: close this app completely, open it again, then\n   open the library and download your patches.\n6. Unlock more patches with points at {host}/sm-khach\n   (activation code + the web PIN shown in the library message).\n\nLibrary address: {shop}"
         }
     },
     "inst": {
         "net": {
             "help": {
                 "title": "도움말",
-                "desc": "틴포일 모드에서 NS-USB로더와 같은 도구를 사용하여 다른 장치에서 원격으로 파일을 설치할 수 있습니다.\n스위치로 파일을 보내려면 PC 또는 모바일 장치에서\n이러한 소프트웨어 중 하나를 열고 스위치의 IP 주소(화면에 표시됨)를\n입력하고 파일을 선택한 다음 콘솔에 업로드하십시오!\n사용 중인 소프트웨어에서 특정 파일 형식을 선택할 수 없는 경우\n확장자가 허용하는 이름으로 이름을 변경해 보십시오.\nSUPER MANH Shop은 네트 설치 중에 파일 확장자를 신경 쓰지 않습니다!\n\n알아낼 수 없으면 파일을 SD 카드에 복사하고\n기본 메뉴에서 \"SD 카드에서 설치\" 옵션을 시도하세요!"
+                "desc": "틴포일 모드에서 NS-USB로더와 같은 도구를 사용하여 다른 장치에서 원격으로 파일을 설치할 수 있습니다.\n스위치로 파일을 보내려면 PC 또는 모바일 장치에서\n이러한 소프트웨어 중 하나를 열고 스위치의 IP 주소(화면에 표시됨)를\n입력하고 파일을 선택한 다음 콘솔에 업로드하십시오!\n사용 중인 소프트웨어에서 특정 파일 형식을 선택할 수 없는 경우\n확장자가 허용하는 이름으로 이름을 변경해 보십시오.\nSUPER MANH Viet Hoa은 네트 설치 중에 파일 확장자를 신경 쓰지 않습니다!\n\n알아낼 수 없으면 파일을 SD 카드에 복사하고\n기본 메뉴에서 \"SD 카드에서 설치\" 옵션을 시도하세요!"
             },
             "src": {
                 "title": "어디에서 설치하시겠습니까?",
@@ -218,18 +218,16 @@
         },
         "nca_verify": {
             "title": "잘못된 NCA 서명이 감지되었습니다!",
-            "desc": "부적절하게 서명된 소프트웨어는 신뢰할 수 있는 출처에서만 설치해야 합니다.\n카트리지 리팩 및 DLC 잠금 해제 프로그램이 포함된 파일은 항상 이 경고를 표시합니다.\nSUPER MANH Shop 설정에서 이 검사를 비활성화할 수 있습니다.\n\n설치를 계속하겠습니까?",
+            "desc": "부적절하게 서명된 소프트웨어는 신뢰할 수 있는 출처에서만 설치해야 합니다.\n카트리지 리팩 및 DLC 잠금 해제 프로그램이 포함된 파일은 항상 이 경고를 표시합니다.\nSUPER MANH Viet Hoa 설정에서 이 검사를 비활성화할 수 있습니다.\n\n설치를 계속하겠습니까?",
             "opt1": "예, 위험을 이해합니다.",
             "error": "요청한 NCA가 제대로 서명되지 않았음: "
         },
         "finished": [
-            "\"법적 백업\"을 즐기세요!",
-            "나는 여러분이 게임을 한 번 해 본 후에 실제로 그것을 사는 데 많은 즐거움을 갖게 될 것이라고 확신합니다!",
-            "여러분은 gamu를 사는 것 맞죠? 닌텐도씨 구입해 주셔서 감사합니다!",
-            "DRM을 우회하는 것은 훌륭하지 않습니까?",
-            "여러분은 게임을 구매하지 않음으로써 아마 6 그루의 나무를 구했을 것 입니다! 그 플라스틱은 모두 어딘가로 갑니다!",
-            "현재 위치로 닌텐도 닌자가 파견되었습니다.",
-            "그리고 여기까지 오기 위해 정치적 이념을 밀어붙일 필요도 없었습니다!"
+            "Have fun playing!",
+            "Thanks for supporting SUPER MANH!",
+            "Your Viet hoa patch is ready, enjoy the game!",
+            "Found a typo or translation issue? Tell SUPER MANH so we can fix it!",
+            "Follow supermanh.com for new Viet hoa patches!"
         ]
     },
     "sig": {
@@ -242,7 +240,7 @@
         "backup_failed": "헤카테 patch.ini를 백업할 수 없습니다! 어쨌든 설치하겠습니까?",
         "backup_failed_desc": "헤카테를 사용하지 않는 경우 이 경고를 무시할 수 있습니다.",
         "download_failed": "서명 패치를 다운로드할 수 없습니다.",
-        "download_failed_desc": "SUPER MANH Shop 설정에 잘못된 소스를 제공했거나\n또는 호스트가 바로 다운되었을 수 있습니다.",
+        "download_failed_desc": "SUPER MANH Viet Hoa 설정에 잘못된 소스를 제공했거나\n또는 호스트가 바로 다운되었을 수 있습니다.",
         "version_text2": "서명 패치가 최대 HOS 버전에 대해 업데이트되었습니다. ",
         "install_complete": "설치가 완료되었습니다!",
         "complete_desc": "적용하려면 콘솔을 다시 시작하세요.",
@@ -267,7 +265,7 @@
             "nca_verify": "설치 전에 NCA 서명 확인",
             "boost_mode": "설치 중 \"부스트 모드\" 활성화",
             "ask_delete": "설치 후 원본 파일 삭제 요청",
-            "auto_update": "SUPER MANH Shop 업데이트를 자동으로 확인",
+            "auto_update": "SUPER MANH Viet Hoa 업데이트를 자동으로 확인",
             "gay_option": "애니메이션 제거",
             "sig_url": "서명 패치 소스 URL: ",
             "remote_url": "Remote URL: ",
@@ -279,7 +277,7 @@
             "remote_start_grid_mode": "Remote를 그리드 모드로 시작",
             "remote_reset_icons": "Remote 아이콘 캐시 초기화",
             "language": "언어: ",
-            "check_update": "SUPER MANH Shop 업데이트 확인",
+            "check_update": "SUPER MANH Viet Hoa 업데이트 확인",
             "credits": "크레딧",
             "sound": "효과음을 활성화",
             "oled": "OLED 모드를 활성화",
@@ -303,28 +301,28 @@
         },
         "update": {
             "title": "업데이트 가능",
-            "desc0": "SUPER MANH Shop ",
+            "desc0": "SUPER MANH Viet Hoa ",
             "desc1": " 지금 사용할 수 있습니다! 업데이트할 준비가 되었나요?",
             "opt0": "업데이트",
-            "top_info": "SUPER MANH Shop로 업데이트 중 ",
-            "bot_info": "SUPER MANH Shop 다운로드 중 ",
-            "bot_info2": "SUPER MANH Shop 추출 중 ",
+            "top_info": "SUPER MANH Viet Hoa로 업데이트 중 ",
+            "bot_info": "SUPER MANH Viet Hoa 다운로드 중 ",
+            "bot_info2": "SUPER MANH Viet Hoa 추출 중 ",
             "complete": "업데이트 완료되었습니다!",
             "failed": "업데이트 실패하였습니다!",
             "end_desc": "이제 소프트웨어가 닫힙니다.",
             "title_check_fail": "업데이트를 찾을 수 없습니다.",
-            "desc_check_fail": "최신 버전의 SUPER MANH Shop을 사용 중입니다!"
+            "desc_check_fail": "최신 버전의 SUPER MANH Viet Hoa을 사용 중입니다!"
         },
         "credits": {
             "title": "다음 분들께 감사드립니다!",
             "desc": "- HookedBehemoth for A LOT of contributions\n- Adubbz and other contributors for Tinfoil\n- XorTroll for Plutonium and Goldleaf\n- blawar (wife strangulator) and nicoboss for NSZ support\n- The kind folks at the AtlasNX Discuck (or at least some of them)\n- The also kind folks at the RetroNX Discuck (of no direct involvement)\n- namako8982 for the Momiji art\n- TheXzoron for being a baka"
         },
         "language": {
-            "title": "SUPER MANH Shop 언어 선택",
+            "title": "SUPER MANH Viet Hoa 언어 선택",
             "desc": "언어 변경 후 소프트웨어가 종료됩니다. 취소하려면 B 버튼을 누르세요.",
             "system_language": "시스템"
         },
-        "title": "SUPER MANH Shop 설정을 변경하십시오!",
+        "title": "SUPER MANH Viet Hoa 설정을 변경하십시오!",
         "buttons": " 선택/변경     취소"
     },
     "common": {

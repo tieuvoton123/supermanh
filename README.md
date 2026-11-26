@@ -1,4 +1,4 @@
-# SUPER MẠNH Shop (Switch)
+# SUPER MẠNH Việt Hóa (Switch)
 
 Bản thương hiệu SUPER MẠNH dựa trên [CyberFoil](https://github.com/luketanti/CyberFoil) (GPL-3.0). Hướng dẫn: [HUONG_DAN_SUPERMANH.md](HUONG_DAN_SUPERMANH.md)
 

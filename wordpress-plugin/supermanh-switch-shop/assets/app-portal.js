@@ -14,7 +14,7 @@
 
 	function login() {
 		app.innerHTML =
-			'<div class="login"><div class="logo"></div><h1>SUPER MẠNH Shop</h1><p class="sub">Nhập <b>mã kích hoạt</b> hiện trong Tinfoil, hoặc tài khoản shop</p>' +
+			'<div class="login"><div class="logo"></div><h1>SUPER MẠNH Việt Hóa</h1><p class="sub">Nhập <b>mã kích hoạt</b> hiện trong Tinfoil, hoặc tài khoản thành viên</p>' +
 			'<form data-f><div class="field"><label>Mã kích hoạt hoặc tên đăng nhập</label><input class="input" name="u" autocomplete="username" autocapitalize="none" placeholder="ABCD 1234" required></div>' +
 			'<div class="field"><label>Mật khẩu, hoặc <b>PIN web</b> hiện trong Tinfoil nếu dùng mã kích hoạt</label><input class="input" name="p" type="password" autocomplete="current-password" required></div>' +
 			'<button class="btn pri full" type="submit">Đăng nhập</button></form>' +
@@ -100,7 +100,7 @@
 		var item = me.items.filter(function (i) { return i.id === id; })[0];
 		if (!item) return;
 		if (me.account.points < item.price) {
-			S.sheet('<h3>Chưa đủ ' + esc(P) + '</h3><p>Bản này cần <b class="pts">' + num(item.price) + '</b>, bạn đang có <b>' + num(me.account.points) + '</b>.</p><p>Liên hệ <b>' + esc(me.contact) + '</b> để nạp thêm.</p><button class="btn full" data-close>Đóng</button>');
+			S.sheet('<h3>Chưa đủ ' + esc(P) + '</h3><p>Bản này cần <b class="pts">' + num(item.price) + '</b>, bạn đang có <b>' + num(me.account.points) + '</b>.</p><p>Liên hệ <b>' + esc(me.contact) + '</b> để được cộng thêm điểm.</p><button class="btn full" data-close>Đóng</button>');
 			return;
 		}
 		S.confirm('Mở khoá bản này?', esc(item.name) + '<br><br>Trừ <b class="pts">' + num(item.price) + ' ' + esc(P) + '</b>, còn lại ' + num(me.account.points - item.price) + '.', 'Mở khoá').then(function (ok) {
@@ -109,7 +109,7 @@
 				me.account.points = r.balance;
 				item.owned = true;
 				render();
-				S.sheet('<h3>Đã mở khoá 🎉</h3><p>' + esc(item.name) + '</p><p class="note" style="color:var(--text)">Mở <b>Tinfoil</b> trên Switch, vào lại shop <b>' + esc(me.tinfoil.title) + '</b> là thấy và tải được ngay.</p><button class="btn pri full" data-close>OK</button>');
+				S.sheet('<h3>Đã mở khoá 🎉</h3><p>' + esc(item.name) + '</p><p class="note" style="color:var(--text)">Mở <b>Tinfoil</b> trên Switch, vào lại kho <b>' + esc(me.tinfoil.title) + '</b> là thấy và tải được ngay.</p><button class="btn pri full" data-close>OK</button>');
 			}).catch(fail);
 		});
 	}
@@ -118,20 +118,20 @@
 		var t = me.tinfoil;
 		var kv = function (k, v) { return '<dt>' + esc(k) + '</dt><dd>' + esc(v) + '</dd><button class="copy" data-copy="' + esc(v) + '">Chép</button>'; };
 		document.getElementById('pane').innerHTML =
-			'<div class="card"><h2>Thêm shop vào Tinfoil (làm 1 lần)</h2>' +
+			'<div class="card"><h2>Thêm kho vào Tinfoil (làm 1 lần)</h2>' +
 			'<p>Trên Switch mở <b>Tinfoil → File Browser</b>, nhấn nút <b>(-)</b> rồi điền:</p><dl class="kv">' +
 				kv('Protocol', t.protocol) + kv('Host', t.host) + kv('Port', String(t.port)) + kv('Path', t.path) +
 				(t.code ? '<dt>Username</dt><dd style="color:var(--dim)">để trống</dd><span></span><dt>Password</dt><dd style="color:var(--dim)">để trống</dd><span></span>'
 					: kv('Username', t.username) + '<dt>Password</dt><dd style="color:var(--dim)">mật khẩu của bạn</dd><span></span>') + kv('Title', t.title) +
-			'</dl><p class="note" style="margin:12px 0 0">Nhấn <b>(X)</b> để lưu. Mở lại Tinfoil, các bản bạn đã mở khoá sẽ hiện trong mục <b>New Games</b> / shop <b>' + esc(t.title) + '</b>.</p></div>' +
-			'<div class="card"><h2>Lưu ý</h2><p class="note" style="margin:0">• Mở khoá thêm bản mới: vào lại shop trong Tinfoil là thấy ngay.<br>• Tài khoản có thể bị giới hạn số máy Switch.<br>• Đừng chia sẻ mật khẩu cho người khác.</p></div>';
+			'</dl><p class="note" style="margin:12px 0 0">Nhấn <b>(X)</b> để lưu. Mở lại Tinfoil, các bản bạn đã mở khoá sẽ hiện trong mục <b>New Games</b> / kho <b>' + esc(t.title) + '</b>.</p></div>' +
+			'<div class="card"><h2>Lưu ý</h2><p class="note" style="margin:0">• Mở khoá thêm bản mới: vào lại kho trong Tinfoil là thấy ngay.<br>• Tài khoản có thể bị giới hạn số máy Switch.<br>• Đừng chia sẻ mật khẩu cho người khác.</p></div>';
 		document.getElementById('pane').addEventListener('click', function (e) {
 			var c = e.target.closest('[data-copy]');
 			if (c) S.copy(c.getAttribute('data-copy'));
 		});
 	}
 
-	var TYPE = { topup: 'Nạp', unlock: 'Mở khoá', adjust: 'Điều chỉnh', refund: 'Hoàn' };
+	var TYPE = { topup: 'Cộng', unlock: 'Mở khoá', adjust: 'Điều chỉnh', refund: 'Hoàn' };
 
 	function paneHist() {
 		document.getElementById('pane').innerHTML = '<div class="list">' + (me.history.length ? me.history.map(function (h) {
