@@ -25,7 +25,7 @@
 namespace inst::ui {
     extern MainApplication *mainApp;
 
-    std::vector<std::string> languageStrings = {"English", "日本語", "Français", "Deutsch", "Italiano", "Español", "Português", "Korean", "Русский", "簡体中文","繁體中文"};
+    std::vector<std::string> languageStrings = {"English", "Japanese", "Français", "Deutsch", "Italiano", "Español", "Português", "Korean", "Русский", "Chinese (Simplified)", "Chinese (Traditional)"};
 
     namespace {
         // Keep the form highlight in place while its dropdown handles input.
@@ -620,6 +620,8 @@ namespace inst::ui {
                 return languageStrings[9];
             case 11:
                 return languageStrings[10];
+            case 100:
+                return "Tiếng Việt";
             default:
                 return "options.language.system_language"_lang;
         }
@@ -1622,46 +1624,15 @@ namespace inst::ui {
                     this->refreshOptions();
                     break;
                 case 16:
-                    languageList = languageStrings;
+                    languageList = {"Tiếng Việt"};
+                    languageList.insert(languageList.end(), languageStrings.begin(), languageStrings.end());
                     languageList.push_back("options.language.system_language"_lang);
                     rc = inst::ui::mainApp->CreateShowDialog("options.language.title"_lang, "options.language.desc"_lang, languageList, false);
                     if (rc == -1) break;
-                    switch(rc) {
-                        case 0:
-                            inst::config::languageSetting = 1;
-                            break;
-                        case 1:
-                            inst::config::languageSetting = 0;
-                            break;
-                        case 2:
-                            inst::config::languageSetting = 2;
-                            break;
-                        case 3:
-                            inst::config::languageSetting = 3;
-                            break;
-                        case 4:
-                            inst::config::languageSetting = 4;
-                            break;
-                        case 5:
-                            inst::config::languageSetting = 14;
-                            break;
-                        case 6:
-                            inst::config::languageSetting = 9;
-                            break;
-                        case 7:
-                            inst::config::languageSetting = 7;
-                            break;
-                        case 8:
-                            inst::config::languageSetting = 10;
-                            break;
-                        case 9:
-                            inst::config::languageSetting = 6;
-                            break;
-                        case 10:
-                            inst::config::languageSetting = 11;
-                            break;
-                        default:
-                            inst::config::languageSetting = 99;
+                    {
+                        // 0 = Tiếng Việt, then the original list, then System.
+                        static const int kCodes[] = {100, 1, 0, 2, 3, 4, 14, 9, 7, 10, 6, 11};
+                        inst::config::languageSetting = (rc >= 0 && rc < static_cast<int>(sizeof(kCodes) / sizeof(kCodes[0]))) ? kCodes[rc] : 99;
                     }
                     inst::config::setConfig();
                     mainApp->FadeOut();

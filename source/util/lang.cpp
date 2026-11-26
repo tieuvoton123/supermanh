@@ -13,6 +13,9 @@ using json = nlohmann::json;
 namespace Language {
     json lang;
 
+    // SUPER MANH: not a SetLanguage value, stored as-is in config.json.
+    constexpr int kLanguageVietnamese = 100;
+
     int ResolveConfiguredLanguage()
     {
         int langInt = inst::config::languageSetting;
@@ -32,7 +35,12 @@ namespace Language {
         std::ifstream ifs;
         std::string languagePath;
         int langInt = ResolveConfiguredLanguage();
-        switch (langInt) {
+        if (langInt == kLanguageVietnamese) {
+            // The console's shared font lacks most Vietnamese letters (ạ, ế, ữ...).
+            pu::ui::render::SetDefaultFont("romfs:/fonts/vi.ttf");
+            languagePath = "romfs:/lang/vi.json";
+        }
+        else switch (langInt) {
             case SetLanguage_JA:
                 languagePath = "romfs:/lang/jp.json";
                 break;
@@ -122,6 +130,8 @@ namespace Language {
     {
         const int langInt = ResolveConfiguredLanguage();
         switch (langInt) {
+            case 100:
+                return "vi";
             case SetLanguage_JA:
                 return "ja";
             case SetLanguage_FR:

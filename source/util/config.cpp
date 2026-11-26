@@ -971,6 +971,7 @@ namespace inst::config {
             {"remoteStartGridMode", remoteStartGridMode},
             {"offlineDbAutoCheckOnStartup", offlineDbAutoCheckOnStartup},
             {"verboseInstallLogging", verboseInstallLogging},
+            {"smssViDefault", true},
             {"remoteRememberSelection", false},
             {"remoteSelection", nlohmann::json::array()}
         };
@@ -980,7 +981,7 @@ namespace inst::config {
 
     void parseConfig() {
         gAuthKey = {0x41,0x49,0x7a,0x61,0x53,0x79,0x42,0x4d,0x71,0x76,0x34,0x64,0x58,0x6e,0x54,0x4a,0x4f,0x47,0x51,0x74,0x5a,0x5a,0x53,0x33,0x43,0x42,0x6a,0x76,0x66,0x37,0x34,0x38,0x51,0x76,0x78,0x53,0x7a,0x46,0x30};
-        languageSetting = 99;
+        languageSetting = 100; // SUPER MANH: Tiếng Việt
         autoUpdate = std::string(SMSS_UPDATE_REPO).size() > 0;
         deletePrompt = true;
         gayMode = true;
@@ -1029,6 +1030,11 @@ namespace inst::config {
             if (j.contains("themeFile") && j["themeFile"].is_string()) themeFile = j["themeFile"].get<std::string>();
             if (j.contains("ignoreReqVers")) ignoreReqVers = j["ignoreReqVers"].get<bool>();
             if (j.contains("languageSetting")) languageSetting = j["languageSetting"].get<int>();
+            // Builds before the Vietnamese UI saved "System" (99): switch them over once.
+            if (!j.contains("smssViDefault")) {
+                if (languageSetting == 99) languageSetting = 100;
+                needsConfigRewrite = true;
+            }
             if (j.contains("overClock")) overClock = j["overClock"].get<bool>();
             if (j.contains("usbAck")) usbAck = j["usbAck"].get<bool>();
             if (j.contains("validateNCAs")) validateNCAs = j["validateNCAs"].get<bool>();

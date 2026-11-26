@@ -1,0 +1,337 @@
+{
+    "main": {
+        "menu": {
+            "sd": "Cài từ thẻ nhớ SD",
+            "hdd": "Cài từ ổ USB SSD/HDD",
+            "net": "Cài qua mạng LAN / Internet",
+            "remote": "Cài từ Shop (Remote)",
+            "usb": "Cài từ NS-USBloader",
+            "mtp": "Cài qua MTP (cắm máy tính)",
+            "backup": "Sao lưu dữ liệu save",
+            "sig": "Quản lý signature patches",
+            "set": "Cài đặt",
+            "exit": "Thoát"
+        },
+        "net": {
+            "title": "Chưa có kết nối mạng",
+            "desc": "Kiểm tra đã tắt chế độ máy bay và máy đang kết nối Wi-Fi."
+        },
+        "usb": {
+            "warn": {
+                "title": "Lưu ý!",
+                "desc": "Cài qua USB có thể không ổn định trên một số máy và cách kết nối.\nNếu gặp lỗi khi cài qua USB, nên dùng NS-USBloader, hoặc cài qua\nLAN/Internet, nhất là khi có bộ chuyển đổi mạng dây (ethernet).\n\nBạn đã được nhắc trước...",
+                "opt1": "Không nhắc lại"
+            },
+            "error": {
+                "title": "Chưa nhận kết nối USB",
+                "desc": "Cắm vào thiết bị tương thích để cài qua USB"
+            }
+        },
+        "hdd": {
+            "title": "Chưa nhận ổ USB",
+            "notfound": "Cắm ổ USB SSD hoặc ổ cứng để cài từ đó."
+        },
+        "applet": {
+            "title": "Không hỗ trợ chế độ Applet",
+            "desc": "SUPER MẠNH Shop có thể bị lỗi khi chạy ở chế độ Applet (Album).\nHãy mở SUPER MẠNH Shop qua một game đã cài (giữ R khi bấm vào game)!"
+        },
+        "buttons": " Chọn     Thoát",
+        "info": {
+            "button": "Thông tin",
+            "remote": "Duyệt shop và chọn bản cần cài từ shop của bạn.",
+            "sd": "Cài file NSP/NSZ/XCI/XCZ có trong thẻ nhớ SD.",
+            "hdd": "Cài file trực tiếp từ ổ USB SSD hoặc ổ cứng đang cắm.",
+            "mtp": "Cắm máy tính qua USB và cài bằng cách chép file vào thư mục MTP Install.",
+            "usb": "Cài qua USB từ công cụ như NS-USBloader.",
+            "net": "Cài file từ mạng LAN hoặc Internet.",
+            "sig": "Cài, cập nhật hoặc gỡ signature patches.",
+            "set": "Thay đổi cài đặt SUPER MẠNH Shop và shop.",
+            "backup": "Tải toàn bộ save trên máy của người dùng đã chọn lên shop chỉ với một thao tác.\n\nCách hoạt động:\n1. Nếu máy có nhiều người dùng, chọn tài khoản cần sao lưu.\n2. Nếu chưa cài shop, SUPER MẠNH Shop thử các shop đã lưu trước, rồi hỏi địa chỉ shop.\n3. Nhập ghi chú cho bản sao lưu (bắt buộc).\n4. SUPER MẠNH Shop quét save trên máy của người dùng đó và tải từng cái lên máy chủ.\n5. Tiến trình hiện trong lúc quét và tải lên.\n6. Cuối cùng hiện tổng kết số save tải lên thành công và thất bại.",
+            "exit": "Đóng SUPER MẠNH Shop và về màn hình HOME."
+        }
+    },
+    "inst": {
+        "net": {
+            "help": {
+                "title": "Hướng dẫn",
+                "desc": "Có thể cài file từ thiết bị khác qua mạng bằng công cụ như NS-USBloader\n(chế độ Tinfoil). Mở phần mềm đó trên máy tính hoặc điện thoại, nhập địa chỉ IP\ncủa Switch (hiện trên màn hình), chọn file rồi gửi sang máy! Nếu phần mềm\nkhông cho chọn loại file, thử đổi đuôi file sang loại nó chấp nhận.\nSUPER MẠNH Shop không quan tâm đuôi file khi cài qua mạng!\n\nNếu vẫn không làm được, chép file vào thẻ nhớ SD rồi chọn\n\"Cài từ thẻ nhớ SD\" ở menu chính!"
+            },
+            "src": {
+                "title": "Bạn muốn cài từ đâu?",
+                "opt0": "Đường link (URL)",
+                "opt1": "Google Drive"
+            },
+            "url": {
+                "hint": "Nhập địa chỉ Internet của file",
+                "invalid": "Đường link không hợp lệ!",
+                "source_string": " từ đường link"
+            },
+            "gdrive": {
+                "hint": "Nhập ID của file Google Drive công khai",
+                "alt_name": "File Google Drive",
+                "source_string": " từ Google Drive"
+            },
+            "top_info": "Chọn các file cần cài từ máy chủ, rồi bấm nút +!",
+            "top_info1": "Đang chờ kết nối... Địa chỉ IP của Switch: ",
+            "failed": "Cài qua mạng thất bại!",
+            "transfer_interput": "Lỗi trong lúc truyền dữ liệu. Kiểm tra kết nối mạng.",
+            "retry": {
+                "title": "Tải thất bại",
+                "desc": "Đã thử lại nhiều lần nhưng vẫn lỗi. Thử lại lần nữa?",
+                "yes": "Thử lại",
+                "no": "Huỷ"
+            },
+            "source_string": " qua mạng nội bộ",
+            "buttons": " Cài qua Internet     Hướng dẫn     Huỷ",
+            "buttons1": " Chọn file     Chọn tất cả     Cài file     Huỷ"
+        },
+        "remote": {
+            "loading": "Đang tải danh sách shop...",
+            "top_info": "Chọn các bản cần cài từ shop, rồi bấm nút +! Mục:",
+            "failed": "Không tải được shop",
+            "unreachable": "Không kết nối được shop.",
+            "encrypted_unsupported": "Shop trả về dữ liệu mã hoá, bản này không đọc được. Tắt \"Encrypt\" trong cài đặt shop.",
+            "empty": "Shop chưa có bản nào cho máy này.",
+            "source_string": " từ shop",
+            "buttons_loading": " Huỷ",
+            "buttons": " Chọn     Chọn tất cả     Cài     Tải lại    / Mục     Kiểu xem     Huỷ",
+            "buttons_all": " Chọn     Chọn tất cả     Cài     Tải lại    / Mục     Tìm     Kiểu xem     Huỷ",
+            "search_hint": "Tìm trong tất cả",
+            "update_prompt_title": "Cài kèm bản cập nhật?",
+            "update_prompt_desc": "Cài kèm bản cập nhật cho các mục đã chọn? Số bản cập nhật tìm thấy: ",
+            "dlc_prompt_title": "Cài kèm DLC?",
+            "dlc_prompt_desc": "Cài kèm DLC cho các mục đã chọn? Số DLC tìm thấy: ",
+            "motd_title": "Thông báo từ shop",
+            "buttons_installed": " Chi tiết     Tải lại    / Mục     Huỷ",
+            "detail_type": "Loại: ",
+            "detail_titleid": "Title ID: ",
+            "detail_version": "Phiên bản: ",
+            "save_sync": {
+                "title": "Đồng bộ save",
+                "status": {
+                    "uploading_backup": "Đang tải bản sao lưu save lên...",
+                    "downloading_backup": "Đang tải bản sao lưu save về...",
+                    "packaging": "Đang đóng gói dữ liệu save...",
+                    "uploading_archive": "Đang tải gói save lên...",
+                    "preparing_restore": "Đang chuẩn bị khôi phục save..."
+                },
+                "progress": {
+                    "preparing_upload": "Đang chuẩn bị tải lên...",
+                    "preparing_download": "Đang chuẩn bị tải về...",
+                    "scanning_files": "Đang quét file...",
+                    "compressing_fmt": "Đang nén ",
+                    "download_fmt": "Tải về: ",
+                    "download_bytes_fmt": "Tải về: ",
+                    "upload_archive_fmt": "Đang tải gói lên: ",
+                    "upload_archive_bytes_fmt": "Đang tải gói lên: ",
+                    "upload_wait_response_fmt": "Đã tải lên xong, đang chờ máy chủ phản hồi... ",
+                    "upload_complete": "Đã tải lên xong.",
+                    "starting_download": "Bắt đầu tải save về...",
+                    "clearing_existing_files": "Đang xoá file save cũ...",
+                    "applying_save_data": "Đang ghi dữ liệu save...",
+                    "restoring_fmt": "Đang khôi phục ",
+                    "complete": "Đồng bộ save xong."
+                },
+                "dialog": {
+                    "unable_resolve_entry": "Không xác định được mục save.",
+                    "replace_local_prompt": "Thay save trên máy bằng bản trên máy chủ?",
+                    "delete_selected_fmt": "Xoá bản sao lưu đã chọn trên máy chủ?",
+                    "delete_fmt": "Xoá bản sao lưu trên máy chủ?",
+                    "none_available": "Không có save trên máy hay trên máy chủ cho game này.",
+                    "success_generic": "Đồng bộ save thành công.",
+                    "uploaded_success": "Đã tải save lên thành công.",
+                    "downloaded_success": "Đã tải save về thành công.",
+                    "deleted_success": "Đã xoá bản sao lưu save."
+                }
+            }
+        },
+        "sd": {
+            "help": {
+                "title": "Hướng dẫn",
+                "desc": "Chép file NSP, NSZ, XCI hoặc XCZ vào thẻ nhớ SD, tìm tới và chọn\ncác file cần cài, rồi bấm nút +."
+            },
+            "top_info": "Chọn các file cần cài, rồi bấm nút +!",
+            "source_string": " từ thẻ nhớ SD",
+            "delete_info": " đã cài xong! Xoá file gốc khỏi thẻ nhớ SD?",
+            "delete_info_multi": " file đã cài thành công! Xoá các file gốc khỏi thẻ nhớ SD?",
+            "delete_desc": "Sau khi cài xong thì không cần giữ file gốc nữa",
+            "buttons": " Chọn file     Chọn tất cả     Cài file     Hướng dẫn     Huỷ"
+        },
+        "hdd": {
+            "help": {
+                "title": "Hướng dẫn",
+                "desc": "Cắm ổ USB SSD hoặc ổ cứng, tìm tới và chọn file NSP, NSZ, XCI\nhoặc XCZ, rồi bấm nút +."
+            },
+            "top_info": "Chọn các file cần cài, rồi bấm nút +!",
+            "source_string": " từ ổ USB",
+            "delete_info": " đã cài xong! Xoá file gốc khỏi ổ USB?",
+            "delete_info_multi": " file đã cài thành công! Xoá các file gốc khỏi ổ USB?",
+            "delete_desc": "Sau khi cài xong thì không cần giữ file gốc nữa",
+            "show_hidden": "Hiện file ẩn",
+            "hide_hidden": "Giấu file ẩn",
+            "buttons": " Chọn file     Chọn tất cả     Cài file     Hướng dẫn     Huỷ"
+        },
+        "usb": {
+            "help": {
+                "title": "Hướng dẫn",
+                "desc": "Có thể cài file qua USB từ máy khác bằng công cụ như NS-USBloader\n(chế độ Tinfoil). Mở phần mềm đó trên máy tính, chọn file rồi gửi sang máy!\n\nCài qua USB cần cấu hình riêng trên một số hệ điều hành và đôi khi hay lỗi.\nNếu không làm được, thử cài qua LAN/Internet, hoặc chép file vào thẻ nhớ SD\nrồi chọn \"Cài từ thẻ nhớ SD\" ở menu chính!"
+            },
+            "top_info": "Đã kết nối USB! Đang chờ máy tính gửi danh sách file...",
+            "top_info2": "Chọn các file cần cài qua USB, rồi bấm nút +!",
+            "error": "Truyền qua USB bị quá thời gian hoặc thất bại",
+            "source_string": " qua USB",
+            "buttons": " (Giữ) Hướng dẫn     (Giữ) Huỷ",
+            "buttons2": " Chọn file     Chọn tất cả     Cài file     Huỷ"
+        },
+        "target": {
+            "desc0": "Cài ",
+            "desc1": " vào đâu?",
+            "desc00": "Cài ",
+            "desc01": " file đã chọn vào đâu?",
+            "opt0": "Thẻ nhớ SD",
+            "opt1": "Bộ nhớ máy"
+        },
+        "mtp": {
+            "target": {
+                "title": "Cài qua MTP",
+                "desc": "File cài qua MTP sẽ lưu vào đâu?"
+            },
+            "waiting": {
+                "title": "Cài qua MTP",
+                "desc": "Cắm máy tính và chép file vào thư mục MTP Install.",
+                "hint": "Bấm B để dừng MTP."
+            },
+            "error": {
+                "title": "Lỗi MTP",
+                "desc": "Không khởi động được MTP."
+            }
+        },
+        "info_page": {
+            "top_info0": "Đang cài ",
+            "preparing": "Đang chuẩn bị cài đặt...",
+            "failed": "Cài thất bại: ",
+            "failed_desc": "Phần đã cài dở có thể gỡ trong Cài đặt hệ thống (System Settings).",
+            "complete": "Cài đặt xong",
+            "desc0": " file đã cài thành công!",
+            "desc1": " đã cài xong!",
+            "downloading": "Đang tải ",
+            "at": " tốc độ "
+        },
+        "nca_verify": {
+            "title": "Phát hiện chữ ký NCA không hợp lệ!",
+            "desc": "Chỉ nên cài phần mềm ký sai từ nguồn đáng tin cậy. Các bản Việt hóa\ntích hợp, bản chuyển từ băng và DLC unlocker luôn hiện cảnh báo này.\nCó thể tắt kiểm tra trong cài đặt SUPER MẠNH Shop.\n\nBạn có chắc muốn tiếp tục cài?",
+            "opt1": "Có, tôi hiểu rủi ro",
+            "error": "NCA này không được ký đúng: "
+        },
+        "finished": [
+            "Chúc bạn chơi game vui vẻ!",
+            "Cảm ơn bạn đã ủng hộ SUPER MẠNH!",
+            "Bản Việt hóa đã sẵn sàng, vào game thôi!",
+            "Có lỗi chữ hay bản dịch? Báo cho SUPER MẠNH để sửa nhé!",
+            "Theo dõi supermanh.com để nhận bản Việt hóa mới!"
+        ]
+    },
+    "sig": {
+        "install": "Cài",
+        "uninstall": "Gỡ",
+        "update": "Cập nhật",
+        "version_text": "Signature patches hiện đã cài, hỗ trợ tới phiên bản HOS ",
+        "title0": "Cài signature patches?",
+        "desc0": "Cần signature patches để cài và chơi phần mềm.",
+        "backup_failed": "Không sao lưu được patches.ini của Hekate! Vẫn cài?",
+        "backup_failed_desc": "Nếu không dùng Hekate thì bỏ qua cảnh báo này.",
+        "download_failed": "Không tải được signature patches",
+        "download_failed_desc": "Có thể nguồn tải trong cài đặt SUPER MẠNH Shop bị sai,\nhoặc máy chủ đang tạm ngưng.",
+        "version_text2": "Signature patches đã cập nhật, hỗ trợ tới phiên bản HOS ",
+        "install_complete": "Cài xong!",
+        "complete_desc": "Khởi động lại máy để áp dụng",
+        "restart": "Khởi động lại",
+        "later": "Để sau",
+        "extract_failed": "Không giải nén được file!",
+        "restore_failed": "Không khôi phục được patches.ini gốc của Hekate! Tiếp tục gỡ?",
+        "uninstall_complete": "Gỡ xong",
+        "remove_failed": "Không gỡ được signature patches",
+        "remove_failed_desc": "File có thể đã bị đổi tên hoặc xoá",
+        "generic_error": "Cài signature patches thất bại!"
+    },
+    "options": {
+        "theme_loading": "Đang áp dụng giao diện…",
+        "theme_picker": "Chọn giao diện",
+        "theme_picker_hint": " Chọn giao diện     Quay lại",
+        "theme_default": "Mặc định",
+        "menu_items": {
+            "theme": "Giao diện: ",
+            "usb_hdd_hidden": "Hiện file ẩn trên ổ USB",
+            "ignore_firm": "Bỏ qua firmware tối thiểu mà game yêu cầu",
+            "nca_verify": "Kiểm tra chữ ký NCA trước khi cài",
+            "boost_mode": "Bật \"boost mode\" khi cài đặt",
+            "ask_delete": "Hỏi xoá file gốc sau khi cài",
+            "auto_update": "Tự kiểm tra bản cập nhật SUPER MẠNH Shop",
+            "gay_option": "Ẩn hình anime",
+            "sig_url": "Nguồn tải signature patches: ",
+            "remote_url": "Địa chỉ shop: ",
+            "remote_user": "Tên đăng nhập shop: ",
+            "remote_pass": "Mật khẩu shop: ",
+            "remote_hide_installed": "Ẩn các bản đã cài trong shop",
+            "remote_hide_installed_section": "Ẩn mục \"Đã cài\" trong shop",
+            "remote_all_base_only": "Mục Tất cả chỉ hiện bản game gốc",
+            "remote_start_grid_mode": "Mở shop ở dạng lưới",
+            "remote_reset_icons": "Xoá bộ nhớ đệm icon của shop",
+            "language": "Ngôn ngữ: ",
+            "check_update": "Kiểm tra bản cập nhật SUPER MẠNH Shop",
+            "credits": "Ghi công",
+            "sound": "Bật âm thanh",
+            "oled": "Bật chế độ OLED (nền đen)",
+            "mtp_album": "Hiện ổ Album khi cài qua MTP"
+        },
+        "nca_warn": {
+            "title": "Lưu ý!",
+            "desc": "Một số file cài đặt có thể chứa nội dung độc hại! Chỉ tắt tính năng này\nkhi bạn hoàn toàn chắc chắn phần mềm sắp cài là đáng tin cậy!\n\nVẫn muốn tắt kiểm tra chữ ký NCA?",
+            "opt1": "Có, tôi chịu rủi ro"
+        },
+        "sig_hint": "Nhập địa chỉ tải signature patches",
+        "remote": {
+            "url_hint": "Nhập địa chỉ shop (ví dụ: https://supermanh.com/tinfoil)",
+            "user_hint": "Nhập tên đăng nhập shop (không bắt buộc)",
+            "pass_hint": "Nhập mật khẩu shop (không bắt buộc)"
+        },
+        "cache_reset": {
+            "title": "Xoá bộ nhớ đệm icon?",
+            "desc": "Toàn bộ icon shop đã lưu sẽ bị xoá và tải lại ở lần mở shop tiếp theo.",
+            "confirm": "Xoá"
+        },
+        "update": {
+            "title": "Có bản cập nhật",
+            "desc0": "SUPER MẠNH Shop ",
+            "desc1": " đã có! Cập nhật ngay?",
+            "opt0": "Cập nhật",
+            "top_info": "Đang cập nhật lên SUPER MẠNH Shop ",
+            "bot_info": "Đang tải SUPER MẠNH Shop ",
+            "bot_info2": "Đang giải nén SUPER MẠNH Shop ",
+            "complete": "Cập nhật xong!",
+            "failed": "Cập nhật thất bại!",
+            "end_desc": "Ứng dụng sẽ đóng lại bây giờ.",
+            "title_check_fail": "Không có bản cập nhật",
+            "desc_check_fail": "Bạn đang dùng bản SUPER MẠNH Shop mới nhất!"
+        },
+        "credits": {
+            "title": "Cảm ơn những người sau!",
+            "desc": "- luketanti với CyberFoil (ứng dụng này dựa trên CyberFoil)\n- Huntereb với Awoo Installer\n- ITotalJustice với Sphaira\n- XorTroll với Plutonium\n- Atmosphere Team với libhaze\n- DarkMatterCore với libusbhsfs\n- Cộng đồng Homebrew vì mọi công sức và tâm huyết\n- Và bạn, vì đã dùng SUPER MẠNH Shop!"
+        },
+        "language": {
+            "title": "Chọn ngôn ngữ cho SUPER MẠNH Shop",
+            "desc": "Ứng dụng sẽ đóng sau khi đổi ngôn ngữ. Bấm B để huỷ.",
+            "system_language": "Theo hệ thống"
+        },
+        "title": "Cài đặt SUPER MẠNH Shop",
+        "buttons": " Chọn/Đổi     Huỷ"
+    },
+    "common": {
+        "ok": "OK",
+        "cancel": "Huỷ",
+        "close": "Đóng",
+        "yes": "Có",
+        "no": "Không",
+        "cancel_desc": "Bấm B để huỷ"
+    }
+}
