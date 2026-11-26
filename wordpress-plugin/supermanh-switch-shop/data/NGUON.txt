@@ -1,0 +1,1 @@
+Dữ liệu tên game và link ảnh bìa (titles.US.en từ bản phát hành titledb của a1ex4/ownfoil, lấy ngày 2026-11-26). Chỉ gồm Title ID, tên, link ảnh; không có file game.
