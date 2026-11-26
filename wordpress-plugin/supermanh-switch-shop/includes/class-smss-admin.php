@@ -185,6 +185,7 @@ class SMSS_Admin {
 							<tr><th><label for="smss-app">App quản lý</label></th><td><code>/</code><input id="smss-app" name="app_slug" value="<?php echo esc_attr( $s['app_slug'] ); ?>" style="width:140px"> <a href="<?php echo esc_url( SMSS_App::admin_url() ); ?>" target="_blank">Mở app ↗</a><p class="description">Mở trên điện thoại (đăng nhập WordPress), rồi "Thêm vào màn hình chính".</p></td></tr>
 							<tr><th><label for="smss-portal">Trang thành viên</label></th><td><code>/</code><input id="smss-portal" name="portal_slug" value="<?php echo esc_attr( $s['portal_slug'] ); ?>" style="width:140px"> <a href="<?php echo esc_url( SMSS_App::portal_url() ); ?>" target="_blank">Xem ↗</a><p class="description">Thành viên đăng nhập để xem điểm và dùng điểm mở khoá bản Việt hóa.</p></td></tr>
 							<tr><th><label for="smss-contact">Liên hệ hỗ trợ</label></th><td><input id="smss-contact" class="regular-text" name="contact" value="<?php echo esc_attr( $s['contact'] ); ?>" placeholder="Zalo 09xx… / fb.com/…"></td></tr>
+							<tr><th><label for="smss-appurl">Link tải app Switch</label></th><td><input id="smss-appurl" class="regular-text" name="app_url" value="<?php echo esc_attr( $s['app_url'] ); ?>"><p class="description">Trang tải app <b><?php echo esc_html( $s['app_name'] ); ?></b> (NSP/NRO). Hiện ở trang thành viên và tin nhắn gửi thành viên.</p></td></tr>
 							<tr><th><label for="smss-point">Tên đơn vị điểm</label></th><td><input id="smss-point" name="point_name" value="<?php echo esc_attr( $s['point_name'] ); ?>" style="width:140px"></td></tr>
 							<tr><th>Loại file</th><td><label><input type="checkbox" name="only_nsw" value="1" <?php checked( $s['only_nsw'] ); ?>> Chỉ nhận nsp / nsz / xci / xcz</label></td></tr>
 						</table>
@@ -218,6 +219,7 @@ class SMSS_Admin {
 			'app_slug'     => SMSS_Settings::sanitize_slug( self::post( 'app_slug', 'sm-quanly' ) ),
 			'portal_slug'  => SMSS_Settings::sanitize_slug( self::post( 'portal_slug', 'sm-khach' ) ),
 			'contact'      => sanitize_text_field( self::post( 'contact' ) ),
+			'app_url'      => esc_url_raw( (string) self::post( 'app_url' ) ),
 			'point_name'   => sanitize_text_field( self::post( 'point_name' ) ) ?: 'điểm',
 		) );
 		if ( self::post( 'hauth_reset' ) || $old['shop_host'] !== $new['shop_host'] ) {

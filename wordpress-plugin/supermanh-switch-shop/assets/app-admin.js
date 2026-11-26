@@ -219,7 +219,7 @@
 	function showShare(d, title) {
 		var msg = d.account && d.account.kind === 'device'
 			? [(d.tinfoil.title || 'SUPER MẠNH Việt Hóa') + ' — đã kích hoạt máy ' + d.account.code,
-				'Tắt hẳn Tinfoil rồi mở lại là thấy các bản Việt hóa của bạn.',
+				'Thoát hẳn app ' + (d.tinfoil.app || 'SUPER MẠNH Việt Hóa') + ' rồi mở lại, chọn ô Kho Việt hóa là thấy các bản của bạn.',
 				'', 'Xem ' + POINT + ' và mở khoá thêm bản:', d.portal].join('\n')
 			: S.accountMessage({ tinfoil: d.tinfoil, password: d.password, portal: d.portal });
 		S.sheet('<h3>' + esc(title) + '</h3><p class="note">Gửi tin này cho thành viên qua Zalo/Messenger:</p><div class="share">' + esc(msg) + '</div>' +

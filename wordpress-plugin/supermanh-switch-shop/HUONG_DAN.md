@@ -22,6 +22,11 @@ Thành viên thêm kho vào Tinfoil (KHÔNG cần tài khoản, Username/Passwor
 - **Mã máy:** Tinfoil và CyberFoil gửi `UID`. Với CyberFoil, đây là SHA-256 của CID chip nhớ eMMC, nên gắn với phần cứng và không đổi khi cài lại. Server không bao giờ hiện UID ra ngoài: mã kích hoạt được tính từ UID cộng một khoá bí mật trên server, nên biết mã cũng không suy ra được UID để giả máy.
 - **PIN web:** trang thành viên giờ cần **mã kích hoạt + PIN 6 số**. PIN chỉ hiện trong Tinfoil trên chính máy đó và đổi sau mỗi 24 giờ. Người chỉ biết mã kích hoạt không đăng nhập được. Link riêng ("Gửi TK") vẫn vào thẳng như trước.
 
+## Đồng bộ với app Switch SUPER MẠNH Việt Hóa (NSP)
+- Tên kho, lời chào, đường dẫn `/tinfoil` và trang `/sm-khach` khớp với app: app luôn trỏ sẵn tới kho, ô **Hướng dẫn kết nối** trong app nhắc đúng các bước như trang thành viên.
+- **Cài đặt → Link tải app Switch**: trang tải app (mặc định bản mới nhất trên GitHub). Link này hiện ở tab **Cài app** của trang thành viên và trong tin nhắn gửi thành viên.
+- Bản cũ đang dùng tên mặc định "SUPER MẠNH Shop" sẽ tự đổi sang "SUPER MẠNH Việt Hóa" khi cập nhật plugin.
+
 ## Mở bản Việt hóa bằng điểm
 ```
 Thành viên liên hệ bạn

@@ -112,7 +112,7 @@ class SMSS_API {
 		);
 	}
 
-	/** What a customer types into Tinfoil. */
+	/** How a member connects: the SUPER MANH app (fixed address) or Tinfoil. */
 	public static function tinfoil_info( $account = null ) {
 		$parts = wp_parse_url( SMSS_Settings::shop_url() );
 		$https = 'https' === ( $parts['scheme'] ?? 'https' );
@@ -122,6 +122,9 @@ class SMSS_API {
 			'port'     => isset( $parts['port'] ) ? (int) $parts['port'] : ( $https ? 443 : 80 ),
 			'path'     => ( $parts['path'] ?? '/' ) . ( isset( $parts['query'] ) ? '?' . $parts['query'] : '' ),
 			'title'    => SMSS_Settings::get( 'shop_name' ),
+			'app'      => SMSS_Settings::get( 'app_name' ),
+			'app_url'  => SMSS_Settings::get( 'app_url' ),
+			'portal'   => SMSS_App::portal_url(),
 		);
 		if ( $account ) {
 			$info['username']     = SMSS_Accounts::is_device( $account ) ? '' : $account->username;
@@ -467,7 +470,7 @@ class SMSS_API {
 			// appears inside Tinfoil on that console.
 			if ( ! SMSS_Accounts::pin_ok( $a, (string) $req->get_param( 'password' ) ) ) {
 				set_transient( $fail_key, $fails + 1, 900 );
-				return self::err( 'Sai mã PIN. Mở Tinfoil trên máy của bạn để xem PIN web.', 401 );
+				return self::err( 'Sai mã PIN. Mở app trên máy Switch của bạn để xem PIN web.', 401 );
 			}
 		} else {
 			$a = SMSS_Accounts::get_by_username( $login );

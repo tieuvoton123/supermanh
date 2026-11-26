@@ -180,8 +180,9 @@
 		];
 		if (o.password) lines.push('Mật khẩu: ' + o.password);
 		if (o.portal) lines.push('', 'Trang của bạn (xem điểm, mở khoá bản Việt hóa):', o.portal);
+		if (t.app_url) lines.push('', 'Tải app ' + (t.app || 'SUPER MẠNH Việt Hóa') + ' cho Switch:', t.app_url);
 		lines.push('',
-			'Cài vào Tinfoil: File Browser → nhấn (-) → điền:',
+			'Nếu dùng Tinfoil: File Browser → nhấn (-) → điền:',
 			'• Protocol: ' + t.protocol,
 			'• Host: ' + t.host,
 			'• Port: ' + t.port,

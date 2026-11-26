@@ -47,6 +47,9 @@ class SMSS_Settings {
 			// Where customers ask for points (shown in Tinfoil and on the customer page).
 			'contact'      => 'supermanh.com',
 			'point_name'   => 'điểm',
+			// Download page of the SUPER MANH Viet Hoa Switch app (NSP/NRO), shown to members.
+			'app_url'      => 'https://github.com/tieuvoton123/supermanh/releases/latest',
+			'app_name'     => 'SUPER MẠNH Việt Hóa',
 		);
 	}
 
@@ -56,7 +59,20 @@ class SMSS_Settings {
 	public static function all() {
 		if ( null === self::$cache ) {
 			$saved       = get_option( self::OPTION, array() );
-			self::$cache = wp_parse_args( is_array( $saved ) ? $saved : array(), self::defaults() );
+			$saved       = is_array( $saved ) ? $saved : array();
+			// 1.6.2: names follow the Switch app (SUPER MANH Viet Hoa); old defaults are renamed once.
+			$renamed = array( 'shop_name' => array( 'SUPER MẠNH Shop', 'SUPER MẠNH Việt Hóa' ), 'motd' => array( 'SUPER MANH SHOP - supermanh.com', 'SUPER MANH VIET HOA - supermanh.com' ) );
+			$changed = false;
+			foreach ( $renamed as $key => $pair ) {
+				if ( isset( $saved[ $key ] ) && $pair[0] === $saved[ $key ] ) {
+					$saved[ $key ] = $pair[1];
+					$changed       = true;
+				}
+			}
+			if ( $changed ) {
+				update_option( self::OPTION, $saved, true );
+			}
+			self::$cache = wp_parse_args( $saved, self::defaults() );
 		}
 		return self::$cache;
 	}

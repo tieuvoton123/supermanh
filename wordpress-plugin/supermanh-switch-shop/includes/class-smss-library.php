@@ -516,7 +516,7 @@ class SMSS_Library {
 		}
 		if ( ! $files && null !== $account ) {
 			// Shown by Tinfoil: tells the buyer what to do instead of an empty screen.
-			$index['success'] = 'Tai khoan ' . $account->username . ' chua co ban Viet hoa nao. Vao ' . preg_replace( '~^https?://~', '', SMSS_App::portal_url() ) . ' de mo khoa, lien he ' . $settings['contact'] . ' de nap diem.';
+			$index['success'] = 'Tai khoan ' . $account->username . ' chua co ban Viet hoa nao. Vao ' . preg_replace( '~^https?://~', '', SMSS_App::portal_url() ) . ' de mo khoa, lien he ' . $settings['contact'] . ' de duoc cong diem.';
 		} elseif ( '' !== trim( $settings['motd'] ) ) {
 			$index['success'] = $settings['motd'];
 		}
