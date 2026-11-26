@@ -25,3 +25,4 @@ __pycache__/
 # SUPER MANH: keep the NSP pack scripts
 !nsp/*.bat
 !nsp/*.ps1
+!tools/make_vi.py
